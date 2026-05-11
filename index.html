@@ -941,6 +941,10 @@ body {
 .consult-wrap a { color: var(--c-accent); text-decoration: none; }
 .consult-wrap a:hover { text-decoration: underline; }
 .consult-wrap strong { color: var(--c-text); }
+.consult-wrap .highlight strong,
+.consult-wrap .highlight-title strong,
+.consult-wrap .highlight-text strong,
+.consult-wrap th strong { color: #fff !important; }
 .consult-wrap hr { border: none; border-top: 1px solid var(--c-border); margin: 20px 0; }
 
 /* ============================================
@@ -1174,8 +1178,32 @@ body {
       <a class="nav-link nav-home" data-target="home" onclick="goTo('home')">🏠 &nbsp; 홈</a>
     </div>
 
+    <!-- 카테고리: 강사 기본기 -->
+    <div class="cat" id="cat-basics">
+      <div class="cat-header" onclick="toggleCat('basics')">
+        <span>강사 기본기</span>
+        <span class="cat-arrow">▶</span>
+      </div>
+      <div class="cat-items">
+        <div class="cat-section-label">신입 강사 온보딩</div>
+        <a class="nav-link" data-target="ob-c1" onclick="goTo('ob-c1')">01 &nbsp; 다같이 미술학원이란?</a>
+        <a class="nav-link" data-target="ob-c2" onclick="goTo('ob-c2')">02 &nbsp; 입사 첫 주</a>
+        <a class="nav-link" data-target="ob-c3" onclick="goTo('ob-c3')">03 &nbsp; 업무 시스템 익히기</a>
+        <a class="nav-link" data-target="ob-c4" onclick="goTo('ob-c4')">04 &nbsp; 학생 만나기 전에</a>
+        <a class="nav-link" data-target="ob-c5" onclick="goTo('ob-c5')">05 &nbsp; 강사로서 성장하기</a>
+
+        <div class="cat-section-label">수업 운영 표준</div>
+        <a class="nav-link" data-target="co-c1" onclick="goTo('co-c1')">01 &nbsp; 수업 운영의 기본 원칙</a>
+        <a class="nav-link" data-target="co-c2" onclick="goTo('co-c2')">02 &nbsp; 수업 전 — 준비 단계</a>
+        <a class="nav-link" data-target="co-c3" onclick="goTo('co-c3')">03 &nbsp; 수업 중 — 실제 운영</a>
+        <a class="nav-link" data-target="co-c4" onclick="goTo('co-c4')">04 &nbsp; 수업 후 — 마무리 & 기록</a>
+        <a class="nav-link" data-target="co-c5" onclick="goTo('co-c5')">05 &nbsp; 특수 상황 대응</a>
+        <a class="nav-link" data-target="co-c6" onclick="goTo('co-c6')">06 &nbsp; 수업 품질 유지 기준</a>
+      </div>
+    </div>
+
     <!-- 카테고리 1: 블로그 -->
-    <div class="cat open" id="cat-blog">
+    <div class="cat" id="cat-blog">
       <div class="cat-header" onclick="toggleCat('blog')">
         <span>블로그 운영 매뉴얼</span>
         <span class="cat-arrow">▶</span>
@@ -1238,6 +1266,22 @@ body {
   <div class="home-updates">
     <div class="home-section-label">📢 공지 &amp; 최근 업데이트</div>
     <div class="update-item">
+      <div class="update-date">2026.05.12</div>
+      <div class="update-body">
+        <div class="update-title">수업 운영 표준 매뉴얼 발행</div>
+        <div class="update-desc">수업의 기본 원칙부터 준비, 실제 운영, 마무리, 특수 상황 대응, 품질 유지까지 6개 챕터로 구성된 강사의 일상 업무 가이드입니다.</div>
+      </div>
+      <span class="update-tag new">NEW</span>
+    </div>
+    <div class="update-item">
+      <div class="update-date">2026.05.11</div>
+      <div class="update-body">
+        <div class="update-title">신입 강사 온보딩 매뉴얼 발행</div>
+        <div class="update-desc">다같이 미술학원의 철학부터 입사 첫 주 안내, 업무 시스템 세팅까지 5개 챕터로 구성된 신입 강사 가이드입니다.</div>
+      </div>
+      <span class="update-tag new">NEW</span>
+    </div>
+    <div class="update-item">
       <div class="update-date">2026.05.10</div>
       <div class="update-body">
         <div class="update-title">상담 자동화 시스템 매뉴얼 추가</div>
@@ -1258,6 +1302,28 @@ body {
   <!-- 매뉴얼 카드 그리드 -->
   <div class="home-section-label">📚 매뉴얼 목록</div>
   <div class="manual-grid">
+
+    <!-- 신입 강사 온보딩 -->
+    <div class="manual-card" onclick="goTo('ob-c1')">
+      <div class="manual-card-icon">📘</div>
+      <div class="manual-card-title">신입 강사 온보딩</div>
+      <div class="manual-card-desc">다같이 미술학원의 철학과 입사 첫 주 안내, 업무 시스템 세팅까지</div>
+      <div class="manual-card-meta">
+        <span>총 5개 챕터</span>
+        <span class="manual-card-arrow">→</span>
+      </div>
+    </div>
+
+    <!-- 수업 운영 표준 -->
+    <div class="manual-card" onclick="goTo('co-c1')">
+      <div class="manual-card-icon">🎨</div>
+      <div class="manual-card-title">수업 운영 표준</div>
+      <div class="manual-card-desc">수업의 기본 원칙부터 준비·운영·마무리·품질 유지까지의 강사 일상 가이드</div>
+      <div class="manual-card-meta">
+        <span>총 6개 챕터</span>
+        <span class="manual-card-arrow">→</span>
+      </div>
+    </div>
 
     <!-- 블로그 -->
     <div class="manual-card" onclick="goTo('blog-s1')">
@@ -2105,6 +2171,1644 @@ body {
   </div>
 </section>
 
+
+<!-- ============================================
+     신입 강사 온보딩 매뉴얼 — 5개 챕터
+     ============================================ -->
+
+<!-- ===== 챕터 1: 다같이 미술학원이란? ===== -->
+<section class="consult-section" id="ob-c1">
+  <div class="sec-head">
+    <div class="sec-chip">CHAPTER 1</div>
+    <h1 class="sec-title">다같이 미술학원이란?</h1>
+    <p class="sec-desc">신입 강사가 입사 첫날 가장 먼저 읽는 페이지입니다.<br>여기가 어떤 곳이고, 우리가 무엇을 지향하는지 알아봅니다.</p>
+  </div>
+
+  <div class="highlight">
+    <div class="highlight-title">다같이 대학가자!</div>
+    <div class="highlight-text">다같이 미술학원의 슬로건이자 철학입니다.<br>한 명도 포기하지 않고, 모든 학생을 대학에 합격시키겠다는 약속이에요.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="card-num">1</span> 학원 연혁</div>
+    <table>
+      <tbody>
+        <tr><td style="width:120px"><strong>2022</strong></td><td>다산캠퍼스 오픈</td></tr>
+        <tr><td><strong>2022</strong></td><td>호평캠퍼스 오픈</td></tr>
+        <tr><td><strong>2023</strong></td><td>구리캠퍼스 오픈</td></tr>
+        <tr><td><strong>2025</strong></td><td>애니캠퍼스 오픈</td></tr>
+      </tbody>
+    </table>
+    <div class="alert info" style="margin-top:14px">
+      <span class="alert-ico">💡</span>
+      <div><strong>3년 만에 4개 캠퍼스로 성장한 이유는 단순합니다.</strong><br>지역의 학생 한 명도 놓치지 않으려는 마음.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="card-num">2</span> 4개 캠퍼스</div>
+    <table>
+      <thead>
+        <tr><th>캠퍼스</th><th>위치</th><th>교통</th><th>운영 반</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>다산</strong></td><td>남양주시 다산신도시</td><td>8호선 다산역 도보 1분</td><td>학생부종합전형반, 예중·예고반, 디자인 입시</td></tr>
+        <tr><td><strong>호평</strong></td><td>남양주시 호평동</td><td>경춘선 평내호평역 도보 1분</td><td>디자인 입시</td></tr>
+        <tr><td><strong>구리</strong></td><td>경기도 구리시 인창동</td><td>경의중앙선·8호선 구리역 도보 3분</td><td>조형실기반, 디자인 입시</td></tr>
+        <tr><td><strong>애니</strong></td><td>남양주시 호평동 (호평 옆 건물)</td><td>경춘선 평내호평역 도보 1분</td><td>애니메이션 입시</td></tr>
+      </tbody>
+    </table>
+    <div class="alert info" style="margin-top:14px">
+      <span class="alert-ico">💡</span>
+      <div><strong>호평과 애니는 같은 건물 옆 건물.</strong><br>학생이 디자인과 애니메이션을 함께 준비할 수 있습니다.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="card-num">3</span> 우리가 다른 미술학원과 다른 점</div>
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:18px;color:#1a1a1a;margin:8px 0 12px;letter-spacing:-0.3px">한 방향이 아닌, 학생 개개인 맞춤형 입시</h3>
+    <p style="font-size:13.5px;color:#6B7280;line-height:1.85;margin-bottom:14px">대부분의 미술학원은 <strong>하나의 입시 전략</strong>을 정해놓고 모든 학생을 그 방향으로 끌고 갑니다. 다같이는 다릅니다.</p>
+    <ul style="list-style:none;padding:0;margin-bottom:16px">
+      <li style="padding:6px 0;font-size:13px;display:flex;gap:10px"><span style="color:#D4541A">●</span><div><strong>다양한 실기 유형</strong>을 지도할 수 있는 강사진</div></li>
+      <li style="padding:6px 0;font-size:13px;display:flex;gap:10px"><span style="color:#D4541A">●</span><div><strong>각 학생의 성적·실기력·희망 진로</strong>에 맞춘 입시 전략</div></li>
+      <li style="padding:6px 0;font-size:13px;display:flex;gap:10px"><span style="color:#D4541A">●</span><div><strong>포기하지 않는 끝까지의 입시 마무리</strong></div></li>
+    </ul>
+    <div class="alert warn">
+      <span class="alert-ico">📍</span>
+      <div>우리 지역(구리·남양주)의 특성상, 성적이 좋지 않은 학생도 많고, 실기 구력과 표현력이 부족한 학생도 많이 옵니다.<br><strong>그래서 우리는 더 끈질기게, 더 개별적으로, 더 끝까지 합니다.</strong></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="card-num">4</span> 다같이 강사의 마음가짐</div>
+    <div class="highlight" style="margin-bottom:14px">
+      <div class="highlight-title">"입시생은 힘들지만, 입시를 가르치는 강사는 더 힘들어야 한다."</div>
+      <div class="highlight-text">다같이 미술학원의 강사 철학입니다.</div>
+    </div>
+    <p style="font-size:13.5px;color:#6B7280;line-height:1.85;margin-bottom:14px">학생은 길어야 1~3년, 그 시간 동안 자신의 미래를 걸고 입시를 준비합니다. 강사는 그 학생의 인생을 일정 부분 책임지는 사람입니다.</p>
+    <p style="font-size:14px;color:#1a1a1a;font-weight:700;margin-bottom:14px">입시 강사에게 가장 필요한 것은 큰 책임감입니다.</p>
+    <ul style="list-style:none;padding:0">
+      <li style="padding:6px 0;font-size:13px;display:flex;gap:10px"><span style="color:#10B981;font-weight:700">✓</span><div>학생의 부족한 부분을 끝까지 채워주려는 끈기</div></li>
+      <li style="padding:6px 0;font-size:13px;display:flex;gap:10px"><span style="color:#10B981;font-weight:700">✓</span><div>늦게 시작한 학생도 포기하지 않는 마음</div></li>
+      <li style="padding:6px 0;font-size:13px;display:flex;gap:10px"><span style="color:#10B981;font-weight:700">✓</span><div>"이 정도면 됐다"가 아니라 "한 번 더"의 자세</div></li>
+    </ul>
+  </div>
+
+  <div class="highlight" style="text-align:center">
+    <div class="highlight-title" style="font-size:20px">다같이 대학가자.<br>한 명도 포기하지 않습니다.</div>
+  </div>
+</section>
+
+
+<!-- ===== 챕터 2: 입사 첫 주 ===== -->
+<section class="consult-section" id="ob-c2">
+  <div class="sec-head">
+    <div class="sec-chip">CHAPTER 2</div>
+    <h1 class="sec-title">입사 첫 주 — 알아야 할 것들</h1>
+    <p class="sec-desc">신입 강사가 입사하고 첫 일주일 동안 꼭 알아야 할<br>실무 정보들을 정리했습니다.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="card-num">1</span> 근무 시간</div>
+    <table>
+      <tbody>
+        <tr><td style="width:140px"><strong>평일</strong></td><td>14:00 – 22:00</td></tr>
+        <tr><td><strong>주말 (토·일)</strong></td><td>10:00 – 18:00</td></tr>
+      </tbody>
+    </table>
+    <div class="alert info" style="margin-top:14px">
+      <span class="alert-ico">💡</span>
+      <div><strong>주말 수업 강사는 수업 30분 전까지 출근</strong>해주세요. 강사별로 근무 시간이 조금씩 다를 수 있으니, 정확한 일정은 입사 시 확인하세요.</div>
+    </div>
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:18px 0 8px;letter-spacing:-0.3px">출근 체크 방법</h3>
+    <p style="font-size:13.5px;color:#1a1a1a;line-height:1.85">📱 <strong>출근하면 캠퍼스의 패드에 본인 출석번호(핸드폰 뒤 4자리)를 찍습니다.</strong></p>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="card-num">2</span> 휴무 / 연차</div>
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:0 0 8px;letter-spacing:-0.3px">정기 휴무</h3>
+    <p style="font-size:13.5px;color:#6B7280;line-height:1.85;margin-bottom:14px"><strong>공휴일은 전부 휴무</strong>입니다.</p>
+
+    <div class="alert warn">
+      <span class="alert-ico">⚠️</span>
+      <div>추석·설날처럼 연속된 휴무로 <strong>3타임 이상 휴원</strong>하는 경우, 학생들에게 별도의 보충 수업을 진행해야 합니다.</div>
+    </div>
+
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:18px 0 8px;letter-spacing:-0.3px">연차 사용 규칙</h3>
+    <ul style="list-style:none;padding:0;margin-bottom:14px">
+      <li style="padding:6px 0;font-size:13px;display:flex;gap:10px"><span style="color:#D4541A">●</span><div><strong>신청 시기</strong> — 사용일 최소 1주일 전</div></li>
+      <li style="padding:6px 0;font-size:13px;display:flex;gap:10px"><span style="color:#D4541A">●</span><div><strong>신청 방법</strong> — 휴가계획서 작성 → 운영진 제출</div></li>
+      <li style="padding:6px 0;font-size:13px;display:flex;gap:10px"><span style="color:#D4541A">●</span><div><strong>휴가계획서 위치</strong> — 상담실 비치 (자세한 위치는 운영진 문의)</div></li>
+    </ul>
+
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:18px 0 8px;letter-spacing:-0.3px">연차 차감 기준</h3>
+    <table>
+      <thead><tr><th>구분</th><th>차감</th></tr></thead>
+      <tbody>
+        <tr><td>평일 휴무</td><td><strong>1일</strong></td></tr>
+        <tr><td>주말 (2타임 수업) 휴무</td><td><strong>1.5일</strong></td></tr>
+        <tr><td>반차</td><td><strong>0.5일</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="card-num">3</span> 급여 / 정산</div>
+    <table>
+      <tbody>
+        <tr><td style="width:140px"><strong>지급일</strong></td><td>매월 익월 <strong>10일</strong></td></tr>
+        <tr><td><strong>정산 방식</strong></td><td>월급제</td></tr>
+        <tr><td><strong>4대보험</strong></td><td>선택</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:12.5px;color:#9CA3AF;margin-top:12px">세부 사항은 입사 시 원장과 직접 면담을 통해 확인합니다.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="card-num">4</span> 캠퍼스 시설 / 비품</div>
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:0 0 8px;letter-spacing:-0.3px">강사 자리</h3>
+    <p style="font-size:13.5px;color:#6B7280;line-height:1.85;margin-bottom:14px">각 강사에게는 <strong>본인이 담당하는 교실에 본인의 자리</strong>가 배정됩니다.</p>
+    <div class="highlight" style="margin-bottom:14px">
+      <div class="highlight-title">"학생의 자리가 깨끗하려면, 강사의 자리가 먼저 깨끗해야 합니다."</div>
+      <div class="highlight-text">강사 자리의 정돈 상태가 곧 학생들의 작업 환경 기준이 됩니다. 본인 자리를 항상 깔끔하게 유지해주세요.</div>
+    </div>
+
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:18px 0 8px;letter-spacing:-0.3px">학원 비품 / 그림 도구</h3>
+    <p style="font-size:13.5px;color:#6B7280;line-height:1.85">✅ <strong>학원에서 공용으로 사용하는 도구 및 재료</strong>는 운영진에게 필요 물품을 전달해서 구매합니다.</p>
+    <p style="font-size:12.5px;color:#9CA3AF;margin-top:8px">※ 임의로 외부에서 구매 후 청구하는 방식이 아니니 주의하세요.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="card-num">5</span> 강사 개인 준비물</div>
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:0 0 8px;letter-spacing:-0.3px">화구 / 재료</h3>
+    <ul style="list-style:none;padding:0;margin-bottom:16px">
+      <li style="padding:6px 0;font-size:13px;display:flex;gap:10px"><span style="color:#D4541A">●</span><div><strong>공통 도구·재료</strong> → 운영진을 통해 구매 (학원 비용)</div></li>
+      <li style="padding:6px 0;font-size:13px;display:flex;gap:10px"><span style="color:#D4541A">●</span><div><strong>본인만의 개별 재료</strong> → 사비로 구매</div></li>
+    </ul>
+
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:18px 0 8px;letter-spacing:-0.3px">복장 규정</h3>
+    <p style="font-size:13.5px;color:#6B7280;line-height:1.85;margin-bottom:14px">학원 강사는 학생을 가르치는 <strong>선생님</strong>입니다. 단정함이 기본입니다.</p>
+    <ul style="list-style:none;padding:0;margin-bottom:14px">
+      <li style="padding:6px 0;font-size:13px;display:flex;gap:10px"><span style="color:#DC2626;font-weight:700">✗</span><div>노출이 심한 짧은 스커트 / 핫팬츠 (남녀 공통)</div></li>
+      <li style="padding:6px 0;font-size:13px;display:flex;gap:10px"><span style="color:#DC2626;font-weight:700">✗</span><div>학생과의 눈맞춤을 방해하는 푹 눌러쓰는 챙 모자</div></li>
+      <li style="padding:6px 0;font-size:13px;display:flex;gap:10px"><span style="color:#10B981;font-weight:700">✓</span><div>자율적이지만 단정한 옷차림</div></li>
+    </ul>
+
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:18px 0 8px;letter-spacing:-0.3px">디지털 도구</h3>
+    <div class="alert info">
+      <span class="alert-ico">💻</span>
+      <div><strong>맥북을 지급합니다.</strong> 퇴사 시 반납이 원칙입니다.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="card-num">6</span> 비상 연락 / 보고 라인</div>
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:0 0 8px;letter-spacing:-0.3px">수업 중 문제 발생 시</h3>
+    <table>
+      <tbody>
+        <tr><td style="width:120px"><strong>1순위</strong></td><td>원장</td></tr>
+        <tr><td><strong>2순위</strong></td><td>부원장 (원장 부재 시)</td></tr>
+        <tr><td><strong>3순위</strong></td><td>동료 강사</td></tr>
+      </tbody>
+    </table>
+    <div class="alert warn" style="margin-top:14px">
+      <span class="alert-ico">⚠️</span>
+      <div><strong>수업 중 문제가 생기면 반드시 원장에게 직접 연락해서 보고합니다.</strong> 원장이 부재 중일 때만 부원장 또는 동료 강사에게 전달하세요.</div>
+    </div>
+
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:18px 0 8px;letter-spacing:-0.3px">카카오톡</h3>
+    <p style="font-size:13.5px;color:#1a1a1a;line-height:1.85">📲 <strong>캠퍼스별 전임강사 단톡방</strong>이 운영됩니다. 입사 시 본인이 속한 캠퍼스 단톡방에 초대됩니다.</p>
+  </div>
+
+  <div class="highlight">
+    <div class="highlight-title">한눈에 정리</div>
+    <div class="highlight-text">
+      • 평일 14–22시 / 주말 10–18시 (주말은 30분 전 출근)<br>
+      • 출근 시 패드에 핸드폰 뒤 4자리 입력<br>
+      • 연차 신청은 1주일 전 / 휴가계획서 제출<br>
+      • 급여는 매월 10일 / 월급제<br>
+      • 본인 자리부터 깨끗하게<br>
+      • 문제 발생 시 → 원장 → 부원장 → 동료 강사
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== 챕터 3: 업무 시스템 익히기 ===== -->
+<section class="consult-section" id="ob-c3">
+  <div class="sec-head">
+    <div class="sec-chip">CHAPTER 3</div>
+    <h1 class="sec-title">업무 시스템 익히기</h1>
+    <p class="sec-desc">신입 강사가 본격적으로 일하기 전에 세팅해야 할 시스템들입니다.<br>일주일 안에는 다 갖춰놓는 것이 좋습니다.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="card-num">1</span> 우리가 사용하는 시스템 한눈에 보기</div>
+    <table>
+      <thead><tr><th>시스템</th><th>용도</th><th>발급 방식</th></tr></thead>
+      <tbody>
+        <tr><td><strong>구글 드라이브</strong></td><td>전 캠퍼스 자료 보관 / 공유</td><td>운영진 발급 및 전달</td></tr>
+        <tr><td><strong>출석부 (구글 시트)</strong></td><td>학생 출결 관리</td><td>운영진 발급 및 전달</td></tr>
+        <tr><td><strong>클로바노트</strong></td><td>상담 녹음 / 자동 변환</td><td><strong>개인 가입</strong> 필요</td></tr>
+        <tr><td><strong>카카오톡 단톡방</strong></td><td>강사 간 소통 / 학생 반별 관리</td><td>운영진 발급 및 전달</td></tr>
+        <tr><td><strong>블로그 (네이버)</strong></td><td>캠퍼스별 블로그 운영</td><td>운영진 발급 및 전달</td></tr>
+        <tr><td><strong>어도비 포토샵</strong></td><td>디지털 작업</td><td>운영진 발급 및 전달</td></tr>
+      </tbody>
+    </table>
+    <div class="alert info" style="margin-top:14px">
+      <span class="alert-ico">💡</span>
+      <div><strong>모든 계정 / 비밀번호는 운영진이 직접 발급합니다.</strong><br>입사 후 운영진에게 요청하면 순차적으로 받게 됩니다.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="card-num">2</span> 강사용 맥북 — 첫 세팅</div>
+    <p style="font-size:13.5px;color:#6B7280;line-height:1.85;margin-bottom:14px">지급받은 맥북은 다음 순서로 세팅합니다.</p>
+    <ol style="padding-left:20px;font-size:13px;line-height:2">
+      <li>이전 사용자의 데이터가 남아있다면 → <strong>맥북 포맷</strong></li>
+      <li>보안을 위해 → <strong>본인만의 개인 비밀번호 설정</strong></li>
+      <li>운영진에게 받은 어도비 ID로 → <strong>어도비 포토샵 설치</strong></li>
+      <li>카카오톡, 크롬 등 기본 업무 도구 설치</li>
+      <li>본인 구글 계정으로 크롬 로그인</li>
+    </ol>
+    <div class="alert warn" style="margin-top:14px">
+      <span class="alert-ico">⚠️</span>
+      <div>맥북은 학원 자산입니다. <strong>퇴사 시 반납이 원칙</strong>이니, 개인 자료와 학원 자료를 명확히 구분해서 사용하세요.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="card-num">3</span> 카카오톡 단톡방 구조</div>
+    <p style="font-size:13.5px;color:#6B7280;line-height:1.85;margin-bottom:14px">입사 시 다음 단톡방에 초대됩니다.</p>
+    <ul style="list-style:none;padding:0">
+      <li style="padding:8px 0;font-size:13px"><strong>📢 다같이미술학원 전국캠퍼스 강사 단톡방</strong><br><span style="color:#9CA3AF;font-size:12px;margin-left:24px">└ 전 캠퍼스 강사 공지·소통</span></li>
+      <li style="padding:8px 0;font-size:13px"><strong>🏫 [본인 캠퍼스] 강사 단톡방</strong><br><span style="color:#9CA3AF;font-size:12px;margin-left:24px">└ 캠퍼스 내부 강사 소통</span></li>
+      <li style="padding:8px 0;font-size:13px"><strong>👥 본인 담당 반별 학생 팀채팅방 (직접 개설)</strong><br><span style="color:#9CA3AF;font-size:12px;margin-left:24px">└ 본인이 맡은 반의 학생들과 소통</span></li>
+    </ul>
+    <div class="alert info" style="margin-top:14px">
+      <span class="alert-ico">💡</span>
+      <div><strong>반별 학생 단톡방은 강사 본인이 직접 개설</strong>해서 관리합니다. 일반 단톡방이 아닌 <strong>카카오톡 팀채팅방</strong> 형식으로 운영하세요.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="card-num">4</span> 출석부 사용 안내</div>
+    <p style="font-size:13.5px;color:#6B7280;line-height:1.85;margin-bottom:14px">학생 출결 관리는 <strong>구글 시트로 된 출석부</strong>를 통해 진행합니다. 운영진에게 받은 링크로 접속해서, 매 수업마다 그 날의 출결을 기록합니다.</p>
+
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:14px 0 8px;letter-spacing:-0.3px">출결 기호</h3>
+    <table>
+      <thead><tr><th>기호</th><th>의미</th></tr></thead>
+      <tbody>
+        <tr><td><strong>O</strong></td><td>정상 출석</td></tr>
+        <tr><td><strong>I</strong></td><td>지각</td></tr>
+        <tr><td><strong>V</strong></td><td>보강 출석 (수업이 없는 타임에 보강으로 들어온 경우)</td></tr>
+        <tr><td><strong>결</strong></td><td>학생과 합의된 결석 (보강 가능한 결석)</td></tr>
+        <tr><td><strong>Z</strong></td><td>조퇴</td></tr>
+        <tr><td><strong>X</strong></td><td>무단 결석</td></tr>
+      </tbody>
+    </table>
+
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:18px 0 8px;letter-spacing:-0.3px">학생 정보 관리 항목</h3>
+    <ul style="list-style:none;padding:0">
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#10B981">✓</span>등록일</li>
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#10B981">✓</span>학생 이름</li>
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#10B981">✓</span>학교 / 학년</li>
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#10B981">✓</span>학생 연락처</li>
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#10B981">✓</span>학부모 연락처</li>
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#10B981">✓</span>출석 수업 요일</li>
+    </ul>
+
+    <div class="alert warn" style="margin-top:14px">
+      <span class="alert-ico">⚠️</span>
+      <div><strong>출결은 매 수업 직후 기록하는 것이 원칙</strong>입니다. 미루면 빠뜨리거나 부정확해질 수 있으니, 수업 마감과 동시에 처리하세요.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="card-num">5</span> 구글 드라이브 — 전 캠퍼스 통합 자료실</div>
+    <p style="font-size:13.5px;color:#6B7280;line-height:1.85;margin-bottom:14px">다같이 미술학원은 <strong>전 캠퍼스가 하나의 통합 구글 드라이브</strong>를 사용합니다.</p>
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:0 0 8px;letter-spacing:-0.3px">어떻게 활용하나요?</h3>
+    <ul style="list-style:none;padding:0">
+      <li style="padding:6px 0;font-size:13px;display:flex;gap:10px"><span style="color:#D4541A">●</span><div><strong>자료 보관</strong> — 수업 자료, 학생 작업물, 입시 자료 등</div></li>
+      <li style="padding:6px 0;font-size:13px;display:flex;gap:10px"><span style="color:#D4541A">●</span><div><strong>내용 전달</strong> — 캠퍼스 간 정보 공유, 운영진과의 자료 주고받기</div></li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="card-num">6</span> 블로그 / 포토샵 계정</div>
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:0 0 8px;letter-spacing:-0.3px">네이버 블로그</h3>
+    <ul style="list-style:none;padding:0;margin-bottom:14px">
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#D4541A">●</span>캠퍼스별 <strong>아이디 + 단체 비밀번호</strong>가 발급됩니다.</li>
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#D4541A">●</span>본인이 속한 캠퍼스 블로그 계정으로 포스팅을 운영합니다.</li>
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#D4541A">●</span>자세한 운영 방법은 <strong>블로그 운영 매뉴얼</strong>을 참고하세요.</li>
+    </ul>
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:0 0 8px;letter-spacing:-0.3px">어도비 포토샵</h3>
+    <ul style="list-style:none;padding:0">
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#D4541A">●</span>운영진이 발급한 <strong>어도비 ID</strong>로 본인 맥북에 직접 설치</li>
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#D4541A">●</span>학원 업무용으로만 사용</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="card-num">7</span> 다른 매뉴얼 읽는 순서</div>
+    <p style="font-size:13.5px;color:#6B7280;line-height:1.85;margin-bottom:14px">신입 강사가 입사 후 <strong>다음 순서</strong>로 매뉴얼을 읽으면 좋습니다.</p>
+    <ol style="padding-left:20px;font-size:13px;line-height:2">
+      <li><strong>📘 신입 강사 온보딩</strong> (지금 보는 매뉴얼)</li>
+      <li><strong>📘 수업 운영 표준</strong> — 일상 수업의 기준과 흐름</li>
+      <li><strong>💬 학부모 관리</strong> — 상담·연락 응대 방법</li>
+      <li><strong>💬 학생 관리</strong> — 학생 케어와 관계 형성</li>
+      <li><strong>📘 보조강사 관리</strong> (해당 강사만)</li>
+      <li><strong>📢 블로그 운영 매뉴얼</strong> (블로그 담당 시)</li>
+      <li><strong>💬 상담 자동화 시스템</strong> (상담 진행 시)</li>
+    </ol>
+    <div class="alert info" style="margin-top:14px">
+      <span class="alert-ico">💡</span>
+      <div><strong>3번까지는 모든 강사 필독</strong>입니다. 나머지는 본인 업무에 따라 순차적으로 보면 됩니다.</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== 챕터 4: 학생 만나기 전에 ===== -->
+<section class="consult-section" id="ob-c4">
+  <div class="sec-head">
+    <div class="sec-chip">CHAPTER 4</div>
+    <h1 class="sec-title">학생 만나기 전에</h1>
+    <p class="sec-desc">본격적인 수업에 들어가기 전, 반드시 알고 있어야 할<br>기본 자세들입니다. 짧지만 가장 중요한 챕터예요.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="card-num">1</span> 호칭 규칙</div>
+    <table>
+      <thead><tr><th>대상</th><th>호칭</th></tr></thead>
+      <tbody>
+        <tr><td><strong>학생</strong></td><td>"○○야~" (이름을 친절하게 불러주세요)</td></tr>
+        <tr><td><strong>학부모</strong></td><td>"○○ 어머님 / ○○ 아버님"</td></tr>
+        <tr><td><strong>선생님 간 (원장 포함)</strong></td><td>"○○쌤" 또는 "○○선생님"</td></tr>
+      </tbody>
+    </table>
+    <div class="alert info" style="margin-top:14px">
+      <span class="alert-ico">💡</span>
+      <div><strong>모든 선생님들은 원장선생님까지 포함해서 동일한 방식으로 호칭합니다.</strong><br>학원 내 위계가 아닌, 함께 일하는 동료로서의 호칭 문화입니다.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="card-num">2</span> 수업 분위기</div>
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:18px;color:#1a1a1a;margin:0 0 12px;letter-spacing:-0.3px">정답은 없습니다. 단, 한 가지는 공통입니다.</h3>
+    <p style="font-size:13.5px;color:#6B7280;line-height:1.85;margin-bottom:14px">수업의 분위기는 <strong>선생님의 성향에 따라</strong> 다를 수 있습니다. 누구나 자기 스타일로 수업을 운영하면 됩니다.</p>
+    <div class="highlight">
+      <div class="highlight-title">다만 모든 수업에 공통적으로 필요한 한 가지는 —<br>학생이 자유롭게 질문하고, 편안하게 답할 수 있는 분위기.</div>
+    </div>
+    <p style="font-size:13.5px;color:#6B7280;line-height:1.85;margin-top:14px">학생이 모르는 걸 모른다고 말할 수 있어야 가르칠 수 있습니다. 실수를 두려워하지 않아야 그릴 수 있습니다.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="card-num">3</span> 학생을 대할 때 — 절대 하지 말아야 할 것</div>
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:0 0 8px;letter-spacing:-0.3px">🚫 금지 사항</h3>
+    <ul style="list-style:none;padding:0;margin-bottom:18px">
+      <li style="padding:6px 0;font-size:13px;display:flex;gap:10px"><span style="color:#DC2626;font-weight:700">✗</span>다른 학생과 비교 ("○○는 잘하는데 너는 왜...")</li>
+      <li style="padding:6px 0;font-size:13px;display:flex;gap:10px"><span style="color:#DC2626;font-weight:700">✗</span>학부모 험담</li>
+      <li style="padding:6px 0;font-size:13px;display:flex;gap:10px"><span style="color:#DC2626;font-weight:700">✗</span>학생 작품을 비웃거나 무시하는 태도</li>
+      <li style="padding:6px 0;font-size:13px;display:flex;gap:10px"><span style="color:#DC2626;font-weight:700">✗</span>다른 강사 험담</li>
+      <li style="padding:6px 0;font-size:13px;display:flex;gap:10px"><span style="color:#DC2626;font-weight:700">✗</span>특정 학생에게만 과한 친근감 표현 (= 편애로 보일 수 있음)</li>
+    </ul>
+
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:0 0 8px;letter-spacing:-0.3px">📱 SNS 사용 가이드</h3>
+    <p style="font-size:13.5px;color:#6B7280;line-height:1.85;margin-bottom:14px">학생과 SNS(인스타그램 등) 팔로우는 <strong>완전 금지는 아니지만 주의가 필요</strong>합니다.</p>
+    <ul style="list-style:none;padding:0;margin-bottom:14px">
+      <li style="padding:6px 0;font-size:13px;display:flex;gap:10px"><span style="color:#10B981;font-weight:700">✓</span>학원용 계정 활용</li>
+      <li style="padding:6px 0;font-size:13px;display:flex;gap:10px"><span style="color:#10B981;font-weight:700">✓</span>학생 계정의 접근 권한을 제한 (친한 친구 제외 등)</li>
+      <li style="padding:6px 0;font-size:13px;display:flex;gap:10px"><span style="color:#10B981;font-weight:700">✓</span>본인의 너무 개인적인 사생활이 보이지 않도록 관리</li>
+    </ul>
+    <div class="alert info">
+      <span class="alert-ico">💡</span>
+      <div><strong>신입 강사라면, 처음에는 학원 업무용 SNS 계정을 따로 만드는 것을 추천합니다.</strong></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="card-num">4</span> 학생을 대할 때 — 꼭 갖춰야 할 자세</div>
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:0 0 8px;letter-spacing:-0.3px">✅ 필수 자세</h3>
+    <ul style="list-style:none;padding:0;margin-bottom:18px">
+      <li style="padding:6px 0;font-size:13px;display:flex;gap:10px"><span style="color:#10B981;font-weight:700">✓</span>학생 이름을 정확히 외우고 불러주기</li>
+      <li style="padding:6px 0;font-size:13px;display:flex;gap:10px"><span style="color:#10B981;font-weight:700">✓</span>작품을 볼 때 항상 칭찬할 점부터 먼저 찾기</li>
+      <li style="padding:6px 0;font-size:13px;display:flex;gap:10px"><span style="color:#10B981;font-weight:700">✓</span>입시 일정을 학생보다 더 잘 알고 있기</li>
+      <li style="padding:6px 0;font-size:13px;display:flex;gap:10px"><span style="color:#10B981;font-weight:700">✓</span>매 수업 시작 시 학생의 컨디션 체크</li>
+    </ul>
+
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:0 0 8px;letter-spacing:-0.3px">⚠️ 친근감의 균형</h3>
+    <div class="alert warn">
+      <span class="alert-ico">📍</span>
+      <div>입시생은 <strong>예민한 시기</strong>에 있습니다. 한 명에게 너무 친근감을 표현하면, 다른 학생들이 <strong>편애라고 느낄 수 있습니다.</strong></div>
+    </div>
+    <p style="font-size:13.5px;color:#6B7280;line-height:1.85;margin-top:14px">특정 학생만 챙기는 것이 아니라, <strong>모든 학생에게 골고루</strong> 따뜻한 관심을 주세요.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="card-num">5</span> 첫 수업 들어가기 전 체크리스트</div>
+    <p style="font-size:13.5px;color:#6B7280;line-height:1.85;margin-bottom:14px">수업 시작 전, 다음 5가지는 반드시 확인합니다.</p>
+    <ul style="list-style:none;padding:0;margin-bottom:14px">
+      <li style="padding:8px 0;font-size:13px;display:flex;gap:10px"><span style="color:#D4541A;font-weight:700">☐ 1.</span><div><strong>담당 학생 명단 확인</strong><br><span style="color:#9CA3AF;font-size:12px">─ 누가 오늘 오는지, 빠진 학생은 없는지</span></div></li>
+      <li style="padding:8px 0;font-size:13px;display:flex;gap:10px"><span style="color:#D4541A;font-weight:700">☐ 2.</span><div><strong>교실 자리 배치 확인</strong><br><span style="color:#9CA3AF;font-size:12px">─ 본인 자리 + 학생 자리 정돈 상태</span></div></li>
+      <li style="padding:8px 0;font-size:13px;display:flex;gap:10px"><span style="color:#D4541A;font-weight:700">☐ 3.</span><div><strong>수업을 위한 도구 준비</strong><br><span style="color:#9CA3AF;font-size:12px">─ 그날 사용할 화구·재료 미리 챙기기</span></div></li>
+      <li style="padding:8px 0;font-size:13px;display:flex;gap:10px"><span style="color:#D4541A;font-weight:700">☐ 4.</span><div><strong>수업 자료 출력물 준비</strong><br><span style="color:#9CA3AF;font-size:12px">─ 그날 수업에 사용할 참고 자료 / 예시 작품 등</span></div></li>
+      <li style="padding:8px 0;font-size:13px;display:flex;gap:10px"><span style="color:#D4541A;font-weight:700">☐ 5.</span><div><strong>보조강사에게 당일 업무 지시 (수업 10분 전까지)</strong><br><span style="color:#9CA3AF;font-size:12px">─ 오늘 보조강사가 도와줄 일을 명확히 전달</span></div></li>
+    </ul>
+    <div class="alert info">
+      <span class="alert-ico">💡</span>
+      <div><strong>수업 30분 전 도착 → 위 5가지 점검 → 수업 시작.</strong><br>이 흐름이 익숙해지면 강사 본인도, 학생도 안정감 있는 수업이 가능합니다.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="card-num">6</span> 학생과의 경계 — 사적 관계 가이드</div>
+    <p style="font-size:13.5px;color:#6B7280;line-height:1.85;margin-bottom:14px">입시 강사는 학생과 <strong>가까우면서도 일정한 거리</strong>를 유지해야 합니다. 학생을 위한 가이드라기보다, <strong>강사 본인을 보호하는 기준</strong>이기도 합니다.</p>
+    <table>
+      <thead><tr><th>항목</th><th>가이드</th></tr></thead>
+      <tbody>
+        <tr><td><strong>SNS 친구·팔로우</strong></td><td>위 4-3 참고 (제한적 허용)</td></tr>
+        <tr><td><strong>개인 카톡</strong></td><td>⚠️ <strong>최대한 지양</strong>. 특별한 이유 없이는 금지</td></tr>
+        <tr><td><strong>학원 외부 만남</strong></td><td>❌ <strong>금지</strong></td></tr>
+      </tbody>
+    </table>
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:18px 0 8px;letter-spacing:-0.3px">보조강사는 더 엄격합니다</h3>
+    <div class="alert warn">
+      <span class="alert-ico">🚫</span>
+      <div><strong>보조강사는 학생과 SNS 친구·팔로우 절대 금지.</strong> 보조강사 관리 매뉴얼에서 별도로 다룹니다.</div>
+    </div>
+    <p style="font-size:13.5px;color:#6B7280;line-height:1.85;margin-top:14px">학생과의 모든 소통은 <strong>반별 단톡방</strong> 또는 <strong>공식 학원 시스템</strong>을 통해서만 진행하세요. 사적 채널은 오해와 사고의 시작입니다.</p>
+  </div>
+
+  <div class="highlight">
+    <div class="highlight-title">한눈에 정리</div>
+    <div class="highlight-text">
+      • 학생 → "○○야~" / 학부모 → "○○ 어머님" / 강사 → "○○쌤"<br>
+      • 분위기는 자유롭게, 단 <strong>질문 가능한 환경</strong>은 필수<br>
+      • 비교·험담·편애 금지, 칭찬할 점 먼저 찾기<br>
+      • 입시 일정은 강사가 학생보다 잘 알고 있을 것<br>
+      • 수업 전 체크: 학생 명단 / 자리 / 도구 / 출력물 / 보조강사 지시<br>
+      • 학생과는 <strong>공식 채널로만 소통</strong>, 외부 만남 금지
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== 챕터 5: 강사로서 성장하기 ===== -->
+<section class="consult-section" id="ob-c5">
+  <div class="sec-head">
+    <div class="sec-chip">CHAPTER 5</div>
+    <h1 class="sec-title">강사로서 성장하기</h1>
+    <p class="sec-desc">신입 시기를 지나, 다같이 미술학원의 강사로<br>계속 성장해나가기 위한 안내입니다.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="card-num">1</span> 입시 흐름 따라가기</div>
+    <p style="font-size:13.5px;color:#6B7280;line-height:1.85;margin-bottom:14px">미술 입시는 매년 바뀝니다. 어제의 정답이 오늘은 오답일 수 있어요. 강사는 <strong>항상 최신 입시 정보를 가지고 있어야 합니다.</strong></p>
+
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:14px 0 8px;letter-spacing:-0.3px">학원에서 제공하는 자료</h3>
+    <p style="font-size:13.5px;color:#6B7280;line-height:1.85;margin-bottom:10px">다같이 미술학원에서는 매년 다음 두 책자를 제작해서 강사에게 지급합니다.</p>
+    <ul style="list-style:none;padding:0;margin-bottom:14px">
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#D4541A">📕</span><strong>수시 책자</strong></li>
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#D4541A">📘</span><strong>정시 책자</strong></li>
+    </ul>
+    <div class="alert info">
+      <span class="alert-ico">💡</span>
+      <div><strong>변화하는 입시에 발맞춰 항상 확인하고 체크하세요.</strong></div>
+    </div>
+
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:18px 0 8px;letter-spacing:-0.3px">강사가 수시로 확인해야 할 채널</h3>
+    <ul style="list-style:none;padding:0">
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#D4541A">🔗</span>엠굿</li>
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#D4541A">🔗</span>미대입시닷컴</li>
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#D4541A">🔗</span>각 대학별 입시요강 페이지</li>
+    </ul>
+    <p style="font-size:12.5px;color:#9CA3AF;margin-top:12px">학원 자료에만 의존하지 말고, 위 채널들을 수시로 확인해서 본인 학생들의 정보를 직접 업데이트하는 습관을 들이세요.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="card-num">2</span> 강사 회의 / 세미나</div>
+    <p style="font-size:13.5px;color:#6B7280;line-height:1.85;margin-bottom:14px">다같이 미술학원의 강사 성장은 <strong>회의와 세미나</strong>를 중심으로 이루어집니다.</p>
+
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:14px 0 8px;letter-spacing:-0.3px">정기 일정</h3>
+    <table>
+      <thead><tr><th>구분</th><th>주기</th><th>참여</th></tr></thead>
+      <tbody>
+        <tr><td><strong>캠퍼스별 강사 회의</strong></td><td>주 1회</td><td>의무</td></tr>
+        <tr><td><strong>전체 강사 세미나</strong></td><td>월 1회</td><td>의무</td></tr>
+      </tbody>
+    </table>
+
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:18px 0 8px;letter-spacing:-0.3px">주간 회의에서 다루는 내용</h3>
+    <ul style="list-style:none;padding:0;margin-bottom:14px">
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#10B981">✓</span>각 반별 특이사항 및 애로사항</li>
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#10B981">✓</span>수업 내용 공유</li>
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#10B981">✓</span>월간 수업 계획</li>
+    </ul>
+
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:14px 0 8px;letter-spacing:-0.3px">월간 세미나에서 다루는 내용</h3>
+    <ul style="list-style:none;padding:0;margin-bottom:14px">
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#10B981">✓</span>실기대회 준비</li>
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#10B981">✓</span>입시 정보 발표</li>
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#10B981">✓</span>수업 커리큘럼 공유</li>
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#10B981">✓</span>연구작 진행</li>
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#10B981">✓</span>캠퍼스 간 강사 정보 공유</li>
+    </ul>
+
+    <div class="alert info">
+      <span class="alert-ico">💡</span>
+      <div><strong>회의와 세미나는 단순 보고가 아닌, 강사 성장의 핵심 시간입니다.</strong> 본인 반의 사례를 적극적으로 공유하고, 다른 강사의 케이스를 듣는 자리로 활용하세요.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="card-num">3</span> 피드백 받기</div>
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:0 0 8px;letter-spacing:-0.3px">정기 피드백</h3>
+    <p style="font-size:13.5px;color:#6B7280;line-height:1.85;margin-bottom:14px">캠퍼스 운영진을 통해 <strong>주간 회의 등에서</strong> 피드백을 받을 수 있습니다.</p>
+
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:14px 0 8px;letter-spacing:-0.3px">추가 피드백</h3>
+    <p style="font-size:13.5px;color:#6B7280;line-height:1.85;margin-bottom:14px">원하는 경우 <strong>원장과의 개별 면담</strong>을 통해 피드백을 요청할 수 있습니다.</p>
+
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:14px 0 8px;letter-spacing:-0.3px">피드백의 주요 내용</h3>
+    <ul style="list-style:none;padding:0;margin-bottom:14px">
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#D4541A">●</span>학생 관리</li>
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#D4541A">●</span>수업 퀄리티</li>
+    </ul>
+
+    <div class="alert info">
+      <span class="alert-ico">💡</span>
+      <div>피드백을 <strong>부담스럽게 여기지 마세요.</strong> 강사로서 성장할 수 있는 가장 빠른 길입니다. 신입 시기에는 특히 <strong>적극적으로 피드백을 요청하는 자세</strong>가 중요합니다.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="card-num">4</span> 자기계발 — 복지비 지원</div>
+    <p style="font-size:13.5px;color:#6B7280;line-height:1.85;margin-bottom:14px">다같이 미술학원은 강사의 자기계발과 성장을 위해 <strong>복지비를 지원</strong>합니다.</p>
+
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:14px 0 8px;letter-spacing:-0.3px">사용 가능 항목</h3>
+    <ul style="list-style:none;padding:0;margin-bottom:18px">
+      <li style="padding:6px 0;font-size:13px;display:flex;gap:10px"><span style="color:#10B981;font-weight:700">✓</span>도서 구입</li>
+      <li style="padding:6px 0;font-size:13px;display:flex;gap:10px"><span style="color:#10B981;font-weight:700">✓</span>체육시설 이용</li>
+      <li style="padding:6px 0;font-size:13px;display:flex;gap:10px"><span style="color:#10B981;font-weight:700">✓</span>그 외 문화시설 이용</li>
+    </ul>
+
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:0 0 8px;letter-spacing:-0.3px">사용 불가 항목</h3>
+    <ul style="list-style:none;padding:0">
+      <li style="padding:6px 0;font-size:13px;display:flex;gap:10px"><span style="color:#DC2626;font-weight:700">✗</span><div>수업과 관련된 구매 물품<br><span style="color:#9CA3AF;font-size:12px">(수업 비품은 학원 운영비로 별도 처리됩니다)</span></div></li>
+    </ul>
+
+    <div class="alert info" style="margin-top:14px">
+      <span class="alert-ico">💡</span>
+      <div>복지비는 <strong>강사 본인의 삶의 질과 성장</strong>을 위한 지원입니다. 입시 강사는 체력과 멘탈 관리가 곧 실력입니다. 적극적으로 활용하세요.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="card-num">5</span> 다같이 강사가 1년 후 도달했으면 하는 모습</div>
+    <div class="highlight" style="margin-bottom:14px">
+      <div class="highlight-title">강사로서의 성장은 학생과의 관계에서 완성됩니다.</div>
+    </div>
+    <p style="font-size:13.5px;color:#6B7280;line-height:1.85;margin-bottom:14px">함께한 학생이 1년이 지나 다음 학년으로 월반하여 강사의 곁을 떠나더라도, <strong>힘든 일이 있거나 어려운 문제에 봉착했을 때 본인을 찾는다면</strong> —</p>
+    <div class="highlight">
+      <div class="highlight-title">그 학생에게는 학원에 의지할 대상이 매년 한 명씩 더 생기는 것입니다.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="card-num">6</span> 마지막으로 — 다같이 강사로 산다는 것</div>
+    <p style="font-size:14px;color:#1a1a1a;line-height:2;margin-bottom:14px">입시는 짧고, 학생과 강사의 인연은 깁니다.</p>
+    <p style="font-size:15px;color:#1a1a1a;font-weight:700;line-height:2;margin-bottom:14px">학생 한 명 한 명을 진심으로 대해주세요.</p>
+    <p style="font-size:14px;color:#1a1a1a;line-height:2;margin-bottom:14px">입시가 끝나고 시간이 흘러도, 그 학생들이 인생의 어느 순간에 <strong>"다같이 미술학원의 ○○쌤"</strong>을 떠올리게 된다면 —</p>
+    <div class="highlight" style="text-align:center">
+      <div class="highlight-title" style="font-size:17px">그것이 다같이 강사로서의 가장 큰 보람입니다.</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================
+     수업 운영 표준 매뉴얼 — 6개 챕터
+     ============================================ -->
+
+<!-- ===== 챕터 1: 수업 운영의 기본 원칙 ===== -->
+<section class="consult-section" id="co-c1">
+  <div class="sec-head">
+    <div class="sec-chip">CHAPTER 1</div>
+    <h1 class="sec-title">수업 운영의 기본 원칙</h1>
+    <p class="sec-desc">다같이 미술학원이 추구하는 수업의 본질에 대한 이야기입니다.<br>어떻게 가르치느냐의 기술이 아닌, 왜 그렇게 가르쳐야 하는가에 대한 답입니다.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="card-num">1</span> 좋은 수업이란 무엇인가</div>
+    <div class="highlight" style="margin-bottom:14px">
+      <div class="highlight-title">"열의를 다해 강사의 지식과 정보를 쏟아내어도,<br>학생의 변화가 없다면 그 수업은 좋은 수업이라고 할 수 없다."</div>
+      <div class="highlight-text">좋은 수업이란 <strong>전달이 아닌, 변화</strong>를 만들 수 있어야 합니다.</div>
+    </div>
+    <p style="font-size:13.5px;color:#6B7280;line-height:1.85;margin-bottom:14px">강사가 얼마나 많이 알고 있는지가 중요한 게 아닙니다. 강사가 얼마나 열심히 설명했는지도 중요한 게 아닙니다.</p>
+    <p style="font-size:14px;color:#1a1a1a;font-weight:700;line-height:1.85;margin-bottom:14px">중요한 것은 그 수업이 끝났을 때, 학생이 한 단계 달라져 있는가입니다.</p>
+
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:18px 0 10px;letter-spacing:-0.3px">다른 교육자들의 통찰</h3>
+    <div style="background:#FAFAF8;border-left:3px solid #D4541A;padding:14px 18px;margin-bottom:10px;border-radius:0 8px 8px 0">
+      <p style="font-size:13px;color:#1a1a1a;line-height:1.75;font-style:italic">"평범한 교사는 말을 전한다. 훌륭한 교사는 설명한다.<br>뛰어난 교사는 모범을 보인다.<br>위대한 교사는 스스로 하고픈 마음이 생기도록 한다."</p>
+      <p style="font-size:11.5px;color:#9CA3AF;margin-top:6px">— 윌리엄 아서 워드</p>
+    </div>
+    <div style="background:#FAFAF8;border-left:3px solid #D4541A;padding:14px 18px;margin-bottom:14px;border-radius:0 8px 8px 0">
+      <p style="font-size:13px;color:#1a1a1a;line-height:1.75;font-style:italic">"나에게 말하면 잊어버립니다. 가르치면 기억합니다.<br>참여하게 하면 배웁니다."</p>
+      <p style="font-size:11.5px;color:#9CA3AF;margin-top:6px">— 벤저민 프랭클린</p>
+    </div>
+    <p style="font-size:13.5px;color:#6B7280;line-height:1.85">다같이의 강사는 <strong>학생을 변화시키는 사람</strong>입니다. 수업이 끝났을 때, 학생의 그림이, 자세가, 눈빛이 조금이라도 달라져 있어야 합니다.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="card-num">2</span> 수업 시간 약속</div>
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:0 0 8px;letter-spacing:-0.3px">한 타임 — 3시간 30분</h3>
+    <p style="font-size:13.5px;color:#6B7280;line-height:1.85;margin-bottom:14px">다같이 미술학원의 모든 수업은 <strong>한 타임당 3시간 30분</strong>으로 운영됩니다.</p>
+
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:14px 0 8px;letter-spacing:-0.3px">시간을 지키는 것이 수업의 첫 번째 약속</h3>
+    <div class="highlight" style="margin-bottom:14px">
+      <div class="highlight-title">"시간을 지키지 못하는 강사의 수업에,<br>학생들이 시간을 지킬 리 없다."</div>
+    </div>
+    <p style="font-size:13.5px;color:#6B7280;line-height:1.85;margin-bottom:14px">학생들의 태도는 강사의 태도를 그대로 따라갑니다. 강사가 5분 늦으면, 학생들은 10분 늦어도 된다고 생각합니다.</p>
+    <p style="font-size:14px;color:#1a1a1a;font-weight:700;line-height:1.85;margin-bottom:14px"><strong>수업 시작 시간은 절대 약속</strong>입니다. 강사가 먼저 지킵니다.</p>
+
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:14px 0 8px;letter-spacing:-0.3px">쉬는 시간</h3>
+    <p style="font-size:13.5px;color:#6B7280;line-height:1.85">수업 중 쉬는 시간은 별도로 정해져 있지 않습니다. <strong>학생의 컨디션과 수업 흐름을 보고 강사가 판단</strong>해서 일시적으로 부여합니다.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="card-num">3</span> 학생을 대하는 원칙 — 평등하게, 그러나 주의 깊게</div>
+    <p style="font-size:13.5px;color:#6B7280;line-height:1.85;margin-bottom:14px">한 반의 모든 학생에게 <strong>똑같은 시간을 들여 지도하는 것은 불가능</strong>합니다. 학생마다 필요한 지도의 양과 깊이가 다르기 때문입니다.</p>
+    <div class="highlight" style="margin-bottom:14px">
+      <div class="highlight-title">그러나 학생 하나하나에 주의 깊게 집중할 시간은 충분합니다.</div>
+    </div>
+
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:14px 0 8px;letter-spacing:-0.3px">인원이 많을 때의 운영</h3>
+    <ul style="list-style:none;padding:0">
+      <li style="padding:6px 0;font-size:13px;display:flex;gap:10px"><span style="color:#D4541A">●</span><div><strong>전임 강사</strong> — 반 전체를 주의 깊게 보는 눈</div></li>
+      <li style="padding:6px 0;font-size:13px;display:flex;gap:10px"><span style="color:#D4541A">●</span><div><strong>보조 강사</strong> — 개별 학생 지도를 분담</div></li>
+    </ul>
+    <p style="font-size:13.5px;color:#6B7280;line-height:1.85;margin-top:14px">전임 강사는 <strong>모든 학생의 상태를 동시에 인지</strong>할 수 있어야 합니다. 한 명에게 매몰되어 다른 학생들이 어디서 막혀 있는지 놓치면 안 됩니다.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="card-num">4</span> 작품 피드백의 핵심 원칙</div>
+    <div class="highlight" style="margin-bottom:14px">
+      <div class="highlight-title">학생의 그림은 "과정의 그림"입니다.<br>완성형의 그림은 입시의 끝에서야 나옵니다.</div>
+    </div>
+    <p style="font-size:13.5px;color:#6B7280;line-height:1.85;margin-bottom:14px">과정 중에 있는 그림에서는 <strong>칭찬할 부분보다 지적할 부분이 많이 보일 수밖에 없습니다.</strong> 이게 정상입니다.</p>
+
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:14px 0 8px;letter-spacing:-0.3px">그런데 왜 칭찬을 찾기 어려운가?</h3>
+    <p style="font-size:13.5px;color:#6B7280;line-height:1.85;margin-bottom:14px">강사가 <strong>수업 전체의 목표치</strong>로만 학생의 그림을 바라보면, 거기에 못 미치는 부분만 보입니다. 하지만 <strong>그 학생의 현재 단계에서의 목표치</strong>로 그림을 바라보면 — 보이지 않던 칭찬할 부분이 보이기 시작합니다.</p>
+
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:14px 0 8px;letter-spacing:-0.3px">다양한 관점에서 장점을 찾는 법</h3>
+    <p style="font-size:13.5px;color:#6B7280;line-height:1.85;margin-bottom:14px">그림은 서로의 작품을 함께 보며 객관적 시선을 길러야 합니다. <strong>비교 자체를 완전히 없앨 수는 없습니다.</strong> 그래서 더더욱 <strong>한 가지 기준</strong>이 아닌 <strong>다양한 관점</strong>에서 장점을 봐야 합니다.</p>
+    <ul style="list-style:none;padding:0;margin-bottom:14px">
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#10B981">✓</span><strong>A 학생</strong> → 투시를 잘 맞춰 구조력이 좋다</li>
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#10B981">✓</span><strong>B 학생</strong> → 색상 대비가 강해 색 감각이 좋다</li>
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#10B981">✓</span><strong>C 학생</strong> → ?</li>
+    </ul>
+
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:14px 0 8px;letter-spacing:-0.3px">단점을 단점으로 끝내지 않기</h3>
+    <p style="font-size:13.5px;color:#6B7280;line-height:1.85;margin-bottom:14px">구조력과 색 감각이 모두 부족해 보이는 C 학생에게는 어떻게 피드백해야 할까요?</p>
+    <ul style="list-style:none;padding:0;margin-bottom:14px">
+      <li style="padding:6px 0;font-size:13px;display:flex;gap:10px"><span style="color:#DC2626;font-weight:700">✗</span>"구조력도 약하고 색감도 약해. 이거 어떻게 할 거야?"</li>
+      <li style="padding:6px 0;font-size:13px;display:flex;gap:10px"><span style="color:#10B981;font-weight:700">✓</span>"구조력이 좋아지면 색 구성이 훨씬 쉬워져. 투시 능력만 키우면 다음 달엔 그림이 확 달라지겠는데?"</li>
+    </ul>
+    <p style="font-size:13.5px;color:#1a1a1a;font-weight:700;line-height:1.85">문제를 단점으로 치부하지 말고, <strong>극복 가능한 구체적 목표</strong>로 바꿔서 전달합니다.<br>피드백은 <strong>현재의 평가</strong>가 아니라 <strong>미래의 그림</strong>에 대한 이야기여야 합니다.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="card-num">5</span> 감정이 곧 태도가 된다</div>
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:0 0 8px;letter-spacing:-0.3px">학생의 행동 vs 강사의 반응</h3>
+    <p style="font-size:13.5px;color:#6B7280;line-height:1.85;margin-bottom:14px">지각하는 학생에게 강사는 무엇을 이야기해야 할까요?</p>
+    <ul style="list-style:none;padding:0;margin-bottom:14px">
+      <li style="padding:6px 0;font-size:13px;display:flex;gap:10px"><span style="color:#DC2626;font-weight:700">✗</span><div>"또 늦었네. 왜 매번 늦어?" <span style="color:#9CA3AF">→ 지각이라는 상황을 지적</span></div></li>
+      <li style="padding:6px 0;font-size:13px;display:flex;gap:10px"><span style="color:#10B981;font-weight:700">✓</span><div>"오늘 수업 시작 때 중요한 이론 설명이 있었는데, 너 그거 못 들었어. 다음 시간엔 좀 더 일찍 와줘." <span style="color:#9CA3AF">→ 본인이 일찍 와야 할 이유를 만들어줌</span></div></li>
+    </ul>
+    <p style="font-size:13.5px;color:#1a1a1a;font-weight:700;line-height:1.85;margin-bottom:14px"><strong>지각을 지적하기 전에, 학생이 제 시간에 와야 하는 이유부터 만들어주세요.</strong></p>
+
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:14px 0 8px;letter-spacing:-0.3px">수업의 시작과 끝이 무미건조하면 안 된다</h3>
+    <p style="font-size:13.5px;color:#6B7280;line-height:1.85;margin-bottom:14px">수업 시작이 늘 <strong>"자~ 하던 거 꺼내서 진행하자"</strong> 라면, 학생들은 늦게 와도 손해 보는 게 없다고 느낍니다.</p>
+    <ul style="list-style:none;padding:0;margin-bottom:14px">
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#D4541A">●</span>수업 전 와서 해야 할 과제 부여</li>
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#D4541A">●</span>수업 시작 시 강사의 중요한 이론 설명</li>
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#D4541A">●</span>매 수업 도입부에 학생들이 흥미를 갖는 요소</li>
+    </ul>
+    <p style="font-size:13.5px;color:#1a1a1a;font-weight:700;line-height:1.85"><strong>수업 시스템 자체가 학생의 태도를 만듭니다.</strong></p>
+
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:18px 0 8px;letter-spacing:-0.3px">그리고 강사 본인의 감정 관리</h3>
+    <div class="highlight" style="margin-bottom:14px">
+      <div class="highlight-title">"감정이 곧 태도가 된다."</div>
+    </div>
+    <p style="font-size:13.5px;color:#6B7280;line-height:1.85;margin-bottom:14px">학생의 부족한 행동과 태도에 <strong>강사도 사람인지라 감정이 먼저 동요할 수밖에 없습니다.</strong></p>
+    <p style="font-size:13.5px;color:#6B7280;line-height:1.85;margin-bottom:14px">하지만 우리의 일이 <strong>"학생의 변화를 만드는 것"</strong> 이라면 — 순서가 달라져야 합니다.</p>
+    <ul style="list-style:none;padding:0;margin-bottom:14px">
+      <li style="padding:6px 0;font-size:13px;display:flex;gap:10px"><span style="color:#DC2626;font-weight:700">✗</span>상황에 대한 감정 변화가 먼저</li>
+      <li style="padding:6px 0;font-size:13px;display:flex;gap:10px"><span style="color:#10B981;font-weight:700">✓</span>이 학생을 위한 목표 변화가 우선</li>
+    </ul>
+    <p style="font-size:13.5px;color:#6B7280;line-height:1.85;margin-bottom:14px">지각한 학생을 보고 "또 늦었네"라는 감정이 먼저 떠오를 수 있습니다. 그 감정을 부정할 필요는 없습니다. 다만 그 다음 순간, <strong>"이 학생을 어떻게 바꿀까"</strong> 로 생각이 옮겨가야 합니다.</p>
+
+    <div style="background:#FAFAF8;border-left:3px solid #D4541A;padding:14px 18px;border-radius:0 8px 8px 0">
+      <p style="font-size:13px;color:#1a1a1a;line-height:1.75;font-style:italic">"인내력이 없는 사람은 남을 가르칠 수 없다."</p>
+      <p style="font-size:11.5px;color:#9CA3AF;margin-top:6px">— 히레르</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="card-num">6</span> 다같이 강사가 절대 하면 안 되는 수업 행동</div>
+    <p style="font-size:13.5px;color:#6B7280;line-height:1.85;margin-bottom:14px">수업 중에 강사가 보이는 작은 행동 하나하나가 학생에게는 큰 영향을 미칩니다.</p>
+    <ul style="list-style:none;padding:0;margin-bottom:14px">
+      <li style="padding:6px 0;font-size:13px;display:flex;gap:10px"><span style="color:#DC2626;font-weight:700">✗</span>수업 중 핸드폰 보기</li>
+      <li style="padding:6px 0;font-size:13px;display:flex;gap:10px"><span style="color:#DC2626;font-weight:700">✗</span>학생이 작업하는 중에 자리를 자주 이탈</li>
+      <li style="padding:6px 0;font-size:13px;display:flex;gap:10px"><span style="color:#DC2626;font-weight:700">✗</span>다른 학생의 작품을 가져와서 "이렇게 그려라" 식으로 비교</li>
+      <li style="padding:6px 0;font-size:13px;display:flex;gap:10px"><span style="color:#DC2626;font-weight:700">✗</span>학생에게 화내거나 짜증내기</li>
+      <li style="padding:6px 0;font-size:13px;display:flex;gap:10px"><span style="color:#DC2626;font-weight:700">✗</span>"이거 왜 이렇게밖에 못 그려" 같은 부정적 멘트</li>
+      <li style="padding:6px 0;font-size:13px;display:flex;gap:10px"><span style="color:#DC2626;font-weight:700">✗</span>한 학생에게만 몰입해서 다른 학생들을 잊어버리기</li>
+    </ul>
+
+    <div style="background:#FAFAF8;border-left:3px solid #D4541A;padding:14px 18px;margin-bottom:14px;border-radius:0 8px 8px 0">
+      <p style="font-size:13px;color:#1a1a1a;line-height:1.75;font-style:italic">"교사가 지닌 능력의 비밀은 인간을 변모시킬 수 있다는 확신이다."</p>
+      <p style="font-size:11.5px;color:#9CA3AF;margin-top:6px">— 에머슨</p>
+    </div>
+    <p style="font-size:13.5px;color:#6B7280;line-height:1.85"><strong>위 행동들은 수업의 효율을 떨어뜨릴 뿐 아니라, 학생과의 신뢰 관계를 무너뜨립니다.</strong> 강사의 작은 행동 하나에서 학생들은 <strong>"이 선생님이 나를 진심으로 대하는가"</strong> 를 판단합니다.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="card-num">7</span> 한 수업의 표준 흐름 (3시간 30분 기준)</div>
+    <table>
+      <thead><tr><th>시간</th><th>단계</th><th>강사가 하는 일</th></tr></thead>
+      <tbody>
+        <tr><td><strong>18:20 – 18:30</strong></td><td>학생 도착</td><td>자리 정리, 재료 준비, 가벼운 대화로 컨디션 체크</td></tr>
+        <tr><td><strong>18:30 – 18:40</strong></td><td>수업 도입</td><td>오늘 수업 목표 설명, 자료 배포</td></tr>
+        <tr><td><strong>18:40 – 21:30</strong></td><td>수업 진행</td><td>개별 지도, 진도 관리, 보조강사 지시</td></tr>
+        <tr><td><strong>21:30 – 21:50</strong></td><td>마무리</td><td>작품 피드백, 다음 수업 안내</td></tr>
+        <tr><td><strong>21:50 – 22:00</strong></td><td>정리</td><td>책상·교실 정리, 출결 기록</td></tr>
+      </tbody>
+    </table>
+    <div class="alert info" style="margin-top:14px">
+      <span class="alert-ico">💡</span>
+      <div>이 흐름은 <strong>표준</strong>이며, 강사 본인의 스타일에 맞춰 조정할 수 있습니다. 단, <strong>시작·종료 시간</strong>과 <strong>피드백·정리 시간 확보</strong>는 모든 수업에서 공통입니다.</div>
+    </div>
+  </div>
+
+  <div class="highlight">
+    <div class="highlight-title">다같이 수업의 여섯 가지 약속</div>
+    <div class="highlight-text">
+      1. <strong>변화를 만드는 수업</strong>을 한다<br>
+      2. <strong>시간 약속</strong>은 강사가 먼저 지킨다<br>
+      3. <strong>모든 학생을 주의 깊게</strong>, 한 명도 놓치지 않는다<br>
+      4. <strong>과정의 그림</strong>으로 보고, <strong>미래의 그림</strong>으로 피드백한다<br>
+      5. <strong>감정</strong>이 <strong>태도</strong>가 되지 않게 한다<br>
+      6. <strong>귀가하는 학생 한 명 한 명의 감정 상태(수업 만족도)를 체크</strong>한다
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== 챕터 2: 수업 전 준비 단계 ===== -->
+<section class="consult-section" id="co-c2">
+  <div class="sec-head">
+    <div class="sec-chip">CHAPTER 2</div>
+    <h1 class="sec-title">수업 전 — 준비 단계</h1>
+    <p class="sec-desc">수업이 시작되기 전까지의 시간이 곧 수업의 절반입니다.<br>강사가 어떤 준비로 학생을 맞이하는가에 따라 그날의 수업 퀄리티가 결정됩니다.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="card-num">1</span> 출근 후 ~ 수업 시작까지의 강사 루틴</div>
+    <p style="font-size:13.5px;color:#6B7280;line-height:1.85;margin-bottom:14px">평일 14시 출근 → 18:30 수업 시작 (약 4시간 30분의 준비 시간)</p>
+
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:14px 0 8px;letter-spacing:-0.3px">매일 챙겨야 할 일</h3>
+    <ul style="list-style:none;padding:0;margin-bottom:14px">
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#D4541A">☐</span>담당 교실 정리 및 청소</li>
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#D4541A">☐</span>학생 완성 작품 촬영 → 드라이브 정리</li>
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#D4541A">☐</span>오늘 수업 자료 준비</li>
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#D4541A">☐</span>수업 예시작 제작 / 시범작 연습</li>
+    </ul>
+
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:14px 0 8px;letter-spacing:-0.3px">정기적으로 해야 할 일</h3>
+    <ul style="list-style:none;padding:0">
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#D4541A">☐</span>회의 및 세미나 준비 (주간 회의 / 월간 세미나)</li>
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#D4541A">☐</span>학부모 연락 / 회신</li>
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#D4541A">☐</span>학생별 진도·컨디션 메모 정리</li>
+    </ul>
+    <div class="alert info" style="margin-top:14px">
+      <span class="alert-ico">💡</span>
+      <div><strong>준비 시간은 비어 있는 시간이 아닙니다.</strong> 수업 후에는 정리·기록·피드백으로 시간이 부족합니다. 수업 전 시간을 알차게 써야 강사 본인도 학생도 안정됩니다.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="card-num">2</span> 수업 자료 준비</div>
+    <table>
+      <thead><tr><th>항목</th><th>내용</th></tr></thead>
+      <tbody>
+        <tr><td><strong>수업 과제 출력물</strong></td><td>미리 미리 출력 (수업 직전 X)</td></tr>
+        <tr><td><strong>참고 이미지 / 예시 작품</strong></td><td>학생들에게 보여줄 이미지 탐구·선별</td></tr>
+        <tr><td><strong>시범작</strong></td><td>강사 본인이 직접 연습한 시범 작품</td></tr>
+        <tr><td><strong>보조강사 지시 업무 준비</strong></td><td>오늘 보조강사에게 맡길 일을 미리 정리</td></tr>
+      </tbody>
+    </table>
+    <div class="alert warn" style="margin-top:14px">
+      <span class="alert-ico">⚠️</span>
+      <div><strong>출력은 수업 직전에 하지 않습니다.</strong> 프린터 오류, 종이 부족 같은 변수가 생기면 수업 시작 시간이 밀립니다. 미리 출력해서 챙겨두세요.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="card-num">3</span> 화구 / 비품 점검</div>
+    <p style="font-size:13.5px;color:#6B7280;line-height:1.85;margin-bottom:14px">학생이 도착하기 전에 강사가 직접 점검합니다.</p>
+    <ul style="list-style:none;padding:0;margin-bottom:14px">
+      <li style="padding:8px 0;font-size:13px;display:flex;gap:10px"><span style="color:#D4541A">☐</span><div><strong>학생 자리별 도구 정리 상태 확인</strong><br><span style="color:#9CA3AF;font-size:12px">─ 도구가 제대로 있는지 (분실 위험 체크)</span></div></li>
+      <li style="padding:8px 0;font-size:13px;display:flex;gap:10px"><span style="color:#D4541A">☐</span><div><strong>강사용 재료 점검</strong><br><span style="color:#9CA3AF;font-size:12px">─ 그날 시범에 필요한 재료가 다 있는지</span></div></li>
+      <li style="padding:8px 0;font-size:13px;display:flex;gap:10px"><span style="color:#D4541A">☐</span><div><strong>모니터 활용 수업 시 입력 상태 확인</strong><br><span style="color:#9CA3AF;font-size:12px">─ 전원, 입력 코드(HDMI 등) 정상 연결 여부</span></div></li>
+      <li style="padding:8px 0;font-size:13px;display:flex;gap:10px"><span style="color:#D4541A">☐</span><div><strong>청소 / 정리 상태 최종 확인</strong><br><span style="color:#9CA3AF;font-size:12px">─ 학생이 앉을 자리, 공용 공간</span></div></li>
+    </ul>
+    <div class="alert info">
+      <span class="alert-ico">💡</span>
+      <div>수업 중에 "어, 이거 어디 있지?" 가 되는 순간 흐름이 끊깁니다. <strong>모든 변수는 수업 전에 잡아두세요.</strong></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="card-num">4</span> 보조강사 업무 지시</div>
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:0 0 8px;letter-spacing:-0.3px">시간 약속</h3>
+    <ul style="list-style:none;padding:0;margin-bottom:14px">
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#D4541A">●</span><strong>보조강사 등원</strong> — 수업 시작 최소 10분 전</li>
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#D4541A">●</span><strong>업무 지시 완료</strong> — 수업 시작 전까지 100%</li>
+    </ul>
+    <p style="font-size:13.5px;color:#6B7280;line-height:1.85;margin-bottom:14px">전임 강사는 보조강사가 <strong>수업 시작 10분 전까지 등원</strong>할 수 있도록 미리 지시하고, <strong>수업 시작 전까지 그날의 업무 전달을 완료</strong>해야 합니다.</p>
+
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:14px 0 8px;letter-spacing:-0.3px">보조강사에게 전달할 내용</h3>
+    <ol style="padding-left:20px;font-size:13px;line-height:2;margin-bottom:14px">
+      <li><strong>오늘의 수업 목표 공유</strong> — 어떤 수업을 어떻게 진행할지</li>
+      <li><strong>개별 학생 케어 분담</strong> — 예: "A 학생은 보조강사가 집중 지도해줘"</li>
+      <li><strong>시간대별 역할 분담</strong> — 1차 시범 → 2차 채색 → 마무리 등 단계별 역할</li>
+      <li><strong>학생별 특이사항 공유</strong> — 보조강사가 모르면 안 되는 정보 (컨디션, 새 학생 등)</li>
+    </ol>
+
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:14px 0 8px;letter-spacing:-0.3px">보조강사가 일을 안 한다고 느껴질 때</h3>
+    <ul style="list-style:none;padding:0;margin-bottom:14px">
+      <li style="padding:6px 0;font-size:13px;display:flex;gap:10px"><span style="color:#DC2626;font-weight:700">✗</span>"왜 알아서 일을 찾아서 하지 않지?"</li>
+      <li style="padding:6px 0;font-size:13px;display:flex;gap:10px"><span style="color:#10B981;font-weight:700">✓</span>"내가 업무 지시가 부족했다."</li>
+    </ul>
+    <div class="alert info">
+      <span class="alert-ico">💡</span>
+      <div><strong>업무 지시가 제대로 되지 않은 보조강사는 교실에서 본인의 필요성을 느끼지 못할 수 있습니다.</strong> 보조강사가 활약하지 못한다면, 그건 보조강사의 문제가 아닌 <strong>전임 강사의 지시 부족</strong>입니다. 명확한 지시가 명확한 역할을 만듭니다.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="card-num">5</span> 수업 직전 — 강사가 마음을 다잡는 법</div>
+    <div class="highlight" style="margin-bottom:14px">
+      <div class="highlight-title">매일이 좋은 컨디션일 수는 없습니다.<br>피곤한 날, 힘든 날, 마음이 무거운 날도 있습니다.</div>
+    </div>
+    <p style="font-size:13.5px;color:#6B7280;line-height:1.85;margin-bottom:14px">그건 자연스러운 일입니다. 강사도 사람이고, 사람이 매일 같은 에너지일 수는 없습니다.</p>
+
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:14px 0 8px;letter-spacing:-0.3px">그러나 학생에게 그 컨디션을 보여주지 않는다</h3>
+    <p style="font-size:13.5px;color:#6B7280;line-height:1.85;margin-bottom:14px">학생들은 강사의 표정 하나, 말 한마디에 민감하게 반응합니다. 강사가 피곤해 보이면 학생들의 수업 분위기도 가라앉습니다.</p>
+    <p style="font-size:14px;color:#1a1a1a;font-weight:700;line-height:1.85;margin-bottom:14px">그래서 때로는 — <strong>'억텐'이 필요합니다.</strong></p>
+    <p style="font-size:13.5px;color:#6B7280;line-height:1.85;margin-bottom:14px">오늘 마음이 무겁더라도, 학생들이 등원하는 순간만큼은 <strong>에너지와 웃음으로 맞이해주세요.</strong></p>
+
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:18px 0 8px;letter-spacing:-0.3px">수업 직전 5분, 강사의 루틴 제안</h3>
+    <ol style="padding-left:20px;font-size:13px;line-height:2;margin-bottom:14px">
+      <li><strong>오늘 학생 명단을 한 번 더 보기</strong> → 이름과 컨디션 떠올리기</li>
+      <li><strong>어제 그 학생의 작업물 / 상태 되짚어보기</strong> → 오늘 어떤 피드백이 필요한지 정리</li>
+      <li><strong>호흡 한 번 가다듬기</strong> → 본인 마음 정리</li>
+      <li><strong>미소 짓고 교실 들어가기</strong> → 첫 30초의 표정이 그날 수업의 분위기</li>
+    </ol>
+    <div class="alert info">
+      <span class="alert-ico">💡</span>
+      <div><strong>'억텐'은 가식이 아닙니다.</strong> 학생들에게 좋은 수업을 주기 위한 강사의 프로페셔널리즘입니다. 진짜 컨디션은 동료 강사와 풀고, 학생 앞에서는 늘 새로운 에너지로 만나세요.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="card-num">6</span> 캠퍼스 공통 / 강사 개별 관리 구분</div>
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:0 0 8px;letter-spacing:-0.3px">캠퍼스 공통으로 관리하는 것</h3>
+    <ul style="list-style:none;padding:0;margin-bottom:14px">
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#10B981">✓</span><div><strong>학원 전체 청소</strong> — 떨어진 휴지, 전체적인 정리 정돈</div></li>
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#10B981">✓</span><div><strong>공용 비품 재고</strong> — 휴지, 물컵 등 소모품</div></li>
+    </ul>
+
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:14px 0 8px;letter-spacing:-0.3px">강사가 개별로 관리해야 하는 것</h3>
+    <ul style="list-style:none;padding:0">
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#10B981">✓</span><div><strong>본인 자리 정리</strong> — 강사 자리부터 깨끗해야 학생도 깨끗</div></li>
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#10B981">✓</span><div><strong>본인 담당 학생 관련 자료</strong> — 학생별 작품, 피드백 메모, 진도 노트</div></li>
+    </ul>
+    <div class="alert info" style="margin-top:14px">
+      <span class="alert-ico">💡</span>
+      <div><strong>"이건 내 일이 아니다"가 가장 위험한 태도입니다.</strong> 공통으로 보이는 부분이라도, 보이는 강사가 처리하는 것이 다같이의 문화입니다.</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== 챕터 3: 수업 중 실제 운영 ===== -->
+<section class="consult-section" id="co-c3">
+  <div class="sec-head">
+    <div class="sec-chip">CHAPTER 3</div>
+    <h1 class="sec-title">수업 중 — 실제 운영</h1>
+    <p class="sec-desc">수업이 실제로 진행되는 3시간 30분.<br>강사 업무의 핵심이 펼쳐지는 시간입니다.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="card-num">1</span> 수업 시작 — 첫 5분의 흐름</div>
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:0 0 8px;letter-spacing:-0.3px">학생을 맞이하는 순간</h3>
+    <p style="font-size:13.5px;color:#6B7280;line-height:1.85;margin-bottom:14px">교실에 들어오는 학생들을 <strong>반갑게 맞이해주세요.</strong> 미소 섞인 인사와 함께 <strong>가벼운 스몰토크</strong>도 좋습니다.</p>
+    <ul style="list-style:none;padding:0;margin-bottom:14px">
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#10B981">✓</span>"어, 왔어? 오늘 학교 어땠어?"</li>
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#10B981">✓</span>"오늘 컨디션 괜찮아?"</li>
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#10B981">✓</span>"어제 그 부분 좀 더 그려봤어?"</li>
+    </ul>
+    <div class="alert info">
+      <span class="alert-ico">💡</span>
+      <div>첫 30초의 인사가 그날 학생의 수업 태도를 결정합니다. <strong>무미건조한 입실은 무미건조한 수업으로 이어집니다.</strong></div>
+    </div>
+
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:18px 0 8px;letter-spacing:-0.3px">출석 체크 확인</h3>
+    <p style="font-size:13.5px;color:#6B7280;line-height:1.85;margin-bottom:14px">학생이 <strong>태블릿에 출석 체크를 했는지</strong> 강사가 직접 확인합니다.</p>
+
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:18px 0 8px;letter-spacing:-0.3px">오늘의 수업 목표 발표 — 빠지면 안 되는 과정</h3>
+    <div class="highlight" style="margin-bottom:14px">
+      <div class="highlight-title">수업의 시작은 반드시 "오늘의 수업 목표 발표"로 시작합니다.</div>
+    </div>
+    <p style="font-size:13.5px;color:#6B7280;line-height:1.85;margin-bottom:14px"><strong>어제 오지 않은 학생도 있습니다.</strong> 하루가 걸러져도 학생들은 과정을 잊을 수 있습니다.</p>
+    <p style="font-size:13.5px;color:#6B7280;line-height:1.85">매 수업의 도입은 <strong>그날 무엇을 배우고 무엇을 만들 것인지</strong> 학생 전체에게 명확히 전달하는 것에서 시작합니다. 이 과정은 강사 입장에서는 매번 반복되지만, <strong>학생 입장에서는 매번 새로운 정보</strong>입니다. 귀찮다는 이유로 생략하지 마세요.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="card-num">2</span> 학생 컨디션 체크</div>
+    <p style="font-size:13.5px;color:#6B7280;line-height:1.85;margin-bottom:14px">수업 중 학생의 컨디션이 안 좋아 보일 때, 강사는 어떻게 대처해야 할까요?</p>
+
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:14px 0 8px;letter-spacing:-0.3px">Step 1. 먼저 다가가 가벼운 대화</h3>
+    <p style="font-size:13.5px;color:#6B7280;line-height:1.85;margin-bottom:14px">건강 상태, 감정 상태 등 <strong>컨디션의 문제가 보이는 학생</strong>에게 강사가 먼저 다가갑니다. 강요하지 말고, 가벼운 대화로 이야기를 나눠보세요.</p>
+
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:14px 0 8px;letter-spacing:-0.3px">Step 2. 건강 문제일 때</h3>
+    <ol style="padding-left:20px;font-size:13px;line-height:2;margin-bottom:14px">
+      <li>구비되어 있는 비상 상비약을 권유</li>
+      <li>상태가 많이 안 좋으면 → 조퇴 가능</li>
+      <li>조퇴 시 → 학부모님께 반드시 상황 전달</li>
+    </ol>
+    <div class="alert warn">
+      <span class="alert-ico">⚠️</span>
+      <div><strong>조퇴는 강사의 판단으로 가능</strong>하지만, 학부모 전달은 <strong>필수</strong>입니다.</div>
+    </div>
+
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:18px 0 8px;letter-spacing:-0.3px">Step 3. 감정 문제일 때</h3>
+    <p style="font-size:13.5px;color:#6B7280;line-height:1.85;margin-bottom:10px">건강이 아닌 <strong>감정</strong>의 문제일 때는 조금 다른 접근이 필요합니다.</p>
+    <ol style="padding-left:20px;font-size:13px;line-height:2;margin-bottom:14px">
+      <li>학생의 정도를 눈치 있게 지켜본다</li>
+      <li>상황에 따라 상담실 또는 휴게실로 데려간다</li>
+      <li>가볍게 공감해본다</li>
+    </ol>
+
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:14px 0 8px;letter-spacing:-0.3px">학생이 이야기하고 싶어 한다면</h3>
+    <p style="font-size:13.5px;color:#6B7280;line-height:1.85;margin-bottom:14px">진정성 있게 들어주고, <strong>공감을 통해 감정 상태를 풀어주세요.</strong> 해결책을 제시하려 하지 말고, 일단 듣는 것이 우선입니다.</p>
+
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:14px 0 8px;letter-spacing:-0.3px">학생이 거부한다면</h3>
+    <div class="highlight">
+      <div class="highlight-title">너무 깊이 관여하지 않도록 조심해야 합니다.</div>
+    </div>
+    <p style="font-size:13.5px;color:#6B7280;line-height:1.85;margin-top:12px">학생의 마음이 닫혀 있을 때 억지로 열려고 하면 오히려 역효과가 납니다. <strong>거리를 두고, 학생이 먼저 다가올 수 있는 여지를 남겨두는 것</strong>이 더 나은 대처입니다.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="card-num">3</span> 진도가 늦은 학생을 케어하는 방법</div>
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:0 0 8px;letter-spacing:-0.3px">새로 온 학생</h3>
+    <p style="font-size:13.5px;color:#6B7280;line-height:1.85;margin-bottom:14px"><strong>기초 수업 커리큘럼에 맞춰 별도의 과제</strong>로 수업을 진행합니다. 다른 학생들과 똑같은 진도로 끌고 가면 안 됩니다.</p>
+
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:14px 0 8px;letter-spacing:-0.3px">구력은 오래됐지만 진도가 늦고 표현력이 낮은 학생</h3>
+    <ul style="list-style:none;padding:0;margin-bottom:14px">
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#10B981">✓</span>전임 강사 또는 보조 강사를 통한 집중 지도 지시</li>
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#10B981">✓</span>별도 과제 부여</li>
+    </ul>
+
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:18px 0 8px;letter-spacing:-0.3px">과제를 내줄 때의 원칙</h3>
+    <div class="highlight" style="margin-bottom:14px">
+      <div class="highlight-title">과제는 체벌이 아닙니다.<br>학생의 변화를 위한 강사의 진심 어린 과제여야 합니다.</div>
+    </div>
+    <p style="font-size:13.5px;color:#6B7280;line-height:1.85;margin-bottom:14px">학생이 과제를 받았을 때 "벌을 받았다"고 느끼면 그 과제는 실패입니다. <strong>"선생님이 나를 위해서 이걸 내준 거구나"</strong> 라고 느끼게 해야 합니다.</p>
+    <ul style="list-style:none;padding:0">
+      <li style="padding:6px 0;font-size:13px;display:flex;gap:10px"><span style="color:#DC2626;font-weight:700">✗</span>"너 늦었으니까 이거 더 그려와"</li>
+      <li style="padding:6px 0;font-size:13px;display:flex;gap:10px"><span style="color:#10B981;font-weight:700">✓</span>"이 부분만 좀 더 연습하면 다음 주엔 확실히 달라질 거야. 한번 해볼래?"</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="card-num">4</span> 진도가 빠른 학생을 케어하는 방법</div>
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:0 0 8px;letter-spacing:-0.3px">"남들이 한 장 그릴 시간에 두 장 그리는 학생"</h3>
+    <div class="alert warn" style="margin-bottom:14px">
+      <span class="alert-ico">📍</span>
+      <div>대부분 이런 학생들은 <strong>마감도가 부족하고 디테일이 떨어지는</strong> 경우가 많습니다.</div>
+    </div>
+    <ul style="list-style:none;padding:0;margin-bottom:14px">
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#10B981">✓</span><div>마감도와 디테일을 훈련할 수 있는 추가적인 수업을 따로 진행<br><span style="color:#9CA3AF;font-size:12px">→ 속도보다 깊이를 강조</span></div></li>
+    </ul>
+
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:18px 0 8px;letter-spacing:-0.3px">진짜 빠른 학생 (표현력이 좋고 마감도도 높은 경우)</h3>
+    <ul style="list-style:none;padding:0;margin-bottom:14px">
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#10B981">✓</span>추가적인 진도를 미리 진행</li>
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#10B981">✓</span>더 어려운 과제 부여</li>
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#10B981">✓</span>본인 단계에 맞는 깊이 있는 피드백</li>
+    </ul>
+
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:18px 0 8px;letter-spacing:-0.3px">가장 중요한 원칙 — 편애처럼 보이지 않게</h3>
+    <div class="highlight" style="margin-bottom:14px">
+      <div class="highlight-title">늦은 학생들에게 편애로 느껴지지 않게 하는 것이 중요합니다.</div>
+    </div>
+    <p style="font-size:13.5px;color:#6B7280;line-height:1.85">빠른 학생만 챙기는 것처럼 보이면 다른 학생들이 의욕을 잃습니다. 빠른 학생의 추가 진도는 <strong>자연스럽게</strong>, <strong>티 나지 않게</strong> 진행해주세요.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="card-num">5</span> 수업 분위기가 흐트러질 때</div>
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:0 0 8px;letter-spacing:-0.3px">3시간 30분은 생각보다 길다</h3>
+    <p style="font-size:13.5px;color:#6B7280;line-height:1.85;margin-bottom:14px">학생들의 집중력은 무한하지 않습니다. 중간에 분위기가 루즈해지거나 집중력이 흐트러지는 건 <strong>자연스러운 일</strong>입니다.</p>
+
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:14px 0 8px;letter-spacing:-0.3px">환기를 위한 방법</h3>
+    <ul style="list-style:none;padding:0;margin-bottom:14px">
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#10B981">✓</span><strong>강사의 시범</strong> — 직접 그려 보이며 흥미 유발</li>
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#10B981">✓</span><strong>발표 수업</strong> — 학생들이 본인 작품을 발표</li>
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#10B981">✓</span><strong>함께 보는 자료 / 영상 수업</strong></li>
+    </ul>
+
+    <div class="highlight">
+      <div class="highlight-title">분위기를 만드는 것도 강사의 책임이고,<br>분위기를 다시 끌어올리는 것도 강사의 책임입니다.</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== 챕터 4: 수업 후 마무리 & 기록 ===== -->
+<section class="consult-section" id="co-c4">
+  <div class="sec-head">
+    <div class="sec-chip">CHAPTER 4</div>
+    <h1 class="sec-title">수업 후 — 마무리 & 기록</h1>
+    <p class="sec-desc">수업이 끝났다고 강사의 하루가 끝난 것은 아닙니다.<br>수업 후의 마무리가 다음 수업의 시작입니다.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="card-num">1</span> 수업 종료 — 마지막 10분 (21:50~22:00)</div>
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:0 0 8px;letter-spacing:-0.3px">학생 자리 정리 지시</h3>
+    <p style="font-size:13.5px;color:#6B7280;line-height:1.85;margin-bottom:14px">학생들에게 본인의 자리를 깔끔히 정리하도록 <strong>반드시 지시</strong>합니다.</p>
+
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:14px 0 8px;letter-spacing:-0.3px">다음 날 이어서 수업을 진행하는 학생</h3>
+    <ul style="list-style:none;padding:0;margin-bottom:14px">
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#10B981">✓</span>가벼운 정리정돈</li>
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#10B981">✓</span>책상 위에는 그림 + 내일 사용할 도구만 가볍게</li>
+    </ul>
+
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:14px 0 8px;letter-spacing:-0.3px">다음 날 수업이 없는 학생</h3>
+    <ul style="list-style:none;padding:0;margin-bottom:14px">
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#10B981">✓</span>책상 위에 도구·그림 등 아무것도 없이 완전히 치우기</li>
+    </ul>
+
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:14px 0 8px;letter-spacing:-0.3px">학생 작품 보관</h3>
+    <p style="font-size:13.5px;color:#6B7280;line-height:1.85;margin-bottom:14px">완성된 작품과 미완성된 작품 모두 <strong>종이함 또는 지정된 위치</strong>에 보관하도록 안내합니다.</p>
+    <div class="alert info">
+      <span class="alert-ico">💡</span>
+      <div>학생 자리 정리는 <strong>강사가 대신 해주는 것이 아닙니다.</strong> 학생 본인이 자기 자리를 책임지는 습관을 들이도록 매 수업 지시하세요.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="card-num">2</span> 보조강사의 수업 후 역할</div>
+    <div class="highlight" style="margin-bottom:14px">
+      <div class="highlight-title">보조강사 퇴근 시간 = 수업 종료가 아닙니다.</div>
+    </div>
+    <p style="font-size:13.5px;color:#6B7280;line-height:1.85;margin-bottom:14px">수업이 끝난 후에도 보조강사가 함께 마무리해야 할 일들이 있습니다.</p>
+    <ol style="padding-left:20px;font-size:13px;line-height:2;margin-bottom:14px">
+      <li>학생들의 자리 정리 상태 함께 확인</li>
+      <li>학원에 두고 가는 학생 물건이 있는지 점검</li>
+      <li>수업 중 있었던 전임 강사가 알아야 할 사소한 문제들 보고</li>
+      <li><strong>오늘 수업에 대한 피드백 공유</strong><br><span style="color:#9CA3AF;font-size:12px">─ 전임 강사의 설명이 이해하기 좋았는지<br>─ 시범이 적당했는지 등</span></li>
+    </ol>
+    <div class="alert info">
+      <span class="alert-ico">💡</span>
+      <div>보조강사의 피드백은 <strong>전임 강사의 성장에도 큰 도움</strong>이 됩니다. 학생 입장에 가장 가까운 위치에서 본 시선이기 때문입니다. 후배 강사라고 듣기만 시키지 말고, 의견을 적극적으로 청해보세요.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="card-num">3</span> 출결 기록</div>
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:0 0 8px;letter-spacing:-0.3px">기록 시점</h3>
+    <p style="font-size:13.5px;color:#6B7280;line-height:1.85;margin-bottom:14px">출결은 <strong>학생들의 출석 시간에 바로 체크</strong>합니다. 수업이 끝난 후에 몰아서 기록하지 않습니다. <strong>학생이 들어오는 순간 = 출결 기록 시점</strong>입니다.</p>
+
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:14px 0 8px;letter-spacing:-0.3px">기록 방법</h3>
+    <table>
+      <thead><tr><th>기호</th><th>의미</th></tr></thead>
+      <tbody>
+        <tr><td><strong>O</strong></td><td>정상 출석</td></tr>
+        <tr><td><strong>I</strong></td><td>지각</td></tr>
+        <tr><td><strong>V</strong></td><td>보강 출석</td></tr>
+        <tr><td><strong>결</strong></td><td>합의된 결석</td></tr>
+        <tr><td><strong>Z</strong></td><td>조퇴</td></tr>
+        <tr><td><strong>X</strong></td><td>무단 결석</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:12.5px;color:#9CA3AF;margin-top:12px">자세한 안내는 <strong>신입 강사 온보딩 매뉴얼 챕터 3</strong>을 참고하세요.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="card-num">4</span> 학부모 보고</div>
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:0 0 8px;letter-spacing:-0.3px">매일 보고하지 않습니다</h3>
+    <p style="font-size:13.5px;color:#6B7280;line-height:1.85;margin-bottom:14px">다같이는 <strong>매 수업마다 학부모에게 보고하는 시스템은 운영하지 않습니다.</strong></p>
+
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:14px 0 8px;letter-spacing:-0.3px">두 가지 경우에만 보고</h3>
+    <ol style="padding-left:20px;font-size:13px;line-height:2;margin-bottom:14px">
+      <li><strong>학생에게 특별한 문제가 발생했을 때</strong><br><span style="color:#9CA3AF;font-size:12px">건강 이슈, 조퇴, 특이 행동 등 필요에 따라 즉시 전달</span></li>
+      <li><strong>분기별 학부모 피드백 보고</strong><br><span style="color:#9CA3AF;font-size:12px">정기적으로 학생의 학습 상태와 진도를 정리해 전달</span></li>
+    </ol>
+    <div class="alert info">
+      <span class="alert-ico">💡</span>
+      <div>학부모와의 일상적인 소통은 <strong>불필요한 부담</strong>이 될 수 있습니다. 그러나 분기별 정기 피드백과 <strong>꼭 필요한 순간의 즉시 보고</strong>는 빠뜨리지 마세요.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="card-num">5</span> 학생 작품 촬영 / 드라이브 정리</div>
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:0 0 8px;letter-spacing:-0.3px">촬영 시점</h3>
+    <p style="font-size:13.5px;color:#6B7280;line-height:1.85;margin-bottom:14px">학생 완성 작품은 <strong>다음 날 완성 직후, 그림이 쌓이지 않도록 미리미리</strong> 촬영합니다. 쌓아두면 어느 학생 작품인지 헷갈리고, 시간이 갈수록 일이 커집니다. <strong>"완성 → 촬영"</strong> 을 즉시 처리하는 습관을 들이세요.</p>
+
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:14px 0 8px;letter-spacing:-0.3px">촬영 → 보정 → 업로드 순서</h3>
+    <ol style="padding-left:20px;font-size:13px;line-height:2;margin-bottom:14px">
+      <li>본인 핸드폰으로 촬영</li>
+      <li>그림 사이즈에 맞춰 크롭</li>
+      <li>포토샵에서 명도 보정</li>
+      <li>캠퍼스 &amp; 클래스에 맞는 드라이브 경로에 업로드<br><span style="color:#9CA3AF;font-size:12px">─ 학생 이름 폴더를 따로 만들어 정리</span></li>
+    </ol>
+
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:14px 0 8px;letter-spacing:-0.3px">파일명 규칙</h3>
+    <div style="background:#F3F4F6;padding:14px 18px;border-radius:8px;font-family:monospace;font-size:13px;margin-bottom:10px">
+      형식: 캠퍼스_반_학생_날짜<br>
+      예시: 다산_고2_김민지_20260512
+    </div>
+    <p style="font-size:12.5px;color:#9CA3AF">파일명에 <strong>캠퍼스 / 반 / 학생 / 날짜</strong>를 함께 기록하면 나중에 검색·관리가 훨씬 수월합니다.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="card-num">6</span> 다음 수업 준비</div>
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:0 0 8px;letter-spacing:-0.3px">잊어버리기 전에 기록</h3>
+    <p style="font-size:13.5px;color:#6B7280;line-height:1.85;margin-bottom:14px">수업 직후, <strong>다음 날이면 잊어버릴 수 있는 중요한 내용</strong>은 그 자리에서 기록합니다.</p>
+    <ul style="list-style:none;padding:0;margin-bottom:14px">
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#10B981">✓</span>학생별 다음 수업 과제 메모</li>
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#10B981">✓</span>학생에게 약속한 것 (자료, 피드백 등)</li>
+    </ul>
+
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:14px 0 8px;letter-spacing:-0.3px">급한 사항은 즉시 보고</h3>
+    <div class="highlight" style="margin-bottom:14px">
+      <div class="highlight-title">수업 중 본인이 해결하기에 어려운 급한 사항은<br>원장님께 보고하여 당일 문제를 해결할 수 있도록 합니다.</div>
+    </div>
+    <p style="font-size:13.5px;color:#6B7280;line-height:1.85"><strong>다음 날로 미루지 마세요.</strong> 하루가 지나면 작은 문제도 큰 문제가 됩니다.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="card-num">7</span> 퇴근 전 루틴</div>
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:0 0 8px;letter-spacing:-0.3px">평일 기준 22:00까지는 학생 퇴원 시간</h3>
+    <p style="font-size:13.5px;color:#6B7280;line-height:1.85;margin-bottom:14px">수업이 21:50에 끝나도, <strong>22:00까지는 학생들이 모두 퇴원하는 시간</strong>입니다. 강사는 학생들이 모두 나간 후에 퇴근합니다.</p>
+
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:14px 0 8px;letter-spacing:-0.3px">모든 학생 퇴원 후</h3>
+    <ol style="padding-left:20px;font-size:13px;line-height:2;margin-bottom:14px">
+      <li>에어컨, 히터 등 전자제품 전원 확인</li>
+      <li>교실의 불 끄기</li>
+      <li>본인 자리 마무리 정리</li>
+      <li>퇴근</li>
+    </ol>
+    <p style="font-size:13.5px;color:#6B7280;line-height:1.85;margin-bottom:14px">별도의 지시가 없을 시 <strong>정시 퇴근</strong>합니다.</p>
+
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:14px 0 8px;letter-spacing:-0.3px">권장 — 퇴근 전 5분 루틴</h3>
+    <p style="font-size:13.5px;color:#6B7280;line-height:1.85;margin-bottom:14px">정해진 규정은 아니지만, 강사로서 오래 일하기 위해 권하고 싶은 루틴입니다.</p>
+    <ul style="list-style:none;padding:0;margin-bottom:14px">
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#10B981">✓</span><div><strong>동료 강사들과 짧게 그날 이야기 나누기</strong><br><span style="color:#9CA3AF;font-size:12px">─ 힘든 케이스나 좋았던 순간 공유<br>─ 강사도 사람이라 감정을 풀고 가야 합니다</span></div></li>
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#10B981">✓</span><div><strong>본인 자리 정리 후 퇴근</strong><br><span style="color:#9CA3AF;font-size:12px">─ 다음 날 출근했을 때 기분 좋게 시작할 수 있도록</span></div></li>
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#10B981">✓</span><div><strong>다음 수업 메모만 적고 퇴근</strong><br><span style="color:#9CA3AF;font-size:12px">─ 머릿속에 남은 생각을 종이로 옮겨두기</span></div></li>
+    </ul>
+    <div class="alert info">
+      <span class="alert-ico">💡</span>
+      <div>입시 강사는 <strong>체력과 멘탈 관리가 곧 실력</strong>입니다. 퇴근 전 잠깐의 정리 시간이 다음 날의 컨디션을 결정합니다.</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== 챕터 5: 특수 상황 대응 ===== -->
+<section class="consult-section" id="co-c5">
+  <div class="sec-head">
+    <div class="sec-chip">CHAPTER 5</div>
+    <h1 class="sec-title">특수 상황 대응</h1>
+    <p class="sec-desc">매 수업이 평범하게 흘러가지 않습니다.<br>가끔은 예상치 못한 상황이 발생합니다.<br>이 챕터는 그런 순간 강사가 어떻게 판단하고 대처해야 하는지에 대한 가이드입니다.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="card-num">1</span> 학생의 지각 / 결석</div>
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:0 0 8px;letter-spacing:-0.3px">지각하는 학생</h3>
+    <p style="font-size:13.5px;color:#6B7280;line-height:1.85;margin-bottom:14px">지각한 상황을 지적하기보다, <strong>학생이 제 시간에 와야 하는 이유를 만들어주는 것</strong>이 우선입니다.</p>
+    <ul style="list-style:none;padding:0;margin-bottom:14px">
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#10B981">✓</span>수업 전 와서 해야 할 과제 부여</li>
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#10B981">✓</span>수업 시작 시 강사의 중요한 이론 설명</li>
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#10B981">✓</span>매 수업 도입부에 학생들이 흥미를 갖는 요소</li>
+    </ul>
+    <p style="font-size:12.5px;color:#9CA3AF;margin-bottom:14px">자세한 내용은 <strong>챕터 1-5 "감정이 곧 태도가 된다"</strong>를 참고하세요.</p>
+
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:14px 0 8px;letter-spacing:-0.3px">결석한 학생</h3>
+    <ol style="padding-left:20px;font-size:13px;line-height:2;margin-bottom:14px">
+      <li>결석한 학생에게 직접 연락 → 이유를 상세히 듣기</li>
+      <li>잦은 결석은 → 학부모에게 사실 전달</li>
+      <li>가정에서의 지도를 함께 받아 결석을 줄이도록 협력</li>
+    </ol>
+
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:14px 0 8px;letter-spacing:-0.3px">보강 정책</h3>
+    <div class="highlight" style="margin-bottom:14px">
+      <div class="highlight-title">보강은 최대 월 1회까지 가능합니다.</div>
+    </div>
+    <p style="font-size:13.5px;color:#6B7280;line-height:1.85">특별한 사정이 아닌 이상 그 외의 결석은 <strong>보강하지 않습니다.</strong> 이 기준이 모호해지면 결석이 늘어나고, 다른 학생들과의 형평성도 무너집니다. <strong>원칙은 원칙대로</strong> 지키되, 학생/학부모에게 사전에 명확히 안내하세요.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="card-num">2</span> 분위기를 흐리는 학생</div>
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:0 0 8px;letter-spacing:-0.3px">비판적 목소리가 큰 학생이 있을 때</h3>
+    <p style="font-size:13.5px;color:#6B7280;line-height:1.85;margin-bottom:14px">수업 중 <strong>비판적 목소리가 큰 학생</strong>이 있으면 다른 학생들은 듣기 싫어합니다. 이런 상황이 길어지면 <strong>다른 학생들이 그 학생을 미워하는 마음</strong>이 생깁니다.</p>
+    <div class="highlight" style="margin-bottom:14px">
+      <div class="highlight-title">그렇게 되기 전에, 전임 강사가 직접 문제의 학생을 꾸짖고 해결합니다.</div>
+    </div>
+
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:14px 0 8px;letter-spacing:-0.3px">"싫은 소리"는 강사의 책임이다</h3>
+    <p style="font-size:13.5px;color:#6B7280;line-height:1.85;margin-bottom:14px">싫은 소리, 미운 소리를 하는 것이 힘든 강사들이 있습니다. 하지만 —</p>
+    <p style="font-size:14px;color:#1a1a1a;font-weight:700;line-height:1.85;margin-bottom:14px"><strong>본인이 하지 않으면, 결국 다른 학생들이 그 학생에게 그런 소리를 하게 됩니다.</strong></p>
+    <p style="font-size:13.5px;color:#6B7280;line-height:1.85;margin-bottom:14px">내가 하기 싫어서 미룬 한 마디가, 학생들 사이의 더 큰 갈등으로 돌아옵니다.</p>
+
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:14px 0 8px;letter-spacing:-0.3px">가장 큰 착각 — 보조강사에게 미루는 것</h3>
+    <div class="alert warn" style="margin-bottom:14px">
+      <span class="alert-ico">🚫</span>
+      <div><strong>태도적 문제를 보조강사를 통해 해결하려 하지 마세요.</strong> 이건 매우 잘못된 행동입니다. 학생의 태도 문제를 바로잡는 것은 <strong>전임 강사의 책임</strong>입니다.</div>
+    </div>
+
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:14px 0 8px;letter-spacing:-0.3px">학생들 사이에 이미 트러블이 생겼을 때</h3>
+    <ol style="padding-left:20px;font-size:13px;line-height:2;margin-bottom:14px">
+      <li>각 학생을 따로 상담실로 부른다</li>
+      <li>한 쪽에 치우쳐 해답을 내리지 않는다</li>
+      <li>각 학생의 이야기를 듣고 공감한다</li>
+      <li>공감을 통해 내용을 전달한다</li>
+    </ol>
+    <div class="alert info">
+      <span class="alert-ico">💡</span>
+      <div><strong>대부분의 트러블은 서로의 의견에 대한 오해에서 시작됩니다.</strong> 공감 없이 판결을 내리려 들면 갈등이 더 커집니다.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="card-num">3</span> 학부모에게서 연락이 왔을 때</div>
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:0 0 8px;letter-spacing:-0.3px">수업 중 학부모 연락</h3>
+    <p style="font-size:13.5px;color:#6B7280;line-height:1.85;margin-bottom:14px">수업 중에 학부모가 연락을 했다면 <strong>대부분 급한 상황</strong>입니다. 학부모도 강사가 수업 중인 것을 알면서도 연락한 것이기 때문입니다.</p>
+    <ul style="list-style:none;padding:0;margin-bottom:14px">
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#10B981">✓</span>즉시 응대 가능하면 → 응대</li>
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#DC2626">✗</span>즉시 응대 불가하면 → 중요한 과정을 마치고 즉시 회신</li>
+    </ul>
+    <p style="font-size:13.5px;color:#1a1a1a;font-weight:700;line-height:1.85;margin-bottom:14px">다음 날로 미루지 마세요. <strong>"바로 회신"</strong> 이 기본입니다.</p>
+
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:14px 0 8px;letter-spacing:-0.3px">컴플레인이나 민감한 이야기를 꺼낼 때</h3>
+    <div class="highlight" style="margin-bottom:14px">
+      <div class="highlight-title">Step 1. 공감과 사과로 시작</div>
+    </div>
+    <p style="font-size:13.5px;color:#6B7280;line-height:1.85;margin-bottom:14px">1차적으로 <strong>전임 강사의 잘못이 아니더라도, 공감하고 사과하는 모습</strong>으로 응대를 시작합니다. 학부모가 화가 난 상태에서 "그건 제 잘못이 아닙니다"로 시작하면 — 끝입니다. 일단 학부모의 감정을 받아주는 것이 먼저입니다.</p>
+
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:14px 0 8px;letter-spacing:-0.3px">Step 2. 본인 잘못이 큰 경우</h3>
+    <ul style="list-style:none;padding:0;margin-bottom:14px">
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#10B981">✓</span>진심 어린 사과</li>
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#10B981">✓</span>앞으로 같은 실수가 없도록 변화할 것을 당부</li>
+    </ul>
+
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:14px 0 8px;letter-spacing:-0.3px">Step 3. 오해로 인한 컴플레인인 경우</h3>
+    <div class="alert warn" style="margin-bottom:14px">
+      <span class="alert-ico">⚠️</span>
+      <div><strong>처음부터 오해를 풀려 하지 마세요.</strong></div>
+    </div>
+    <ol style="padding-left:20px;font-size:13px;line-height:2;margin-bottom:14px">
+      <li>학부모의 의견을 끝까지 듣는다</li>
+      <li>감정에 공감한다</li>
+      <li>그 후 차근차근 오해를 설명한다</li>
+    </ol>
+
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:14px 0 8px;letter-spacing:-0.3px">마지막 한 마디가 모든 것을 결정합니다</h3>
+    <ul style="list-style:none;padding:0;margin-bottom:14px">
+      <li style="padding:6px 0;font-size:13px;display:flex;gap:10px"><span style="color:#DC2626;font-weight:700">✗</span><div>"당신이 틀리고 제 말이 맞았죠?"<br><span style="color:#9CA3AF;font-size:12px">→ 학부모는 안심이 아닌 모욕을 느낌</span></div></li>
+      <li style="padding:6px 0;font-size:13px;display:flex;gap:10px"><span style="color:#10B981;font-weight:700">✓</span><div>"저의 부주의로 오해를 갖게 해드려 죄송합니다."<br><span style="color:#9CA3AF;font-size:12px">→ 학부모는 안심하고 신뢰가 회복됨</span></div></li>
+    </ul>
+    <div class="alert info">
+      <span class="alert-ico">💡</span>
+      <div><strong>"이기는 사과"가 아니라 "안심시키는 사과"</strong>가 강사의 능력입니다.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="card-num">4</span> 강사 본인의 응급 상황</div>
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:0 0 8px;letter-spacing:-0.3px">절차</h3>
+    <ol style="padding-left:20px;font-size:13px;line-height:2;margin-bottom:14px">
+      <li>원장에게 1차 보고</li>
+      <li>다른 전임 강사 / 보조 강사에게 남은 수업 내용 전달</li>
+      <li>학생들에게 현 상황 전달 (괜한 오해가 생기지 않도록)</li>
+    </ol>
+
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:14px 0 8px;letter-spacing:-0.3px">학생에게 어디까지 알릴 것인가?</h3>
+    <p style="font-size:13.5px;color:#6B7280;line-height:1.85">큰 걱정이 들 만한 내용이면 <strong>조금 숨기는 것</strong>도 괜찮습니다. 중요한 건 학생들이 <strong>"왜 선생님이 없지?"</strong> 하고 불안해하지 않도록 하는 것입니다.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="card-num">5</span> 학원 시설 문제</div>
+    <p style="font-size:13.5px;color:#6B7280;line-height:1.85;margin-bottom:14px">수업 중 다음과 같은 문제가 생기면 즉시 대응이 필요합니다.</p>
+    <ul style="list-style:none;padding:0;margin-bottom:14px">
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#D4541A">●</span>정전</li>
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#D4541A">●</span>에어컨 고장</li>
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#D4541A">●</span>프린터 고장</li>
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#D4541A">●</span>모니터 고장</li>
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#D4541A">●</span>기타 기기 / 설비 문제</li>
+    </ul>
+
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:14px 0 8px;letter-spacing:-0.3px">연락 순서</h3>
+    <table>
+      <tbody>
+        <tr><td style="width:140px"><strong>1순위</strong></td><td>운영진</td></tr>
+        <tr><td><strong>2순위</strong></td><td>해당 기기를 잘 다루는 동료 선생님 (운영진 부재 시)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="card-num">6</span> 학생 부상 / 안전사고</div>
+    <p style="font-size:13.5px;color:#6B7280;line-height:1.85;margin-bottom:14px">미술 수업에는 <strong>커터칼을 자주 사용하여 학생의 부상 위험</strong>이 있습니다.</p>
+
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:14px 0 8px;letter-spacing:-0.3px">부상 발생 시 절차</h3>
+    <ol style="padding-left:20px;font-size:13px;line-height:2;margin-bottom:14px">
+      <li>정도가 가볍다면 → 상비약으로 응급 처치</li>
+      <li>정도가 심하다면 → 가까운 병원으로 즉시 인솔</li>
+      <li>학부모에게 즉시 보고</li>
+      <li>원장에게 즉시 보고</li>
+    </ol>
+
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:14px 0 8px;letter-spacing:-0.3px">상비약 위치</h3>
+    <div class="alert info">
+      <span class="alert-ico">📍</span>
+      <div><strong>상담실에 구비</strong>되어 있습니다. 상비약 위치는 입사 시 반드시 확인해두세요.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="card-num">7</span> 학생이 그만두고 싶다고 할 때 — 가장 중요한 챕터</div>
+    <div class="highlight" style="margin-bottom:14px">
+      <div class="highlight-title">예상치 못한 갑작스러운 학생의 그만둠은,<br>강사의 책임이 클 수 있습니다.</div>
+    </div>
+    <p style="font-size:13.5px;color:#6B7280;line-height:1.85;margin-bottom:14px">이는 강사가 학생의 <strong>심리 상태를 제대로 파악하지 못한 결과</strong>이며, <strong>수업 만족도에 신경 쓰지 못했다는 증거</strong>입니다. 이사 등 환경 변화에 따른 이유는 어쩔 수 없지만, <strong>대부분의 퇴원은 관리 부실</strong>에서 옵니다.</p>
+
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:14px 0 8px;letter-spacing:-0.3px">미리 알아채야 하는 신호</h3>
+    <ul style="list-style:none;padding:0;margin-bottom:14px">
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#F59E0B">⚠️</span>표정이 사라진 학생</li>
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#F59E0B">⚠️</span>웃음과 목소리가 이전과 비교해 줄어든 학생</li>
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#F59E0B">⚠️</span>그림에 대한 의욕이 떨어진 학생</li>
+    </ul>
+    <p style="font-size:13.5px;color:#1a1a1a;font-weight:700;line-height:1.85;margin-bottom:14px">이런 신호가 보이면 <strong>퇴원 결심 전에</strong> 강사가 먼저 다가가야 합니다.</p>
+
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:18px 0 8px;letter-spacing:-0.3px">학생이 "그만두고 싶다"고 말했을 때</h3>
+    <p style="font-size:13.5px;color:#6B7280;line-height:1.85;margin-bottom:14px">따로 <strong>상담실로 불러 상태를 확인</strong>합니다.</p>
+
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:14px;color:#D4541A;margin:14px 0 6px;letter-spacing:-0.3px">케이스 A — 본인의 목소리를 들어주길 바라는 경우 (약 50%)</h3>
+    <p style="font-size:13.5px;color:#6B7280;line-height:1.85;margin-bottom:10px">학생들 중 절반은 <strong>본인의 목소리를 들어주길 바라며</strong> "그만둘래요"라는 말을 꺼냅니다.</p>
+    <ul style="list-style:none;padding:0;margin-bottom:14px">
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#10B981">✓</span>학생이 수업에서 느낀 아쉬움에 깊이 공감</li>
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#10B981">✓</span>강사의 책임에 대한 의지를 보여줌</li>
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#10B981">✓</span>"내가 너를 위해 변화하겠다" 는 약속</li>
+    </ul>
+    <p style="font-size:13.5px;color:#6B7280;line-height:1.85;margin-bottom:14px">진심이 전해지면 학생은 다시 의지를 갖고 학원에 남습니다.</p>
+
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:14px;color:#D4541A;margin:14px 0 6px;letter-spacing:-0.3px">케이스 B — 이미 마음의 준비를 마친 경우 (약 50%)</h3>
+    <p style="font-size:13.5px;color:#6B7280;line-height:1.85;margin-bottom:10px">학부모와 의견까지 합의를 마치고 온 학생들도 있습니다. 이 경우는 붙잡기 어렵지만 — <strong>그렇다고 그냥 보내지 않습니다.</strong></p>
+    <ul style="list-style:none;padding:0;margin-bottom:14px">
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#10B981">✓</span>최대한의 공감으로 안정감 제공</li>
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#10B981">✓</span>원장과의 상담 연결 → 한 번 더의 상담 기회 제공</li>
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#10B981">✓</span>학생이 떠나더라도 "이 학원에서 잘 케어받았다"는 인상을 남김</li>
+    </ul>
+
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:18px 0 8px;letter-spacing:-0.3px">학생이 떠난 후의 자세 — 가장 중요합니다</h3>
+    <div class="highlight" style="margin-bottom:14px">
+      <div class="highlight-title">퇴원한 학생에 대해 절대<br>남은 학생들에게 뒷말이나 아쉬움을 이야기하지 않습니다.</div>
+    </div>
+    <ul style="list-style:none;padding:0;margin-bottom:14px">
+      <li style="padding:6px 0;font-size:13px;display:flex;gap:10px"><span style="color:#DC2626;font-weight:700">✗</span>"걔는 그래서 안 됐어"</li>
+      <li style="padding:6px 0;font-size:13px;display:flex;gap:10px"><span style="color:#DC2626;font-weight:700">✗</span>"원래 좀 그런 애였잖아"</li>
+      <li style="padding:6px 0;font-size:13px;display:flex;gap:10px"><span style="color:#DC2626;font-weight:700">✗</span>"갑자기 그만둬서 너무 아쉽다"</li>
+      <li style="padding:6px 0;font-size:13px;display:flex;gap:10px"><span style="color:#10B981;font-weight:700">✓</span>학생들 앞에서는 그 학생에 대해 일절 언급하지 않음</li>
+    </ul>
+
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:14px 0 8px;letter-spacing:-0.3px">왜 이게 중요한가</h3>
+    <div class="highlight" style="margin-bottom:14px">
+      <div class="highlight-title">꽤 많은 학생들이 퇴원 후 다시 돌아옵니다.</div>
+    </div>
+    <p style="font-size:13.5px;color:#6B7280;line-height:1.85;margin-bottom:14px">이때 그 학생이 마지막으로 기억하는 인상이, 그리고 학원에 남아있는 학생들이 그 학생에 대해 들은 이야기가 — <strong>다시 돌아올 가능성을 열거나 닫습니다.</strong></p>
+    <p style="font-size:13.5px;color:#1a1a1a;font-weight:700;line-height:1.85">학생이 떠난 그 순간부터, 그 학생은 잠재적 복귀 학생입니다.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="card-num">8</span> 학원 행사 / 일정 변경 안내</div>
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:0 0 8px;letter-spacing:-0.3px">절대 단톡방 공지 하나로 끝내지 않는다</h3>
+    <p style="font-size:13.5px;color:#6B7280;line-height:1.85;margin-bottom:14px">학원 행사, 특별 수업, 공휴일 휴무 안내 등의 경우 —</p>
+    <ul style="list-style:none;padding:0;margin-bottom:14px">
+      <li style="padding:6px 0;font-size:13px;display:flex;gap:10px"><span style="color:#DC2626;font-weight:700">✗</span>단톡방에 공지 하나 띡 올리고 끝</li>
+      <li style="padding:6px 0;font-size:13px;display:flex;gap:10px"><span style="color:#10B981;font-weight:700">✓</span>수업 중 미리 전달 + 단톡방 공지로 한 번 더 강조</li>
+    </ul>
+
+    <div class="highlight" style="margin-bottom:14px">
+      <div class="highlight-title">반드시 두 가지 채널로 전달합니다.</div>
+      <div class="highlight-text">
+        1. <strong>수업 중 구두 안내</strong> → 학생들이 직접 듣게 함<br>
+        2. <strong>단톡방 공지</strong> → 학부모도 확인할 수 있게 한 번 더 강조
+      </div>
+    </div>
+    <div class="alert info">
+      <span class="alert-ico">💡</span>
+      <div>학생과 학부모는 <strong>공지를 안 보는 경우가 매우 많습니다.</strong> 두 번 알린다고 생각하지 말고, <strong>두 번 알려야 한 번이라도 본다</strong>고 생각하세요.</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== 챕터 6: 수업 품질 유지 기준 ===== -->
+<section class="consult-section" id="co-c6">
+  <div class="sec-head">
+    <div class="sec-chip">CHAPTER 6</div>
+    <h1 class="sec-title">수업 품질 유지 기준</h1>
+    <p class="sec-desc">"내가 잘 가르치고 있는가?" 라는 강사의 자기 점검에 대한 챕터입니다.<br>강사가 스스로를 점검하고, 캠퍼스 간 편차를 줄이며,<br>수업 품질을 일정 수준 이상으로 유지하기 위한 기준입니다.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="card-num">1</span> "이 수업, 잘 한 건가?" 의 판단 기준</div>
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:0 0 8px;letter-spacing:-0.3px">학생 몇 %가 변화했는가</h3>
+    <p style="font-size:13.5px;color:#6B7280;line-height:1.85;margin-bottom:14px">수업 후 강사 스스로에게 물어야 할 질문 — <strong>얼마나 많은 학생이 오늘 변화했는가.</strong></p>
+    <table>
+      <thead><tr><th>이해·달성률</th><th>의미</th></tr></thead>
+      <tbody>
+        <tr><td><strong>30%</strong></td><td>좋은 수업이 아닐 가능성이 큼 — 잘하는 학생들만 이해한 것</td></tr>
+        <tr><td><strong>70%</strong></td><td>좋은 수업이었을 가능성이 큼 — 다수의 학생이 따라옴</td></tr>
+        <tr><td><strong>100%</strong></td><td>거의 존재하지 않는 이상치</td></tr>
+      </tbody>
+    </table>
+
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:18px 0 8px;letter-spacing:-0.3px">핵심 — "다수가 변화하는 수업"을 목표로</h3>
+    <div class="highlight" style="margin-bottom:14px">
+      <div class="highlight-title">30%가 이해했다 ≠ 좋은 수업.<br>30%는 잘하는 학생들이었을 뿐일 수 있습니다.</div>
+      <div class="highlight-text"><strong>다수의 학생들이 변화하기 위한 수업</strong>을 목표로 해야 합니다.</div>
+    </div>
+
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:14px 0 8px;letter-spacing:-0.3px">변화는 하루아침에 일어나지 않는다</h3>
+    <ul style="list-style:none;padding:0;margin-bottom:14px">
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#10B981">✓</span>수업의 정도에 따라 단기적·장기적 목표를 나눈다</li>
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#10B981">✓</span>학생이 변화하는 모습을 기다려준다</li>
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#10B981">✓</span>한 번의 설명으로 끝내려 하지 않는다</li>
+    </ul>
+
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:14px 0 8px;letter-spacing:-0.3px">이해를 돕는 방법 — 말로만 끝내지 않기</h3>
+    <div class="highlight" style="margin-bottom:14px">
+      <div class="highlight-title">말로 한 번 설명하고 전달했다고 생각하지 마세요.</div>
+    </div>
+    <ul style="list-style:none;padding:0">
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#10B981">✓</span>시각 자료 (참고 이미지, 예시 작품)</li>
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#10B981">✓</span>청각 자료 (영상, 해설)</li>
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#10B981">✓</span>직접 시범</li>
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#10B981">✓</span>학생이 직접 시도해보게 하기</li>
+    </ul>
+    <p style="font-size:13.5px;color:#6B7280;line-height:1.85;margin-top:12px">여러 채널로 전달할수록 더 많은 학생에게 닿습니다.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="card-num">2</span> 캠퍼스 간 / 강사 간 편차 줄이기</div>
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:0 0 8px;letter-spacing:-0.3px">매월 마지막 주 — 우수작 공유</h3>
+    <div class="highlight" style="margin-bottom:14px">
+      <div class="highlight-title">매월 마지막 주, 각 반에서 완성된 우수작을 공유합니다.</div>
+    </div>
+    <p style="font-size:13.5px;color:#6B7280;line-height:1.85;margin-bottom:14px">타 캠퍼스의 같은 클래스 학생들의 <strong>완성작과 수업 내용을 함께 공유</strong>합니다.</p>
+
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:14px 0 8px;letter-spacing:-0.3px">이 공유의 목적은 "수업의 현 위치 체크"</h3>
+    <ul style="list-style:none;padding:0;margin-bottom:14px">
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#10B981">✓</span>우리 반 학생들이 다른 캠퍼스 학생들과 비교해 어디쯤 있는가</li>
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#10B981">✓</span>다른 강사들은 어떤 방향으로 학생들을 끌고 가고 있는가</li>
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#10B981">✓</span>내 수업의 현 위치를 객관적으로 점검</li>
+    </ul>
+    <div class="alert info">
+      <span class="alert-ico">💡</span>
+      <div><strong>수업의 현 위치를 자꾸 체크할 수 있어야 합니다.</strong> 본인 반만 보고 있으면 본인 기준에 갇힙니다. 비교를 통해 객관성을 유지하세요.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="card-num">3</span> 강사가 자기 수업의 문제를 알아채는 방법</div>
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:0 0 8px;letter-spacing:-0.3px">가장 가까운 시선 — 보조강사</h3>
+    <div class="highlight" style="margin-bottom:14px">
+      <div class="highlight-title">강사의 가장 가까운 곳에서 수업을 함께 도와주는<br>보조강사들의 의견을 적극적으로 듣습니다.</div>
+    </div>
+    <p style="font-size:13.5px;color:#6B7280;line-height:1.85;margin-bottom:14px">보조강사는 학생들 사이에서 수업을 옆에서 지켜본 사람입니다. <strong>전임 강사가 놓치는 것을 가장 잘 보는 위치</strong>입니다. 후배라고 듣기만 시키지 말고, 의견을 적극적으로 청해보세요.</p>
+
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:14px 0 8px;letter-spacing:-0.3px">동료 강사 / 원장과의 소통</h3>
+    <ul style="list-style:none;padding:0;margin-bottom:14px">
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#10B981">✓</span>동료 강사와의 의견 교환</li>
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#10B981">✓</span>원장과의 정기 면담</li>
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#10B981">✓</span>회의·세미나에서의 사례 공유</li>
+    </ul>
+
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:14px 0 8px;letter-spacing:-0.3px">학생들이 보내는 가장 정확한 신호</h3>
+    <p style="font-size:13.5px;color:#6B7280;line-height:1.85;margin-bottom:14px">다음 세 가지가 동시에 좋아진다면, <strong>본인이 수업을 잘하고 있다는 신호</strong>입니다.</p>
+    <ul style="list-style:none;padding:0;margin-bottom:14px">
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#10B981">✓</span>학생들의 지각이 줄어들고</li>
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#10B981">✓</span>학생들의 태도가 좋아지고</li>
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#10B981">✓</span>학생들의 결석이 줄어든다면 —</li>
+    </ul>
+    <div class="highlight">
+      <div class="highlight-title">학생들은 학원에 오는 시간을<br>행복한 시간으로 인지하고 있다는 뜻입니다.</div>
+      <div class="highlight-text">이건 가장 정확한 강사의 성적표입니다.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="card-num">4</span> 정기적인 자기 점검 — 체크리스트</div>
+
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:14px 0 8px;letter-spacing:-0.3px">주간 점검 (매주 일요일 또는 월요일)</h3>
+    <ul style="list-style:none;padding:0;margin-bottom:14px">
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#D4541A">☐</span>이번 주 모든 담당 학생의 컨디션을 파악하고 있는가</li>
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#D4541A">☐</span>각 학생의 진도를 정확히 알고 있는가</li>
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#D4541A">☐</span>보조강사와의 소통이 충분했는가</li>
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#D4541A">☐</span>이번 주에 변화가 보이지 않은 학생은 누구인가</li>
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#D4541A">☐</span>다음 주에 특별히 신경 써야 할 학생이 있는가</li>
+    </ul>
+
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:14px 0 8px;letter-spacing:-0.3px">월간 점검 (매월 말)</h3>
+    <ul style="list-style:none;padding:0;margin-bottom:14px">
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#D4541A">☐</span>이번 달 결석·지각 학생의 패턴은?</li>
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#D4541A">☐</span>입시 정보 업데이트는 했는가</li>
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#D4541A">☐</span>이번 달 학생들의 작품 변화가 있었는가</li>
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#D4541A">☐</span>우수작 공유에서 본 다른 캠퍼스와 우리 반의 차이는?</li>
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#D4541A">☐</span>학생들의 표정·태도는 한 달 전보다 좋아졌는가</li>
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#D4541A">☐</span>본인의 컨디션 / 멘탈 상태는 어떤가</li>
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#D4541A">☐</span>이번 달 본인이 가장 잘한 수업은 무엇이었는가</li>
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#D4541A">☐</span>이번 달 본인이 가장 아쉬웠던 수업은 무엇이었는가</li>
+    </ul>
+    <div class="alert info">
+      <span class="alert-ico">💡</span>
+      <div><strong>점검은 자책이 아닙니다.</strong> 다음 달을 더 나은 한 달로 만들기 위한 객관적 시선입니다.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="card-num">5</span> 다같이 강사가 매일 마음에 새겨야 할 한 가지</div>
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:0 0 8px;letter-spacing:-0.3px">자신감은 말이 아닌 준비에서 온다</h3>
+    <div class="highlight" style="margin-bottom:14px">
+      <div class="highlight-title">학생들에게 가르침을 줄 수 있다는 자신감이 매우 중요합니다.<br>그러나 그 자신감은 수업에 대한 준비에서 만들어져야지,<br>그저 말로써만 이루어낼 수 없습니다.</div>
+    </div>
+
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:14px 0 8px;letter-spacing:-0.3px">준비 없는 자신감은 거짓이다</h3>
+    <ul style="list-style:none;padding:0;margin-bottom:14px">
+      <li style="padding:6px 0;font-size:13px;display:flex;gap:10px"><span style="color:#DC2626;font-weight:700">✗</span>"어떻게든 되겠지" 의 태도로 들어가는 수업</li>
+      <li style="padding:6px 0;font-size:13px;display:flex;gap:10px"><span style="color:#DC2626;font-weight:700">✗</span>그저 자신만만한 말투로만 채우는 수업</li>
+      <li style="padding:6px 0;font-size:13px;display:flex;gap:10px"><span style="color:#DC2626;font-weight:700">✗</span>학생 앞에서만 "선생님 같은" 척하는 수업</li>
+    </ul>
+    <p style="font-size:13.5px;color:#6B7280;line-height:1.85;margin-bottom:14px">학생들은 압니다. 강사가 준비된 자신감을 가지고 있는지, 그저 말만 자신감 있는지 — <strong>학생들이 가장 먼저 알아챕니다.</strong></p>
+
+    <h3 style="font-family:'Dohyeon',sans-serif;font-size:15px;color:#1a1a1a;margin:14px 0 8px;letter-spacing:-0.3px">진짜 자신감을 만드는 것</h3>
+    <ul style="list-style:none;padding:0;margin-bottom:14px">
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#10B981">✓</span>매 수업 전 자료 준비</li>
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#10B981">✓</span>시범작 연습</li>
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#10B981">✓</span>학생별 진도 파악</li>
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#10B981">✓</span>입시 정보 업데이트</li>
+      <li style="padding:5px 0;font-size:13px;display:flex;gap:10px"><span style="color:#10B981">✓</span>본인 실력의 꾸준한 갱신</li>
+    </ul>
+
+    <div class="highlight">
+      <div class="highlight-title">준비된 강사만이 진짜 자신감을 가질 수 있고,<br>그 자신감만이 학생을 변화시킬 수 있습니다.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">📚 수업 운영 표준 매뉴얼 전체를 마무리하며</div>
+    <p style="font-size:13.5px;color:#6B7280;line-height:1.85;margin-bottom:14px">지금까지 6개 챕터를 통해 다같이 미술학원의 수업 운영 표준을 살펴봤습니다.</p>
+    <table>
+      <tbody>
+        <tr><td style="width:80px"><strong>챕터 1</strong></td><td>수업 운영의 기본 원칙 — <strong>전달이 아닌 변화</strong></td></tr>
+        <tr><td><strong>챕터 2</strong></td><td>수업 전 준비 단계 — <strong>'억텐'의 프로페셔널리즘</strong></td></tr>
+        <tr><td><strong>챕터 3</strong></td><td>수업 중 실제 운영 — <strong>평등하되 주의 깊게</strong></td></tr>
+        <tr><td><strong>챕터 4</strong></td><td>수업 후 마무리 & 기록 — <strong>다음 수업의 시작</strong></td></tr>
+        <tr><td><strong>챕터 5</strong></td><td>특수 상황 대응 — <strong>책임감과 공감</strong></td></tr>
+        <tr><td><strong>챕터 6</strong></td><td>수업 품질 유지 기준 — <strong>자신감은 준비에서</strong></td></tr>
+      </tbody>
+    </table>
+
+    <div class="highlight" style="margin-top:18px;text-align:center">
+      <div class="highlight-title" style="font-size:17px">다같이의 수업은 단순히 그림을 가르치는 것이 아닙니다.<br><br>학생 한 명 한 명의 변화에 책임지고,<br>학생의 입시를 끝까지 함께 가는 일입니다.<br><br>모든 수업이 그 책임의 시간입니다.</div>
+    </div>
+    <div class="highlight" style="text-align:center;margin-top:14px">
+      <div class="highlight-title" style="font-size:20px">다같이 대학가자.<br>한 명도 포기하지 않습니다.</div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
     </div>
   </main>
 </div>
@@ -2125,7 +3829,18 @@ const TITLES = {
   'c-step2':    '상담 자동화 — Step 2. 클로바노트 녹음',
   'c-step3':    '상담 자동화 — Step 3. 상담지 생성',
   'c-faq':      '상담 자동화 — 자주 묻는 질문',
-  'c-advanced': '상담 자동화 — 심화 · 성적 입력 & 차트',
+    'c-advanced': '상담 자동화 — 심화 · 성적 입력 & 차트',
+  'ob-c1':      '신입 강사 온보딩 — 01 다같이 미술학원이란?',
+  'ob-c2':      '신입 강사 온보딩 — 02 입사 첫 주',
+  'ob-c3':      '신입 강사 온보딩 — 03 업무 시스템 익히기',
+  'ob-c4':      '신입 강사 온보딩 — 04 학생 만나기 전에',
+  'ob-c5':      '신입 강사 온보딩 — 05 강사로서 성장하기',
+  'co-c1':      '수업 운영 표준 — 01 수업 운영의 기본 원칙',
+  'co-c2':      '수업 운영 표준 — 02 수업 전 · 준비 단계',
+  'co-c3':      '수업 운영 표준 — 03 수업 중 · 실제 운영',
+  'co-c4':      '수업 운영 표준 — 04 수업 후 · 마무리 & 기록',
+  'co-c5':      '수업 운영 표준 — 05 특수 상황 대응',
+  'co-c6':      '수업 운영 표준 — 06 수업 품질 유지 기준',
 };
 
 function goTo(id) {
@@ -2152,6 +3867,8 @@ function goTo(id) {
     document.getElementById('cat-blog').classList.add('open');
   } else if (id.startsWith('c-')) {
     document.getElementById('cat-consult').classList.add('open');
+  } else if (id.startsWith('ob-') || id.startsWith('co-')) {
+    document.getElementById('cat-basics').classList.add('open');
   }
 
   // 탑바 제목 변경
