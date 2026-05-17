@@ -242,6 +242,57 @@
     .grade-ach-row { display: flex; gap: 0.5rem; }
     .grade-ach-row .field { flex: 1; margin-bottom: 0; }
 
+    /* ── 모의고사 과목 카드 ─────────────────── */
+    .mock-card {
+      background: #fff;
+      border: 1.5px solid #E5EAF2;
+      border-radius: 0.875rem;
+      padding: 1rem 1rem 1.125rem;
+      margin-bottom: 0.75rem;
+    }
+    .mock-card-title {
+      font-size: 0.9375rem;
+      font-weight: 700;
+      color: #1B2A4A;
+      margin-bottom: 0.875rem;
+      padding-bottom: 0.625rem;
+      border-bottom: 1px solid #F0F4FA;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .mock-card-title .badge {
+      font-size: 0.6875rem;
+      font-weight: 600;
+      padding: 0.1875rem 0.5rem;
+      border-radius: 0.375rem;
+      background: #EFF6FF;
+      color: #1D4ED8;
+    }
+    .mock-card-title .badge.abs {
+      background: #F0FDF4;
+      color: #166534;
+    }
+    .mock-row { display: flex; gap: 0.5rem; }
+    .mock-row .mock-field { flex: 1; }
+    .mock-field label {
+      display: block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #6B7280;
+      margin-bottom: 0.375rem;
+      text-align: center;
+    }
+    .mock-field input, .mock-field select {
+      padding: 0.625rem 0.75rem;
+      font-size: 0.9375rem;
+      text-align: center;
+    }
+    .mock-field select {
+      padding-right: 1.75rem;
+      background-position: right 0.625rem center;
+    }
+
     .add-btn {
       width: 100%;
       padding: 0.875rem;
@@ -433,9 +484,10 @@
     // 상태
     // ============================================
     let SUBJECTS = {};
-    let SEMESTERS = [];
+    let SEMESTERS_BY_GRADE = {};
     let MOCKS = [];
     let CAMPUSES = [];
+    let GRADES = [];
     let subjectCounter = 0;
     let currentStep = 1;
     const TOTAL_STEPS = 4;
@@ -472,9 +524,10 @@
         const result = await callAPI('getFormMeta', {});
         if (!result.success) throw new Error(result.message || '데이터 로드 실패');
         SUBJECTS = result.data.subjects;
-        SEMESTERS = result.data.semesters;
+        SEMESTERS_BY_GRADE = result.data.semestersByGrade;
         MOCKS = result.data.mocks;
         CAMPUSES = result.data.campuses;
+        GRADES = result.data.grades;
         renderForm();
       } catch (err) {
         document.getElementById('main').innerHTML =
@@ -491,8 +544,12 @@
     // ============================================
     function renderForm() {
       const campusOpts = CAMPUSES.map(c => `<option value="${c}">${c}</option>`).join('');
-      const semesterOpts = SEMESTERS.map(s => `<option value="${s}">${s}</option>`).join('');
+      const gradeOpts = GRADES.map(g => `<option value="${g}">${g}</option>`).join('');
       const mockOpts = MOCKS.map(m => `<option value="${m}">${m}</option>`).join('');
+      const gradeSelOpts = '<option value="">선택</option>' +
+        [1,2,3,4,5,6,7,8,9].map(n => `<option value="${n}">${n}등급</option>`).join('');
+      // 영어/한국사는 절대평가라 1~9등급 동일
+      const absGradeOpts = gradeSelOpts;
 
       document.getElementById('main').innerHTML = `
         <!-- Step 1 -->
@@ -511,10 +568,8 @@
           </div>
           <div class="field">
             <label>학년 <span class="req">*</span></label>
-            <select id="f_grade">
-              <option value="">선택하세요</option>
-              <option value="고1">고1</option>
-              <option value="고2">고2</option>
+            <select id="f_grade" onchange="onGradeChange()">
+              <option value="">선택하세요</option>${gradeOpts}
             </select>
           </div>
         </div>
@@ -522,9 +577,9 @@
         <!-- Step 2 -->
         <div class="step" data-step="2">
           <div class="field">
-            <label>어느 학기 성적인가요? <span class="req">*</span></label>
-            <div class="field-desc">한 학기 성적을 한 번에 입력하세요. 다음 학기 성적은 다음번 설문에서 별도로 제출하면 됩니다.</div>
-            <select id="f_semester"><option value="">선택하세요</option>${semesterOpts}</select>
+            <label>어느 시험 성적인가요? <span class="req">*</span></label>
+            <div class="field-desc">한 회차 성적을 한 번에 입력하세요. 다음 회차는 별도로 제출하면 됩니다.</div>
+            <select id="f_semester" disabled><option value="">학년 먼저 선택</option></select>
           </div>
           <div class="field">
             <label>수강 과목 <span class="req">*</span></label>
@@ -537,17 +592,71 @@
         <!-- Step 3 -->
         <div class="step" data-step="3">
           <div class="field">
-            <label>모의고사</label>
+            <label>어느 모의고사?</label>
             <div class="field-desc">응시한 모의고사가 없으면 비워두세요.</div>
             <select id="f_mockInfo"><option value="">선택 안 함</option>${mockOpts}</select>
           </div>
-          <div class="info-box">형식 자유로 적으세요. 예: <b>"1등급"</b>, <b>"85점"</b>, <b>"85점/2등급"</b></div>
-          <div class="field"><label>국어</label><input type="text" id="f_mockKor" placeholder="예: 1등급"></div>
-          <div class="field"><label>영어</label><input type="text" id="f_mockEng" placeholder="예: 2등급"></div>
-          <div class="field"><label>수학</label><input type="text" id="f_mockMath"></div>
-          <div class="field"><label>탐구1</label><input type="text" id="f_mockExp1"></div>
-          <div class="field"><label>탐구2</label><input type="text" id="f_mockExp2"></div>
-          <div class="field"><label>한국사</label><input type="text" id="f_mockHanksa"></div>
+
+          <div class="info-box">
+            <b>국어 · 수학 · 통합사회 · 통합과학</b>: 표준점수 / 백분위 / 등급<br>
+            <b>영어 · 한국사</b> (절대평가): 등급만 입력
+          </div>
+
+          <!-- 국어 -->
+          <div class="mock-card">
+            <div class="mock-card-title">국어 <span class="badge">상대평가</span></div>
+            <div class="mock-row">
+              <div class="mock-field"><label>표준점수</label><input type="text" id="f_mockKor_std" placeholder="예: 132" inputmode="numeric"></div>
+              <div class="mock-field"><label>백분위</label><input type="text" id="f_mockKor_pct" placeholder="예: 95" inputmode="numeric"></div>
+              <div class="mock-field"><label>등급</label><select id="f_mockKor_grade">${gradeSelOpts}</select></div>
+            </div>
+          </div>
+
+          <!-- 수학 -->
+          <div class="mock-card">
+            <div class="mock-card-title">수학 <span class="badge">상대평가</span></div>
+            <div class="mock-row">
+              <div class="mock-field"><label>표준점수</label><input type="text" id="f_mockMath_std" placeholder="예: 128" inputmode="numeric"></div>
+              <div class="mock-field"><label>백분위</label><input type="text" id="f_mockMath_pct" placeholder="예: 90" inputmode="numeric"></div>
+              <div class="mock-field"><label>등급</label><select id="f_mockMath_grade">${gradeSelOpts}</select></div>
+            </div>
+          </div>
+
+          <!-- 영어 -->
+          <div class="mock-card">
+            <div class="mock-card-title">영어 <span class="badge abs">절대평가</span></div>
+            <div class="mock-row">
+              <div class="mock-field" style="flex:1;"><label>등급</label><select id="f_mockEng_grade">${absGradeOpts}</select></div>
+            </div>
+          </div>
+
+          <!-- 통합사회 -->
+          <div class="mock-card">
+            <div class="mock-card-title">통합사회 <span class="badge">상대평가</span></div>
+            <div class="mock-row">
+              <div class="mock-field"><label>표준점수</label><input type="text" id="f_mockSoc_std" placeholder="예: 65" inputmode="numeric"></div>
+              <div class="mock-field"><label>백분위</label><input type="text" id="f_mockSoc_pct" placeholder="예: 85" inputmode="numeric"></div>
+              <div class="mock-field"><label>등급</label><select id="f_mockSoc_grade">${gradeSelOpts}</select></div>
+            </div>
+          </div>
+
+          <!-- 통합과학 -->
+          <div class="mock-card">
+            <div class="mock-card-title">통합과학 <span class="badge">상대평가</span></div>
+            <div class="mock-row">
+              <div class="mock-field"><label>표준점수</label><input type="text" id="f_mockSci_std" placeholder="예: 62" inputmode="numeric"></div>
+              <div class="mock-field"><label>백분위</label><input type="text" id="f_mockSci_pct" placeholder="예: 80" inputmode="numeric"></div>
+              <div class="mock-field"><label>등급</label><select id="f_mockSci_grade">${gradeSelOpts}</select></div>
+            </div>
+          </div>
+
+          <!-- 한국사 -->
+          <div class="mock-card">
+            <div class="mock-card-title">한국사 <span class="badge abs">절대평가</span></div>
+            <div class="mock-row">
+              <div class="mock-field" style="flex:1;"><label>등급</label><select id="f_mockHanksa_grade">${absGradeOpts}</select></div>
+            </div>
+          </div>
 
           <div style="height:1px; background:#E5EAF2; margin:1.75rem 0;"></div>
 
@@ -594,6 +703,26 @@
       document.getElementById('footer').style.display = 'flex';
       addSubject();
       updateProgress();
+    }
+
+    // ============================================
+    // 학년 → 학기 옵션 동적 로드
+    // ============================================
+    function onGradeChange() {
+      const grade = val('f_grade');
+      const semSelect = document.getElementById('f_semester');
+      if (!semSelect) return;
+      semSelect.innerHTML = '<option value="">선택하세요</option>';
+      semSelect.disabled = true;
+      if (!grade || !SEMESTERS_BY_GRADE[grade]) return;
+      SEMESTERS_BY_GRADE[grade].forEach(function(s) {
+        const opt = document.createElement('option');
+        // 저장 값에는 학년 prefix 포함 (예: "고1 1학기 중간", "고3 최종내신", "N수 최종내신")
+        opt.value = grade + ' ' + s;
+        opt.textContent = s;
+        semSelect.appendChild(opt);
+      });
+      semSelect.disabled = false;
     }
 
     // ============================================
@@ -867,12 +996,22 @@
         semester: val('f_semester'),
         subjects: collectSubjects(),
         mockInfo: val('f_mockInfo'),
-        mockKor: val('f_mockKor'),
-        mockEng: val('f_mockEng'),
-        mockMath: val('f_mockMath'),
-        mockExp1: val('f_mockExp1'),
-        mockExp2: val('f_mockExp2'),
-        mockHanksa: val('f_mockHanksa'),
+        // 국어/수학/통합사회/통합과학: 표준 / 백분위 / 등급
+        mockKor_std:    val('f_mockKor_std'),
+        mockKor_pct:    val('f_mockKor_pct'),
+        mockKor_grade:  val('f_mockKor_grade'),
+        mockMath_std:   val('f_mockMath_std'),
+        mockMath_pct:   val('f_mockMath_pct'),
+        mockMath_grade: val('f_mockMath_grade'),
+        mockSoc_std:    val('f_mockSoc_std'),
+        mockSoc_pct:    val('f_mockSoc_pct'),
+        mockSoc_grade:  val('f_mockSoc_grade'),
+        mockSci_std:    val('f_mockSci_std'),
+        mockSci_pct:    val('f_mockSci_pct'),
+        mockSci_grade:  val('f_mockSci_grade'),
+        // 영어/한국사: 등급만
+        mockEng_grade:    val('f_mockEng_grade'),
+        mockHanksa_grade: val('f_mockHanksa_grade'),
         hope1: val('f_hope1'),
         hope2: val('f_hope2'),
         hope3: val('f_hope3'),
