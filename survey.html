@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#1B2A4A">
+  <title>다같이 미술학원 사전 설문 (학점제)</title>
+  <style>
+    /* ============================================
+       다같이 미술학원 사전 설문 (학점제)
+       모바일 우선 디자인 — viewport 완벽 제어
+       ============================================ */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+      -webkit-text-size-adjust: 100%;
+    }
+    html { font-size: 16px; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Segoe UI', sans-serif;
+      background: #F5F7FA;
+      color: #1B2A4A;
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.5;
+      padding-bottom: env(safe-area-inset-bottom);
+      min-height: 100vh;
+    }
+
+    /* ── 상단 헤더 ─────────────────────────── */
+    .header {
+      background: #1B2A4A;
+      padding: 1.25rem 1.25rem 1.5rem;
+      padding-top: calc(1.25rem + env(safe-area-inset-top));
+      color: #fff;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+    .header-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+    }
+    .header h1 {
+      font-size: 1.0625rem;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+    }
+    .header .tag {
+      font-size: 0.6875rem;
+      font-weight: 700;
+      background: #D4541A;
+      padding: 0.25rem 0.625rem;
+      border-radius: 0.625rem;
+    }
+    .progress-info {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.5rem;
+    }
+    .progress-step {
+      font-size: 0.8125rem;
+      color: #A8BEDD;
+      font-weight: 600;
+    }
+    .progress-percent {
+      font-size: 0.75rem;
+      color: #A8BEDD;
+    }
+    .progress-bar {
+      height: 0.25rem;
+      background: rgba(255,255,255,0.15);
+      border-radius: 0.25rem;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #6B8FB8, #D4541A);
+      border-radius: 0.25rem;
+      transition: width 0.3s ease;
+      width: 25%;
+    }
+
+    /* ── 본문 ─────────────────────────── */
+    .step-title {
+      padding: 1.5rem 1.25rem 0;
+      background: #F5F7FA;
+    }
+    .step-title h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      color: #1B2A4A;
+    }
+    .step-title p {
+      font-size: 0.9375rem;
+      color: #6B7280;
+      margin-top: 0.375rem;
+      line-height: 1.5;
+    }
+
+    main {
+      padding: 1.5rem 1.25rem 7rem;
+      background: #F5F7FA;
+    }
+
+    .step { display: none; animation: slideIn 0.25s ease; }
+    .step.active { display: block; }
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateX(8px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+
+    /* ── 필드 ─────────────────────────── */
+    .field { margin-bottom: 1.5rem; }
+    .field:last-child { margin-bottom: 0; }
+    .field label {
+      display: block;
+      font-size: 0.9375rem;
+      font-weight: 700;
+      color: #1B2A4A;
+      margin-bottom: 0.5rem;
+    }
+    .field label .req { color: #E53E3E; margin-left: 2px; }
+    .field-desc {
+      font-size: 0.8125rem;
+      color: #6B7280;
+      margin-bottom: 0.5rem;
+      margin-top: -0.25rem;
+      line-height: 1.5;
+    }
+
+    /* ── 입력 컨트롤 ─────────────────────────── */
+    select, input[type=text], textarea {
+      width: 100%;
+      border: 1.5px solid #D1D9E6;
+      border-radius: 0.75rem;
+      padding: 0.9375rem 1rem;
+      font-size: 1rem;
+      color: #1B2A4A;
+      background: #fff;
+      outline: none;
+      font-family: inherit;
+      transition: border-color 0.15s, background 0.15s;
+      -webkit-appearance: none;
+      appearance: none;
+      line-height: 1.4;
+    }
+    select {
+      background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3e%3cpath fill='none' stroke='%234A6FA5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' d='M1 1l5 5 5-5'/%3e%3c/svg%3e");
+      background-repeat: no-repeat;
+      background-position: right 1rem center;
+      padding-right: 2.5rem;
+    }
+    select:focus, input:focus, textarea:focus {
+      border-color: #4A6FA5;
+      background: #FAFBFD;
+    }
+    textarea {
+      resize: none;
+      min-height: 6rem;
+    }
+    input::placeholder, textarea::placeholder {
+      color: #9CA3AF;
+    }
+
+    /* ── 안내 박스 ─────────────────────────── */
+    .info-box {
+      background: #EFF6FF;
+      border-left: 3px solid #4A6FA5;
+      padding: 0.75rem 1rem;
+      border-radius: 0.5rem;
+      font-size: 0.8125rem;
+      color: #1E3A8A;
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+    .info-box b { font-weight: 700; }
+
+    /* ── 과목 카드 ─────────────────────────── */
+    .subjects-list { margin-bottom: 0.75rem; }
+    .subject-card {
+      background: #fff;
+      border: 1.5px solid #E5EAF2;
+      border-radius: 0.875rem;
+      padding: 1rem 1rem 1.125rem;
+      margin-bottom: 0.75rem;
+    }
+    .subject-card:last-child { margin-bottom: 0; }
+    .subject-card-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.875rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid #F0F4FA;
+    }
+    .subject-card-title {
+      font-size: 0.8125rem;
+      font-weight: 700;
+      color: #4A6FA5;
+    }
+    .remove-btn {
+      background: #FEF2F2;
+      color: #DC2626;
+      border: none;
+      border-radius: 0.5rem;
+      padding: 0.375rem 0.75rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      font-family: inherit;
+      cursor: pointer;
+    }
+    .remove-btn:active { background: #FEE2E2; }
+    .subject-card .field { margin-bottom: 0.75rem; }
+    .subject-card .field:last-child { margin-bottom: 0; }
+    .subject-card .field label {
+      font-size: 0.8125rem;
+      margin-bottom: 0.375rem;
+    }
+    .subject-card select, .subject-card input {
+      padding: 0.75rem 0.875rem;
+      font-size: 0.9375rem;
+    }
+
+    .eval-hint {
+      margin-top: 0.625rem;
+      padding: 0.625rem 0.75rem;
+      background: #EFF6FF;
+      border-radius: 0.5rem;
+      font-size: 0.75rem;
+      color: #1D4ED8;
+      font-weight: 600;
+      line-height: 1.4;
+    }
+    .eval-hint.hidden { display: none; }
+
+    .grade-ach-row { display: flex; gap: 0.5rem; }
+    .grade-ach-row .field { flex: 1; margin-bottom: 0; }
+
+    .add-btn {
+      width: 100%;
+      padding: 0.875rem;
+      background: #fff;
+      color: #4A6FA5;
+      border: 1.5px dashed #4A6FA5;
+      border-radius: 0.875rem;
+      font-size: 0.9375rem;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: inherit;
+    }
+    .add-btn:active { background: #EFF6FF; }
+
+    /* ── 하단 고정 버튼 ─────────────────────────── */
+    .footer {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      background: #fff;
+      border-top: 1px solid #E5EAF2;
+      padding: 0.75rem 1.25rem;
+      padding-bottom: calc(0.75rem + env(safe-area-inset-bottom));
+      display: flex;
+      gap: 0.625rem;
+      z-index: 100;
+      box-shadow: 0 -4px 16px rgba(27,42,74,0.04);
+    }
+    .btn {
+      flex: 1;
+      padding: 1rem;
+      border-radius: 0.875rem;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      border: none;
+      font-family: inherit;
+      transition: opacity 0.15s, transform 0.1s;
+    }
+    .btn-prev {
+      background: #fff;
+      color: #4A6FA5;
+      border: 1.5px solid #D1D9E6;
+      flex: 0 0 32%;
+    }
+    .btn-prev:active { background: #F8FAFC; transform: scale(0.98); }
+    .btn-next {
+      background: #1B2A4A;
+      color: #fff;
+    }
+    .btn-next:active { background: #2E4272; transform: scale(0.98); }
+    .btn-submit {
+      background: #D4541A;
+      color: #fff;
+    }
+    .btn-submit:active { background: #B14217; transform: scale(0.98); }
+    .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+    /* ── 상태 / 로딩 ─────────────────────────── */
+    .loading-screen, .complete-screen {
+      padding: 4rem 1.5rem;
+      text-align: center;
+    }
+    .loading-screen { color: #6B7280; font-size: 0.9375rem; }
+    .complete-icon {
+      width: 4.5rem;
+      height: 4.5rem;
+      margin: 0 auto 1.25rem;
+      border-radius: 50%;
+      background: #DCFCE7;
+      color: #166534;
+      font-size: 2.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .complete-screen h2 {
+      font-size: 1.375rem;
+      margin-bottom: 0.625rem;
+      color: #1B2A4A;
+    }
+    .complete-screen p {
+      color: #6B7280;
+      font-size: 0.9375rem;
+      line-height: 1.6;
+    }
+
+    .toast {
+      position: fixed;
+      bottom: 6rem;
+      left: 1.25rem;
+      right: 1.25rem;
+      background: rgba(27,42,74,0.95);
+      color: #fff;
+      padding: 0.875rem 1rem;
+      border-radius: 0.75rem;
+      font-size: 0.875rem;
+      font-weight: 500;
+      text-align: center;
+      z-index: 200;
+      animation: toastIn 0.2s ease;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+    }
+    .toast.error { background: rgba(153,27,27,0.95); }
+    @keyframes toastIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .spinner {
+      display: inline-block;
+      width: 1rem;
+      height: 1rem;
+      border: 2px solid rgba(255,255,255,0.3);
+      border-top-color: #fff;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      margin-right: 0.5rem;
+      vertical-align: -3px;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ── 데스크탑 (768px+) ─────────────────────────── */
+    @media (min-width: 768px) {
+      body { background: #1B2A4A; padding-top: 2rem; padding-bottom: 2rem; }
+      .header {
+        max-width: 30rem;
+        margin: 0 auto;
+        border-radius: 1.25rem 1.25rem 0 0;
+        position: relative;
+        top: 0;
+      }
+      .step-title, main {
+        max-width: 30rem;
+        margin: 0 auto;
+      }
+      main { padding-bottom: 6.5rem; }
+      .footer {
+        position: relative;
+        max-width: 30rem;
+        margin: 0 auto;
+        border-radius: 0 0 1.25rem 1.25rem;
+        border-top: 1px solid #E5EAF2;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- ── 헤더 ─────────────────── -->
+  <header class="header">
+    <div class="header-top">
+      <h1>🎨 다같이 미술학원 사전 설문</h1>
+      <div class="tag">학점제</div>
+    </div>
+    <div class="progress-info">
+      <div class="progress-step" id="progressStep">1 / 4</div>
+      <div class="progress-percent" id="progressPercent">25%</div>
+    </div>
+    <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+  </header>
+
+  <!-- ── 단계 타이틀 ─────────────────── -->
+  <div class="step-title" id="stepTitle" style="display:none;">
+    <h2 id="titleText">기본 정보</h2>
+    <p id="subtitleText">캠퍼스와 본인 정보를 입력해주세요</p>
+  </div>
+
+  <!-- ── 본문 ─────────────────── -->
+  <main id="main">
+    <div class="loading-screen">
+      <div style="margin-bottom:0.5rem;">📋</div>
+      <div>설문지를 불러오는 중...</div>
+    </div>
+  </main>
+
+  <!-- ── 하단 네비 ─────────────────── -->
+  <footer class="footer" id="footer" style="display:none;">
+    <button class="btn btn-prev" id="btnPrev" onclick="goPrev()">이전</button>
+    <button class="btn btn-next" id="btnNext" onclick="goNext()">다음</button>
+  </footer>
+
+  <script>
+    // ============================================
+    // 설정
+    // ============================================
+    // ⚠️ Apps Script 웹앱 URL — 배포 후 본인 URL로 교체
+    const API_URL = 'https://script.google.com/macros/s/AKfycbyNDK6vpWtLUGo7R2JDlfBDEBhIQ4tbhsn346YgpF4Mrk-mgFYi2cO-CZQnrzbQQTuY/exec';
+
+    // ============================================
+    // 상태
+    // ============================================
+    let SUBJECTS = {};
+    let SEMESTERS = [];
+    let MOCKS = [];
+    let CAMPUSES = [];
+    let subjectCounter = 0;
+    let currentStep = 1;
+    const TOTAL_STEPS = 4;
+
+    const STEP_INFO = {
+      1: { title: '기본 정보', subtitle: '캠퍼스와 본인 정보를 입력해주세요' },
+      2: { title: '내신 성적', subtitle: '학기와 수강 과목을 입력해주세요' },
+      3: { title: '모의고사 · 희망 대학', subtitle: '응시한 모의고사와 희망 진학처를 입력해주세요' },
+      4: { title: '상담 질문', subtitle: '강사님께 전하고 싶은 내용을 자유롭게 적어주세요' }
+    };
+
+    // ============================================
+    // API 통신
+    // ============================================
+    async function callAPI(action, data) {
+      // CORS 우회: text/plain Content-Type 사용 (Apps Script 패턴)
+      const res = await fetch(API_URL, {
+        method: 'POST',
+        mode: 'cors',
+        cache: 'no-cache',
+        redirect: 'follow',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify({ action: action, data: data })
+      });
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      return await res.json();
+    }
+
+    // ============================================
+    // 초기화
+    // ============================================
+    window.addEventListener('load', async function() {
+      try {
+        const result = await callAPI('getFormMeta', {});
+        if (!result.success) throw new Error(result.message || '데이터 로드 실패');
+        SUBJECTS = result.data.subjects;
+        SEMESTERS = result.data.semesters;
+        MOCKS = result.data.mocks;
+        CAMPUSES = result.data.campuses;
+        renderForm();
+      } catch (err) {
+        document.getElementById('main').innerHTML =
+          '<div class="loading-screen" style="color:#991B1B;">' +
+          '❌ 설문지를 불러올 수 없어요.<br><br>' +
+          '<span style="font-size:0.8125rem;">' + err.message + '</span><br><br>' +
+          '<button onclick="location.reload()" style="padding:0.625rem 1.25rem;background:#1B2A4A;color:#fff;border:none;border-radius:0.625rem;font-weight:700;font-size:0.875rem;font-family:inherit;cursor:pointer;">다시 시도</button>' +
+          '</div>';
+      }
+    });
+
+    // ============================================
+    // 폼 렌더링
+    // ============================================
+    function renderForm() {
+      const campusOpts = CAMPUSES.map(c => `<option value="${c}">${c}</option>`).join('');
+      const semesterOpts = SEMESTERS.map(s => `<option value="${s}">${s}</option>`).join('');
+      const mockOpts = MOCKS.map(m => `<option value="${m}">${m}</option>`).join('');
+
+      document.getElementById('main').innerHTML = `
+        <!-- Step 1 -->
+        <div class="step active" data-step="1">
+          <div class="field">
+            <label>캠퍼스 <span class="req">*</span></label>
+            <select id="f_campus"><option value="">선택하세요</option>${campusOpts}</select>
+          </div>
+          <div class="field">
+            <label>이름 <span class="req">*</span></label>
+            <input type="text" id="f_name" placeholder="예: 홍길동" autocomplete="name">
+          </div>
+          <div class="field">
+            <label>학교 <span class="req">*</span></label>
+            <input type="text" id="f_school" placeholder="예: 다산고등학교">
+          </div>
+          <div class="field">
+            <label>학년 <span class="req">*</span></label>
+            <select id="f_grade">
+              <option value="">선택하세요</option>
+              <option value="고1">고1</option>
+              <option value="고2">고2</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="step" data-step="2">
+          <div class="field">
+            <label>어느 학기 성적인가요? <span class="req">*</span></label>
+            <div class="field-desc">한 학기 성적을 한 번에 입력하세요. 다음 학기 성적은 다음번 설문에서 별도로 제출하면 됩니다.</div>
+            <select id="f_semester"><option value="">선택하세요</option>${semesterOpts}</select>
+          </div>
+          <div class="field">
+            <label>수강 과목 <span class="req">*</span></label>
+            <div class="field-desc">본인이 듣는 과목을 모두 추가하세요. 한 과목씩 [+ 과목 추가]를 누르면 됩니다.</div>
+            <div class="subjects-list" id="subjectsList"></div>
+            <button type="button" class="add-btn" onclick="addSubject()">+ 과목 추가</button>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="step" data-step="3">
+          <div class="field">
+            <label>모의고사</label>
+            <div class="field-desc">응시한 모의고사가 없으면 비워두세요.</div>
+            <select id="f_mockInfo"><option value="">선택 안 함</option>${mockOpts}</select>
+          </div>
+          <div class="info-box">형식 자유로 적으세요. 예: <b>"1등급"</b>, <b>"85점"</b>, <b>"85점/2등급"</b></div>
+          <div class="field"><label>국어</label><input type="text" id="f_mockKor" placeholder="예: 1등급"></div>
+          <div class="field"><label>영어</label><input type="text" id="f_mockEng" placeholder="예: 2등급"></div>
+          <div class="field"><label>수학</label><input type="text" id="f_mockMath"></div>
+          <div class="field"><label>탐구1</label><input type="text" id="f_mockExp1"></div>
+          <div class="field"><label>탐구2</label><input type="text" id="f_mockExp2"></div>
+          <div class="field"><label>한국사</label><input type="text" id="f_mockHanksa"></div>
+
+          <div style="height:1px; background:#E5EAF2; margin:1.75rem 0;"></div>
+
+          <div class="field">
+            <label>1순위 희망 대학 / 전공 <span class="req">*</span></label>
+            <input type="text" id="f_hope1" placeholder="예: 홍익대 시각디자인학과">
+          </div>
+          <div class="field">
+            <label>2순위 희망 대학 / 전공</label>
+            <input type="text" id="f_hope2" placeholder="없으면 비워두세요">
+          </div>
+          <div class="field">
+            <label>3순위 희망 대학 / 전공</label>
+            <input type="text" id="f_hope3" placeholder="없으면 비워두세요">
+          </div>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="step" data-step="4">
+          <div class="field">
+            <label>현재 실기 자가평가</label>
+            <div class="field-desc">본인의 실기 실력을 솔직하게 적어주세요.</div>
+            <textarea id="f_selfEval" placeholder="예: 소묘는 자신 있는데 채색이 약해요..." rows="4"></textarea>
+          </div>
+          <div class="field">
+            <label>입시 관련 질문</label>
+            <div class="field-desc">입시에 관해 궁금한 점이 있으면 적어주세요.</div>
+            <textarea id="f_qAdmission" placeholder="궁금한 점을 자유롭게 적어주세요." rows="4"></textarea>
+          </div>
+          <div class="field">
+            <label>수업에 대한 의견</label>
+            <div class="field-desc">수업·강사·시설 등 의견·건의를 자유롭게 적어주세요.</div>
+            <textarea id="f_qClass" placeholder="개선되었으면 하는 점 등 자유롭게..." rows="4"></textarea>
+          </div>
+          <div class="field">
+            <label>그 외 하고 싶은 말</label>
+            <div class="field-desc">고민·요청사항 등 무엇이든 적어주세요.</div>
+            <textarea id="f_qWorry" placeholder="자유롭게 적어주세요." rows="4"></textarea>
+          </div>
+        </div>
+      `;
+
+      document.getElementById('stepTitle').style.display = 'block';
+      document.getElementById('footer').style.display = 'flex';
+      addSubject();
+      updateProgress();
+    }
+
+    // ============================================
+    // 페이지 네비게이션
+    // ============================================
+    function updateProgress() {
+      const pct = Math.round((currentStep / TOTAL_STEPS) * 100);
+      document.getElementById('progressStep').textContent = `${currentStep} / ${TOTAL_STEPS}`;
+      document.getElementById('progressPercent').textContent = `${pct}%`;
+      document.getElementById('progressFill').style.width = `${pct}%`;
+      document.getElementById('titleText').textContent = STEP_INFO[currentStep].title;
+      document.getElementById('subtitleText').textContent = STEP_INFO[currentStep].subtitle;
+
+      const btnPrev = document.getElementById('btnPrev');
+      const btnNext = document.getElementById('btnNext');
+      btnPrev.style.visibility = currentStep === 1 ? 'hidden' : 'visible';
+      if (currentStep === TOTAL_STEPS) {
+        btnNext.textContent = '제출하기';
+        btnNext.className = 'btn btn-submit';
+      } else {
+        btnNext.textContent = '다음';
+        btnNext.className = 'btn btn-next';
+      }
+    }
+
+    function goPrev() {
+      if (currentStep <= 1) return;
+      showStep(currentStep - 1);
+      scrollTop();
+    }
+
+    function goNext() {
+      if (!validateStep(currentStep)) return;
+      if (currentStep < TOTAL_STEPS) {
+        showStep(currentStep + 1);
+        scrollTop();
+      } else {
+        submitForm();
+      }
+    }
+
+    function showStep(step) {
+      currentStep = step;
+      document.querySelectorAll('.step').forEach(el => el.classList.remove('active'));
+      document.querySelector(`.step[data-step="${step}"]`).classList.add('active');
+      updateProgress();
+    }
+
+    function scrollTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function validateStep(step) {
+      if (step === 1) {
+        if (!val('f_campus')) return toast('캠퍼스를 선택해주세요.', 'f_campus');
+        if (!val('f_name'))   return toast('이름을 입력해주세요.', 'f_name');
+        if (!val('f_school')) return toast('학교를 입력해주세요.', 'f_school');
+        if (!val('f_grade'))  return toast('학년을 선택해주세요.', 'f_grade');
+      } else if (step === 2) {
+        if (!val('f_semester')) return toast('학기를 선택해주세요.', 'f_semester');
+        if (collectSubjects().length === 0) {
+          return toast('수강 과목을 최소 1개 이상 입력해주세요.');
+        }
+      } else if (step === 3) {
+        if (!val('f_hope1')) return toast('1순위 희망 대학/전공을 입력해주세요.', 'f_hope1');
+      }
+      return true;
+    }
+
+    // ============================================
+    // 토스트 (alert 대체)
+    // ============================================
+    let toastTimer;
+    function toast(msg, focusId, type) {
+      const existing = document.querySelector('.toast');
+      if (existing) existing.remove();
+      const t = document.createElement('div');
+      t.className = 'toast' + (type === 'error' ? ' error' : '');
+      t.textContent = msg;
+      document.body.appendChild(t);
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => t.remove(), 2500);
+      if (focusId) {
+        const el = document.getElementById(focusId);
+        if (el) {
+          el.focus();
+          el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      }
+      return false;
+    }
+
+    // ============================================
+    // 과목 카드
+    // ============================================
+    function addSubject() {
+      subjectCounter++;
+      const id = `subj_${subjectCounter}`;
+      const idx = document.querySelectorAll('.subject-card').length + 1;
+      const categoryOpts = Object.keys(SUBJECTS).map(c => `<option value="${c}">${c}</option>`).join('');
+
+      const html = `
+        <div class="subject-card" id="${id}">
+          <div class="subject-card-head">
+            <div class="subject-card-title">과목 #${idx}</div>
+            <button type="button" class="remove-btn" onclick="removeSubject('${id}')">삭제</button>
+          </div>
+          <div class="field">
+            <label>교과</label>
+            <select onchange="onCategoryChange('${id}')" class="cat-select">
+              <option value="">선택</option>${categoryOpts}
+            </select>
+          </div>
+          <div class="field">
+            <label>구분</label>
+            <select onchange="onClassificationChange('${id}')" class="cls-select" disabled>
+              <option value="">교과 먼저 선택</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>과목명</label>
+            <select class="subj-select" disabled>
+              <option value="">구분 먼저 선택</option>
+            </select>
+          </div>
+          <div class="eval-hint hidden" id="${id}_hint"></div>
+          <div class="grade-ach-row" id="${id}_evalrow" style="display:none; margin-top:0.75rem;">
+            <div class="field grade-field" style="display:none;">
+              <label>등급</label>
+              <select class="grade-select">
+                <option value="">선택</option>
+                <option value="1">1등급</option><option value="2">2등급</option>
+                <option value="3">3등급</option><option value="4">4등급</option>
+                <option value="5">5등급</option>
+              </select>
+            </div>
+            <div class="field ach-field" style="display:none;">
+              <label>성취도</label>
+              <select class="ach-select">
+                <option value="">선택</option>
+                <option value="A">A</option><option value="B">B</option>
+                <option value="C">C</option><option value="D">D</option>
+                <option value="E">E</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      `;
+      document.getElementById('subjectsList').insertAdjacentHTML('beforeend', html);
+      renumberSubjects();
+    }
+
+    function removeSubject(id) {
+      const card = document.getElementById(id);
+      if (card) card.remove();
+      if (document.querySelectorAll('.subject-card').length === 0) addSubject();
+      renumberSubjects();
+    }
+
+    function renumberSubjects() {
+      document.querySelectorAll('.subject-card').forEach((card, i) => {
+        const t = card.querySelector('.subject-card-title');
+        if (t) t.textContent = `과목 #${i + 1}`;
+      });
+    }
+
+    function onCategoryChange(id) {
+      const card = document.getElementById(id);
+      const cat = card.querySelector('.cat-select').value;
+      const clsSelect = card.querySelector('.cls-select');
+      const subjSelect = card.querySelector('.subj-select');
+      const evalRow = document.getElementById(`${id}_evalrow`);
+      const hint = document.getElementById(`${id}_hint`);
+
+      clsSelect.innerHTML = '<option value="">선택</option>';
+      subjSelect.innerHTML = '<option value="">구분 먼저 선택</option>';
+      subjSelect.disabled = true;
+      evalRow.style.display = 'none';
+      card.querySelector('.grade-field').style.display = 'none';
+      card.querySelector('.ach-field').style.display = 'none';
+      hint.className = 'eval-hint hidden';
+      hint.textContent = '';
+
+      if (!cat) { clsSelect.disabled = true; return; }
+      Object.keys(SUBJECTS[cat]).forEach(cls => {
+        const opt = document.createElement('option');
+        opt.value = cls;
+        opt.textContent = `${cls} (${classDesc(cls)})`;
+        clsSelect.appendChild(opt);
+      });
+      clsSelect.disabled = false;
+    }
+
+    function classDesc(cls) {
+      return { '공통': '기초소양', '일반': '학문별 주요', '진로': '심화', '융합': '실생활 응용' }[cls] || '';
+    }
+
+    function onClassificationChange(id) {
+      const card = document.getElementById(id);
+      const cat = card.querySelector('.cat-select').value;
+      const cls = card.querySelector('.cls-select').value;
+      const subjSelect = card.querySelector('.subj-select');
+      const evalRow = document.getElementById(`${id}_evalrow`);
+      const gradeField = card.querySelector('.grade-field');
+      const achField = card.querySelector('.ach-field');
+      const hint = document.getElementById(`${id}_hint`);
+
+      subjSelect.innerHTML = '<option value="">선택</option>';
+      evalRow.style.display = 'none';
+      gradeField.style.display = 'none';
+      achField.style.display = 'none';
+      hint.className = 'eval-hint hidden';
+      hint.textContent = '';
+
+      if (!cls) { subjSelect.disabled = true; return; }
+      (SUBJECTS[cat][cls] || []).forEach(s => {
+        const opt = document.createElement('option');
+        opt.value = s;
+        opt.textContent = s;
+        subjSelect.appendChild(opt);
+      });
+      subjSelect.disabled = false;
+
+      const gradeAreas = ['국어', '수학', '영어', '사회', '과학'];
+      const hasGrade = gradeAreas.includes(cat) && (cls === '공통' || cls === '일반');
+
+      evalRow.style.display = 'flex';
+      if (hasGrade) {
+        gradeField.style.display = '';
+        achField.style.display = '';
+        hint.className = 'eval-hint';
+        hint.textContent = '✦ 이 과목은 [석차등급 + 성취도] 둘 다 입력합니다.';
+      } else {
+        gradeField.style.display = 'none';
+        achField.style.display = '';
+        hint.className = 'eval-hint';
+        hint.textContent = '✦ 이 과목은 [성취도]만 입력합니다.';
+      }
+    }
+
+    function collectSubjects() {
+      const cards = document.querySelectorAll('.subject-card');
+      const result = [];
+      cards.forEach(card => {
+        const cat = card.querySelector('.cat-select').value;
+        const cls = card.querySelector('.cls-select').value;
+        const subj = card.querySelector('.subj-select').value;
+        const grade = card.querySelector('.grade-select').value;
+        const ach = card.querySelector('.ach-select').value;
+        if (cat && cls && subj) {
+          result.push({ category: cat, classification: cls, subject: subj, grade, achievement: ach });
+        }
+      });
+      return result;
+    }
+
+    function val(id) {
+      const el = document.getElementById(id);
+      return el ? el.value.trim() : '';
+    }
+
+    // ============================================
+    // 제출
+    // ============================================
+    async function submitForm() {
+      const payload = {
+        campus: val('f_campus'),
+        name: val('f_name'),
+        school: val('f_school'),
+        grade: val('f_grade'),
+        semester: val('f_semester'),
+        subjects: collectSubjects(),
+        mockInfo: val('f_mockInfo'),
+        mockKor: val('f_mockKor'),
+        mockEng: val('f_mockEng'),
+        mockMath: val('f_mockMath'),
+        mockExp1: val('f_mockExp1'),
+        mockExp2: val('f_mockExp2'),
+        mockHanksa: val('f_mockHanksa'),
+        hope1: val('f_hope1'),
+        hope2: val('f_hope2'),
+        hope3: val('f_hope3'),
+        selfEval: val('f_selfEval'),
+        qAdmission: val('f_qAdmission'),
+        qClass: val('f_qClass'),
+        qWorry: val('f_qWorry')
+      };
+
+      const btnNext = document.getElementById('btnNext');
+      const btnPrev = document.getElementById('btnPrev');
+      const originalText = btnNext.textContent;
+      btnNext.disabled = true;
+      btnPrev.disabled = true;
+      btnNext.innerHTML = '<span class="spinner"></span>제출 중...';
+
+      try {
+        const result = await callAPI('submitStudentForm', payload);
+        if (result.success) {
+          showComplete(payload.name);
+        } else {
+          btnNext.disabled = false;
+          btnPrev.disabled = false;
+          btnNext.textContent = originalText;
+          toast(result.message || '제출 실패', null, 'error');
+        }
+      } catch (err) {
+        btnNext.disabled = false;
+        btnPrev.disabled = false;
+        btnNext.textContent = originalText;
+        toast('네트워크 오류: ' + err.message, null, 'error');
+      }
+    }
+
+    function showComplete(name) {
+      document.getElementById('stepTitle').style.display = 'none';
+      document.getElementById('footer').style.display = 'none';
+      document.getElementById('main').innerHTML = `
+        <div class="complete-screen">
+          <div class="complete-icon">✓</div>
+          <h2>제출 완료!</h2>
+          <p>${name || '학생'}님, 설문이 잘 접수되었어요.<br>강사님과 함께할 상담을 기대해주세요.</p>
+        </div>
+      `;
+      scrollTop();
+    }
+  </script>
+</body>
+</html>
