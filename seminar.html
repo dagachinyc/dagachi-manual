@@ -426,6 +426,76 @@
     margin-bottom: 6px;
   }
 
+  /* 기타 서술란 — 체크 시 부드럽게 등장 */
+  .etc-input {
+    animation: slideDown 0.25s ease;
+  }
+  @keyframes slideDown {
+    from { opacity: 0; transform: translateY(-6px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* 질문 추가 버튼 (26번) */
+  .btn-add-ask {
+    margin-top: 14px;
+    padding: 10px 16px;
+    background: transparent;
+    border: 1px dashed #c8bfa8;
+    border-radius: 3px;
+    color: #6b5d4a;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.15s;
+    width: 100%;
+  }
+  .btn-add-ask:hover {
+    border-color: #2c3e2c;
+    color: #2c3e2c;
+    background: #fdfaf2;
+  }
+
+  .ask-item {
+    padding-bottom: 18px;
+    margin-bottom: 18px;
+    border-bottom: 1px dashed #d4cbb8;
+    position: relative;
+  }
+  .ask-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+  .ask-item .remove-ask {
+    position: absolute;
+    top: 4px;
+    right: 0;
+    background: transparent;
+    border: none;
+    color: #8a7d68;
+    cursor: pointer;
+    font-size: 18px;
+    line-height: 1;
+    padding: 4px 8px;
+  }
+  .ask-item .remove-ask:hover { color: #6b2c2c; }
+
+  /* 검증 실패 시 강조 */
+  .question.invalid {
+    background: #fff5f0;
+    border-left: 3px solid #c0522c;
+    margin-left: -16px;
+    padding-left: 16px;
+    border-radius: 2px;
+    animation: shake 0.4s;
+  }
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-4px); }
+    75% { transform: translateX(4px); }
+  }
+
   /* ========== Saved indicator ========== */
   .saved-indicator {
     text-align: center;
@@ -554,12 +624,7 @@
       </div>
 
       <div class="question">
-        <label class="q-label"><span class="q-num">6.</span>강사가 오래 머무는 학원 / 강사 이탈을 막는 방법, 다른 캠퍼스에 묻고 싶은 것이 있다면?</label>
-        <textarea name="q_retention_question" placeholder="자유롭게 적어주세요"></textarea>
-      </div>
-
-      <div class="question">
-        <label class="q-label"><span class="q-num">7.</span>강사 운영에 대해 다른 캠퍼스에 묻고 싶거나 배우고 싶은 점이 있다면?</label>
+        <label class="q-label"><span class="q-num">6.</span>강사 운영에 대해 다른 캠퍼스에 묻고 싶거나 배우고 싶은 점이 있다면?</label>
         <textarea name="q_teacher_ops_learn" placeholder="자유롭게 적어주세요"></textarea>
       </div>
 
@@ -578,7 +643,7 @@
       </div>
 
       <div class="question">
-        <label class="q-label"><span class="q-num">8.</span>최근 1년간 신규 상담 → 등록 전환율 체감</label>
+        <label class="q-label"><span class="q-num">7.</span>최근 1년간 신규 상담 → 등록 전환율 체감</label>
         <div class="choices">
           <label class="choice radio"><input type="radio" name="q_conversion_rate" value="80% 이상"><span class="indicator"></span><span class="choice-label">80% 이상</span></label>
           <label class="choice radio"><input type="radio" name="q_conversion_rate" value="60~80%"><span class="indicator"></span><span class="choice-label">60~80%</span></label>
@@ -589,7 +654,7 @@
       </div>
 
       <div class="question">
-        <label class="q-label"><span class="q-num">9.</span>가장 부담되거나 다루기 어려운 학생 유형은?<br/><span class="q-hint">복수 선택 가능</span></label>
+        <label class="q-label"><span class="q-num">8.</span>가장 부담되거나 다루기 어려운 학생 유형은?<br/><span class="q-hint">복수 선택 가능</span></label>
         <div class="choices">
           <label class="choice checkbox"><input type="checkbox" name="q_difficult_student" value="학습 동기 부족"><span class="indicator"></span><span class="choice-label">학습 동기 부족</span></label>
           <label class="choice checkbox"><input type="checkbox" name="q_difficult_student" value="잦은 결석·지각"><span class="indicator"></span><span class="choice-label">잦은 결석·지각</span></label>
@@ -599,12 +664,16 @@
           <label class="choice checkbox"><input type="checkbox" name="q_difficult_student" value="다른 학생에게 부정적 영향"><span class="indicator"></span><span class="choice-label">다른 학생에게 부정적 영향</span></label>
           <label class="choice checkbox"><input type="checkbox" name="q_difficult_student" value="진로 갈팡질팡"><span class="indicator"></span><span class="choice-label">진로 갈팡질팡</span></label>
           <label class="choice checkbox"><input type="checkbox" name="q_difficult_student" value="강사 지시 불수용"><span class="indicator"></span><span class="choice-label">강사 지시 불수용</span></label>
-          <label class="choice checkbox"><input type="checkbox" name="q_difficult_student" value="기타"><span class="indicator"></span><span class="choice-label">기타</span></label>
+          <label class="choice checkbox"><input type="checkbox" name="q_difficult_student" value="기타" data-etc-trigger="q_difficult_student_etc"><span class="indicator"></span><span class="choice-label">기타</span></label>
+        </div>
+        <div class="subq etc-input" id="q_difficult_student_etc_wrap" style="display:none;">
+          <label>기타 내용을 적어주세요</label>
+          <input type="text" name="q_difficult_student_etc" placeholder="자유롭게 적어주세요" />
         </div>
       </div>
 
       <div class="question">
-        <label class="q-label"><span class="q-num">10.</span>가장 부담되는 학부모 컴플레인 유형은?<br/><span class="q-hint">복수 선택 가능</span></label>
+        <label class="q-label"><span class="q-num">9.</span>가장 부담되는 학부모 컴플레인 유형은?<br/><span class="q-hint">복수 선택 가능</span></label>
         <div class="choices">
           <label class="choice checkbox"><input type="checkbox" name="q_parent_complaint" value="성적/실력 향상 속도"><span class="indicator"></span><span class="choice-label">성적/실력 향상 속도</span></label>
           <label class="choice checkbox"><input type="checkbox" name="q_parent_complaint" value="강사 교체 요구"><span class="indicator"></span><span class="choice-label">강사 교체 요구</span></label>
@@ -612,12 +681,16 @@
           <label class="choice checkbox"><input type="checkbox" name="q_parent_complaint" value="다른 학생과의 갈등"><span class="indicator"></span><span class="choice-label">다른 학생과의 갈등</span></label>
           <label class="choice checkbox"><input type="checkbox" name="q_parent_complaint" value="진학 결과"><span class="indicator"></span><span class="choice-label">진학 결과</span></label>
           <label class="choice checkbox"><input type="checkbox" name="q_parent_complaint" value="출결 관리"><span class="indicator"></span><span class="choice-label">출결 관리</span></label>
-          <label class="choice checkbox"><input type="checkbox" name="q_parent_complaint" value="기타"><span class="indicator"></span><span class="choice-label">기타</span></label>
+          <label class="choice checkbox"><input type="checkbox" name="q_parent_complaint" value="기타" data-etc-trigger="q_parent_complaint_etc"><span class="indicator"></span><span class="choice-label">기타</span></label>
+        </div>
+        <div class="subq etc-input" id="q_parent_complaint_etc_wrap" style="display:none;">
+          <label>기타 내용을 적어주세요</label>
+          <input type="text" name="q_parent_complaint_etc" placeholder="자유롭게 적어주세요" />
         </div>
       </div>
 
       <div class="question">
-        <label class="q-label"><span class="q-num">11.</span>중도 이탈(드롭) 주요 사유는?<br/><span class="q-hint">복수 선택 가능</span></label>
+        <label class="q-label"><span class="q-num">10.</span>중도 이탈(드롭) 주요 사유는?<br/><span class="q-hint">복수 선택 가능</span></label>
         <div class="choices">
           <label class="choice checkbox"><input type="checkbox" name="q_dropout_reason" value="성적 부진"><span class="indicator"></span><span class="choice-label">성적 부진</span></label>
           <label class="choice checkbox"><input type="checkbox" name="q_dropout_reason" value="진로 변경"><span class="indicator"></span><span class="choice-label">진로 변경</span></label>
@@ -630,7 +703,7 @@
       </div>
 
       <div class="question">
-        <label class="q-label"><span class="q-num">12.</span>학생 이탈을 줄이기 위해 가장 효과적이었던 방법은?</label>
+        <label class="q-label"><span class="q-num">11.</span>학생 이탈을 줄이기 위해 가장 효과적이었던 방법은?</label>
         <textarea name="q_retention_method" placeholder="자유롭게 적어주세요"></textarea>
       </div>
 
@@ -649,7 +722,7 @@
       </div>
 
       <div class="question">
-        <label class="q-label"><span class="q-num">13.</span>주요 신입생 유입 채널<br/><span class="q-hint">상위 3개까지 선택해주세요</span></label>
+        <label class="q-label"><span class="q-num">12.</span>주요 신입생 유입 채널<br/><span class="q-hint">상위 3개까지 선택해주세요</span></label>
         <div class="choices">
           <label class="choice checkbox"><input type="checkbox" name="q_marketing_channel" value="입소문/소개" data-max="3"><span class="indicator"></span><span class="choice-label">입소문/소개</span></label>
           <label class="choice checkbox"><input type="checkbox" name="q_marketing_channel" value="네이버 블로그" data-max="3"><span class="indicator"></span><span class="choice-label">네이버 블로그</span></label>
@@ -660,12 +733,16 @@
           <label class="choice checkbox"><input type="checkbox" name="q_marketing_channel" value="학교 연계" data-max="3"><span class="indicator"></span><span class="choice-label">학교 연계</span></label>
           <label class="choice checkbox"><input type="checkbox" name="q_marketing_channel" value="합격 실적" data-max="3"><span class="indicator"></span><span class="choice-label">합격 실적</span></label>
           <label class="choice checkbox"><input type="checkbox" name="q_marketing_channel" value="간판·전단" data-max="3"><span class="indicator"></span><span class="choice-label">간판·전단</span></label>
-          <label class="choice checkbox"><input type="checkbox" name="q_marketing_channel" value="기타" data-max="3"><span class="indicator"></span><span class="choice-label">기타</span></label>
+          <label class="choice checkbox"><input type="checkbox" name="q_marketing_channel" value="기타" data-max="3" data-etc-trigger="q_marketing_channel_etc"><span class="indicator"></span><span class="choice-label">기타</span></label>
+        </div>
+        <div class="subq etc-input" id="q_marketing_channel_etc_wrap" style="display:none;">
+          <label>기타 내용을 적어주세요</label>
+          <input type="text" name="q_marketing_channel_etc" placeholder="자유롭게 적어주세요" />
         </div>
       </div>
 
       <div class="question">
-        <label class="q-label"><span class="q-num">14.</span>마케팅에 월 얼마 정도 투입하나요?<span class="q-optional">선택</span></label>
+        <label class="q-label"><span class="q-num">13.</span>마케팅에 월 얼마 정도 투입하나요?<span class="q-optional">선택</span></label>
         <div class="choices">
           <label class="choice radio"><input type="radio" name="q_marketing_budget" value="0원"><span class="indicator"></span><span class="choice-label">0원</span></label>
           <label class="choice radio"><input type="radio" name="q_marketing_budget" value="50만원 미만"><span class="indicator"></span><span class="choice-label">50만원 미만</span></label>
@@ -676,17 +753,17 @@
       </div>
 
       <div class="question">
-        <label class="q-label"><span class="q-num">15.</span>신입생 유치에서 가장 잘 통한다고 느끼는 한 가지는?</label>
+        <label class="q-label"><span class="q-num">14.</span>신입생 유치에서 가장 잘 통한다고 느끼는 한 가지는?</label>
         <textarea name="q_marketing_winning" placeholder="자유롭게 적어주세요"></textarea>
       </div>
 
       <div class="question">
-        <label class="q-label"><span class="q-num">16.</span>반대로, 시도해봤지만 효과가 없었거나 후회되는 마케팅은?</label>
+        <label class="q-label"><span class="q-num">15.</span>반대로, 시도해봤지만 효과가 없었거나 후회되는 마케팅은?</label>
         <textarea name="q_marketing_failed" placeholder="자유롭게 적어주세요"></textarea>
       </div>
 
       <div class="question">
-        <label class="q-label"><span class="q-num">17.</span>합격 실적을 어떻게 정리·홍보하시나요?<br/><span class="q-hint">본인 캠퍼스 방식 + 타 브랜드·타 학원의 효과적인 홍보 방법도 함께 적어주세요</span></label>
+        <label class="q-label"><span class="q-num">16.</span>합격 실적을 어떻게 정리·홍보하시나요?<br/><span class="q-hint">본인 캠퍼스 방식 + 타 브랜드·타 학원의 효과적인 홍보 방법도 함께 적어주세요</span></label>
         <textarea name="q_admission_promotion" placeholder="자유롭게 적어주세요"></textarea>
       </div>
 
@@ -705,7 +782,7 @@
       </div>
 
       <div class="question">
-        <label class="q-label"><span class="q-num">18.</span>현재 사용 중인 운영 도구<br/><span class="q-hint">복수 선택 가능</span></label>
+        <label class="q-label"><span class="q-num">17.</span>현재 사용 중인 운영 도구<br/><span class="q-hint">복수 선택 가능</span></label>
         <div class="choices">
           <label class="choice checkbox"><input type="checkbox" name="q_ops_tools" value="엑셀/구글시트"><span class="indicator"></span><span class="choice-label">엑셀/구글시트</span></label>
           <label class="choice checkbox"><input type="checkbox" name="q_ops_tools" value="학원 전용 관리프로그램(클래스팅, 알리미 등)"><span class="indicator"></span><span class="choice-label">학원 전용 관리프로그램(클래스팅, 알리미 등)</span></label>
@@ -718,12 +795,12 @@
       </div>
 
       <div class="question">
-        <label class="q-label"><span class="q-num">19.</span>현재 운영에서 "이건 자동화하거나 시스템화하고 싶다" 하는 업무는?</label>
+        <label class="q-label"><span class="q-num">18.</span>현재 운영에서 "이건 자동화하거나 시스템화하고 싶다" 하는 업무는?</label>
         <textarea name="q_want_automate" placeholder="자유롭게 적어주세요"></textarea>
       </div>
 
       <div class="question">
-        <label class="q-label"><span class="q-num">20.</span>AI·자동화 도구 활용 경험은?</label>
+        <label class="q-label"><span class="q-num">19.</span>AI·자동화 도구 활용 경험은?</label>
         <div class="choices">
           <label class="choice radio"><input type="radio" name="q_ai_experience" value="적극 활용 중"><span class="indicator"></span><span class="choice-label">적극 활용 중</span></label>
           <label class="choice radio"><input type="radio" name="q_ai_experience" value="일부 활용"><span class="indicator"></span><span class="choice-label">일부 활용</span></label>
@@ -734,7 +811,7 @@
       </div>
 
       <div class="question">
-        <label class="q-label"><span class="q-num">21.</span>입시미술학원이 아닌 다른 종류의 학원이나 다른 브랜드의 운영 시스템·디지털화 중, 좋게 봤고 도입하고 싶었던 게 있다면?</label>
+        <label class="q-label"><span class="q-num">20.</span>입시미술학원이 아닌 다른 종류의 학원이나 다른 브랜드의 운영 시스템·디지털화 중, 좋게 봤고 도입하고 싶었던 게 있다면?</label>
         <textarea name="q_other_brand_system" placeholder="자유롭게 적어주세요"></textarea>
       </div>
 
@@ -753,7 +830,7 @@
       </div>
 
       <div class="question">
-        <label class="q-label"><span class="q-num">22.</span>강사들과의 수업 세미나는 월 몇 회 정도 진행되나요?</label>
+        <label class="q-label"><span class="q-num">21.</span>강사들과의 수업 세미나는 월 몇 회 정도 진행되나요?</label>
         <div class="choices">
           <label class="choice radio"><input type="radio" name="q_seminar_freq" value="0회 (별도 미진행)"><span class="indicator"></span><span class="choice-label">0회 (별도 미진행)</span></label>
           <label class="choice radio"><input type="radio" name="q_seminar_freq" value="월 1회"><span class="indicator"></span><span class="choice-label">월 1회</span></label>
@@ -764,12 +841,12 @@
       </div>
 
       <div class="question">
-        <label class="q-label"><span class="q-num">23.</span>수업 세미나 준비는 어느 정도 깊이로 진행되나요?<br/><span class="q-hint">예: 누가 준비하는지, 자료 형태, 소요 시간, 발표/토론 방식 등</span></label>
+        <label class="q-label"><span class="q-num">22.</span>수업 세미나 준비는 어느 정도 깊이로 진행되나요?<br/><span class="q-hint">예: 누가 준비하는지, 자료 형태, 소요 시간, 발표/토론 방식 등</span></label>
         <textarea name="q_seminar_depth" placeholder="자유롭게 적어주세요"></textarea>
       </div>
 
       <div class="question">
-        <label class="q-label"><span class="q-num">24.</span>연구작은 얼마나 진행하시나요?</label>
+        <label class="q-label"><span class="q-num">23.</span>연구작은 얼마나 진행하시나요?</label>
         <div class="choices grid">
           <label class="choice radio"><input type="radio" name="q_research_freq" value="거의 없음"><span class="indicator"></span><span class="choice-label">거의 없음</span></label>
           <label class="choice radio"><input type="radio" name="q_research_freq" value="연 1회"><span class="indicator"></span><span class="choice-label">연 1회</span></label>
@@ -782,12 +859,12 @@
       </div>
 
       <div class="question">
-        <label class="q-label"><span class="q-num">25.</span>강사들이 세미나·연구작 등 교육 활동에 더 적극적으로 참여하도록 만들기 위한 본인만의 노하우가 있다면?</label>
+        <label class="q-label"><span class="q-num">24.</span>강사들이 세미나·연구작 등 교육 활동에 더 적극적으로 참여하도록 만들기 위한 본인만의 노하우가 있다면?</label>
         <textarea name="q_teacher_engagement" placeholder="자유롭게 적어주세요"></textarea>
       </div>
 
       <div class="question">
-        <label class="q-label"><span class="q-num">26.</span>강사 교육·연구작 운영에서 현재 가장 큰 고민이나 어려움은?<span class="q-optional">선택</span></label>
+        <label class="q-label"><span class="q-num">25.</span>강사 교육·연구작 운영에서 현재 가장 큰 고민이나 어려움은?<span class="q-optional">선택</span></label>
         <textarea name="q_teacher_edu_concern" placeholder="자유롭게 적어주세요"></textarea>
       </div>
 
@@ -806,26 +883,30 @@
       </div>
 
       <div class="question">
-        <label class="q-label"><span class="q-num">27.</span>이번 세미나에서 다른 캠퍼스 원장님께 꼭 묻고 싶은 질문이 있다면?</label>
-        <div class="subq">
-          <label>어느 캠퍼스에 묻고 싶으신가요?</label>
-          <select name="q_ask_target_campus">
-            <option value="">선택해주세요</option>
-            <option>전 캠퍼스</option>
-            <option>강남</option><option>홍대</option><option>대구</option>
-            <option>다산</option><option>호평</option><option>구리</option>
-            <option>천안</option><option>미사</option><option>청주</option>
-            <option>특정 캠퍼스 없음</option>
-          </select>
+        <label class="q-label"><span class="q-num">26.</span>이번 세미나에서 다른 캠퍼스 원장님께 꼭 묻고 싶은 질문이 있다면?<br/><span class="q-hint">여러 캠퍼스에 묻고 싶다면 아래 "+ 질문 추가" 버튼으로 추가하세요</span></label>
+        <div id="ask-question-list">
+          <div class="ask-item" data-idx="0">
+            <div class="subq">
+              <label>어느 캠퍼스에 묻고 싶으신가요?</label>
+              <select name="q_ask_target_campus_0" class="ask-campus-select">
+                <option value="">선택해주세요</option>
+                <option>강남</option><option>홍대</option><option>대구</option>
+                <option>다산</option><option>호평</option><option>구리</option>
+                <option>천안</option><option>미사</option><option>청주</option>
+                <option>특정 캠퍼스 없음</option>
+              </select>
+            </div>
+            <div class="subq">
+              <label>묻고 싶은 질문</label>
+              <textarea name="q_ask_question_0" class="ask-question-text" placeholder="자유롭게 적어주세요"></textarea>
+            </div>
+          </div>
         </div>
-        <div class="subq">
-          <label>묻고 싶은 질문 1개</label>
-          <textarea name="q_ask_question" placeholder="자유롭게 적어주세요"></textarea>
-        </div>
+        <button type="button" id="add-ask-btn" class="btn-add-ask">＋ 질문 추가</button>
       </div>
 
       <div class="question">
-        <label class="q-label"><span class="q-num">28.</span>본인 캠퍼스가 잘하고 있다고 생각해 다른 곳과 공유할 수 있는 것이 있다면?<br/><span class="q-hint">거창하지 않아도 좋습니다. 작은 노하우, 시도 중인 실험 모두 환영합니다</span></label>
+        <label class="q-label"><span class="q-num">27.</span>본인 캠퍼스가 잘하고 있다고 생각해 다른 곳과 공유할 수 있는 것이 있다면?<br/><span class="q-hint">거창하지 않아도 좋습니다. 작은 노하우, 시도 중인 실험 모두 환영합니다</span></label>
         <textarea name="q_our_strength" placeholder="자유롭게 적어주세요"></textarea>
       </div>
 
@@ -844,22 +925,22 @@
       </div>
 
       <div class="question">
-        <label class="q-label"><span class="q-num">29.</span>다같이 브랜드가 앞으로 나아가야 할 방향에 대한 의견이 있다면?</label>
+        <label class="q-label"><span class="q-num">28.</span>다같이 브랜드가 앞으로 나아가야 할 방향에 대한 의견이 있다면?</label>
         <textarea name="q_brand_direction" placeholder="자유롭게 적어주세요"></textarea>
       </div>
 
       <div class="question">
-        <label class="q-label"><span class="q-num">30.</span>다같이의 세미나 및 연합 운영에 아쉬운 점이나 개선되었으면 하는 점은?<span class="q-optional">선택</span></label>
+        <label class="q-label"><span class="q-num">29.</span>다같이의 세미나 및 연합 운영에 아쉬운 점이나 개선되었으면 하는 점은?<span class="q-optional">선택</span></label>
         <textarea name="q_brand_concern" placeholder="자유롭게 적어주세요"></textarea>
       </div>
 
       <div class="question">
-        <label class="q-label"><span class="q-num">31.</span>연합평가에 대한 의견<br/><span class="q-hint">현재 방식의 좋은 점, 개선했으면 하는 점, 새로 시도해보고 싶은 방식 등</span></label>
+        <label class="q-label"><span class="q-num">30.</span>연합평가에 대한 의견<br/><span class="q-hint">현재 방식의 좋은 점, 개선했으면 하는 점, 새로 시도해보고 싶은 방식 등</span></label>
         <textarea name="q_evaluation_opinion" placeholder="자유롭게 적어주세요"></textarea>
       </div>
 
       <div class="question">
-        <label class="q-label"><span class="q-num">32.</span>연합으로 함께 진행하면 좋을 활동이 있다면?<br/><span class="q-hint">복수 선택 가능</span></label>
+        <label class="q-label"><span class="q-num">31.</span>연합으로 함께 진행하면 좋을 활동이 있다면?<br/><span class="q-hint">복수 선택 가능</span></label>
         <div class="choices">
           <label class="choice checkbox"><input type="checkbox" name="q_joint_activities" value="공동 합격작품집 제작"><span class="indicator"></span><span class="choice-label">공동 합격작품집 제작</span></label>
           <label class="choice checkbox"><input type="checkbox" name="q_joint_activities" value="강사 교류·연수"><span class="indicator"></span><span class="choice-label">강사 교류·연수</span></label>
@@ -876,7 +957,7 @@
       </div>
 
       <div class="question">
-        <label class="q-label"><span class="q-num">33.</span>매년 연합평가가 진행되면 좋을 것 같은 월은?<br/><span class="q-hint">복수 선택 가능</span></label>
+        <label class="q-label"><span class="q-num">32.</span>매년 연합평가가 진행되면 좋을 것 같은 월은?<br/><span class="q-hint">복수 선택 가능</span></label>
         <div class="choices months">
           <label class="choice checkbox"><input type="checkbox" name="q_eval_months" value="1월"><span class="indicator"></span><span class="choice-label">1월</span></label>
           <label class="choice checkbox"><input type="checkbox" name="q_eval_months" value="2월"><span class="indicator"></span><span class="choice-label">2월</span></label>
@@ -894,7 +975,7 @@
       </div>
 
       <div class="question">
-        <label class="q-label"><span class="q-num">34.</span>마지막으로, 이번 세미나에 바라는 점이나 자유롭게 하고 싶은 말씀<span class="q-optional">선택</span></label>
+        <label class="q-label"><span class="q-num">33.</span>마지막으로, 이번 세미나에 바라는 점이나 자유롭게 하고 싶은 말씀<span class="q-optional">선택</span></label>
         <textarea name="q_seminar_wish" placeholder="자유롭게 적어주세요"></textarea>
       </div>
 
@@ -922,7 +1003,7 @@
 
 <script>
 // ========== 설정 ==========
-const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/REPLACE_WITH_YOUR_DEPLOYMENT_ID/exec';
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzgcOzy0cP7FW3cHAFCXe_WhC971FTMKnoM4DgZF2PUWHJQbUaFBgs4e1YWg6LmJcKBEw/exec';
 const STORAGE_KEY = 'dagachi_seminar_survey_v1';
 
 // ========== 상태 ==========
@@ -974,6 +1055,61 @@ function validateCurrentPage() {
   return true;
 }
 
+// ========== 기타 서술란 토글 ==========
+document.querySelectorAll('[data-etc-trigger]').forEach(cb => {
+  cb.addEventListener('change', e => {
+    const wrapId = e.target.dataset.etcTrigger + '_wrap';
+    const wrap = document.getElementById(wrapId);
+    if (!wrap) return;
+    wrap.style.display = e.target.checked ? 'block' : 'none';
+    if (!e.target.checked) {
+      const input = wrap.querySelector('input, textarea');
+      if (input) input.value = '';
+    }
+  });
+});
+
+// ========== 26번 질문 추가/삭제 ==========
+let askIdx = 1; // 0은 기본, 다음부터 1
+const askList = document.getElementById('ask-question-list');
+const addAskBtn = document.getElementById('add-ask-btn');
+
+function buildAskItem(idx) {
+  const div = document.createElement('div');
+  div.className = 'ask-item';
+  div.dataset.idx = idx;
+  div.innerHTML = `
+    <button type="button" class="remove-ask" aria-label="이 질문 삭제">×</button>
+    <div class="subq">
+      <label>어느 캠퍼스에 묻고 싶으신가요?</label>
+      <select name="q_ask_target_campus_${idx}" class="ask-campus-select">
+        <option value="">선택해주세요</option>
+        <option>강남</option><option>홍대</option><option>대구</option>
+        <option>다산</option><option>호평</option><option>구리</option>
+        <option>천안</option><option>미사</option><option>청주</option>
+        <option>특정 캠퍼스 없음</option>
+      </select>
+    </div>
+    <div class="subq">
+      <label>묻고 싶은 질문</label>
+      <textarea name="q_ask_question_${idx}" class="ask-question-text" placeholder="자유롭게 적어주세요"></textarea>
+    </div>
+  `;
+  return div;
+}
+
+if (addAskBtn) {
+  addAskBtn.addEventListener('click', () => {
+    const item = buildAskItem(askIdx++);
+    askList.appendChild(item);
+    item.querySelector('.remove-ask').addEventListener('click', () => {
+      item.remove();
+      saveToStorage();
+    });
+    saveToStorage();
+  });
+}
+
 // 버튼 핸들러
 document.querySelectorAll('[data-action]').forEach(btn => {
   btn.addEventListener('click', e => {
@@ -1003,9 +1139,28 @@ document.querySelectorAll('input[type="checkbox"][data-max]').forEach(cb => {
   });
 });
 
+// localStorage용 — 26번 묶음 처리 안 한 raw 데이터
+function collectRawFormData() {
+  const form = document.getElementById('survey-form');
+  const data = {};
+  form.querySelectorAll('input[type="text"], textarea, select').forEach(el => {
+    if (el.name) data[el.name] = el.value.trim();
+  });
+  form.querySelectorAll('input[type="radio"]:checked').forEach(el => {
+    data[el.name] = el.value;
+  });
+  const cbNames = new Set();
+  form.querySelectorAll('input[type="checkbox"]').forEach(el => cbNames.add(el.name));
+  cbNames.forEach(name => {
+    const checked = Array.from(form.querySelectorAll(`input[type="checkbox"][name="${name}"]:checked`));
+    data[name] = checked.map(c => c.value);
+  });
+  return data;
+}
+
 // ========== localStorage ==========
 function saveToStorage() {
-  const data = collectFormData();
+  const data = collectRawFormData();
   try {
     localStorage.setItem(STORAGE_KEY, JSON.stringify({
       data: data,
@@ -1025,6 +1180,27 @@ function loadFromStorage() {
     const { data, currentIdx: savedIdx } = JSON.parse(raw);
     if (!data) return false;
 
+    // 26번 동적 항목 — 묶음 데이터 복원
+    // q_ask_target_campus / q_ask_question는 통합 저장 형태일 수 있어 무시
+    // 개별 키(q_ask_target_campus_0, q_ask_question_0, ...)를 우선 복원
+    const askIndices = new Set();
+    Object.keys(data).forEach(k => {
+      const m = k.match(/^q_ask_target_campus_(\d+)$/);
+      if (m) askIndices.add(parseInt(m[1]));
+    });
+    // 기본은 0번만 있으므로, 1번 이상은 동적으로 추가
+    Array.from(askIndices).sort((a,b)=>a-b).forEach(idx => {
+      if (idx > 0) {
+        const item = buildAskItem(idx);
+        askList.appendChild(item);
+        item.querySelector('.remove-ask').addEventListener('click', () => {
+          item.remove();
+          saveToStorage();
+        });
+        if (idx >= askIdx) askIdx = idx + 1;
+      }
+    });
+
     // 텍스트/select
     Object.entries(data).forEach(([key, value]) => {
       if (Array.isArray(value)) {
@@ -1042,6 +1218,14 @@ function loadFromStorage() {
         } else if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA' || el.tagName === 'SELECT') {
           el.value = value;
         }
+      }
+    });
+
+    // 기타 체크박스 체크돼있으면 서술란 표시
+    document.querySelectorAll('[data-etc-trigger]').forEach(cb => {
+      if (cb.checked) {
+        const wrap = document.getElementById(cb.dataset.etcTrigger + '_wrap');
+        if (wrap) wrap.style.display = 'block';
       }
     });
 
@@ -1102,15 +1286,30 @@ function collectFormData() {
     data[name] = checked.map(c => c.value);
   });
 
+  // 26번 동적 질문들을 하나의 묶음 문자열로 합치기
+  // q_ask_target_campus_0, q_ask_question_0, q_ask_target_campus_1, ... → 묶어서 저장
+  const askPairs = [];
+  Object.keys(data).filter(k => k.startsWith('q_ask_target_campus_')).forEach(key => {
+    const idx = key.replace('q_ask_target_campus_', '');
+    const campus = data[key];
+    const question = data['q_ask_question_' + idx];
+    if (campus || question) {
+      askPairs.push(`[${campus || '캠퍼스 미지정'}] ${question || '(질문 미작성)'}`);
+    }
+    // 개별 키 제거
+    delete data[key];
+    delete data['q_ask_question_' + idx];
+  });
+  data.q_ask_target_campus = askPairs.map(p => p.match(/\[(.*?)\]/)?.[1] || '').filter(Boolean).join(' / ');
+  data.q_ask_question = askPairs.join('\n\n');
+
   return data;
 }
 
 // ========== Submit ==========
 async function submitForm() {
-  // 최종 검증 (Part 0만)
-  showPage(0);
-  if (!validateCurrentPage()) return;
-  showPage(totalPages - 1);
+  // 최종 검증 (Part 0만 — 캠퍼스/역할/이름 필수)
+  if (!validateFinalSubmission()) return;
 
   const data = collectFormData();
 
@@ -1118,12 +1317,25 @@ async function submitForm() {
   submitBtn.disabled = true;
   submitBtn.textContent = '제출 중...';
 
+  // APPS_SCRIPT_URL 체크
+  if (APPS_SCRIPT_URL.includes('REPLACE_WITH_YOUR_DEPLOYMENT_ID')) {
+    showToast('서버 URL이 설정되지 않았습니다. 관리자에게 문의해주세요.', 'error');
+    submitBtn.disabled = false;
+    submitBtn.textContent = '제출하기';
+    return;
+  }
+
   try {
     const res = await fetch(APPS_SCRIPT_URL, {
       method: 'POST',
       headers: { 'Content-Type': 'text/plain;charset=utf-8' },
       body: JSON.stringify({ action: 'submit', payload: data })
     });
+
+    if (!res.ok) {
+      throw new Error('서버 응답 오류 (HTTP ' + res.status + ')');
+    }
+
     const result = await res.json();
 
     if (result.ok) {
@@ -1136,10 +1348,31 @@ async function submitForm() {
       throw new Error(result.error || '제출 실패');
     }
   } catch (err) {
-    showToast('제출 중 오류: ' + err.message, 'error');
+    let msg = err.message;
+    if (msg.includes('Failed to fetch') || msg.includes('NetworkError')) {
+      msg = '서버 연결 실패. 인터넷 연결을 확인하시거나, 관리자에게 문의해주세요.';
+    }
+    showToast('제출 오류: ' + msg, 'error');
     submitBtn.disabled = false;
     submitBtn.textContent = '제출하기';
   }
+}
+
+// 제출 전 Part 0 검증 (해당 페이지로 이동시킴)
+function validateFinalSubmission() {
+  const page0 = pages[0];
+  const campus = page0.querySelector('select[name="campus"]').value;
+  const role = page0.querySelector('input[name="role"]:checked');
+  const name = page0.querySelector('input[name="name"]').value.trim();
+  if (!campus || !role || !name) {
+    showPage(0);
+    setTimeout(() => {
+      const missing = !campus ? '소속 캠퍼스' : !role ? '응답자 역할' : '이름';
+      showToast(missing + '을(를) 입력해주세요', 'error');
+    }, 400);
+    return false;
+  }
+  return true;
 }
 
 // ========== Toast ==========
