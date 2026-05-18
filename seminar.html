@@ -1,0 +1,1182 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>다같이미술학원 전국 운영세미나 사전 설문</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@300;400;500;700&family=Nanum+Myeongjo:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+  /* ========== Reset & Base ========== */
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: #f3efe7;
+    color: #1a1815;
+    line-height: 1.6;
+    min-height: 100vh;
+    overflow-x: hidden;
+    background-image:
+      radial-gradient(circle at 20% 30%, rgba(180, 140, 90, 0.04) 0%, transparent 50%),
+      radial-gradient(circle at 80% 70%, rgba(60, 80, 60, 0.03) 0%, transparent 50%);
+  }
+
+  /* 종이 질감 */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' /></filter><rect width='200' height='200' filter='url(%23n)' opacity='0.06'/></svg>");
+    pointer-events: none;
+    z-index: 1;
+    mix-blend-mode: multiply;
+  }
+
+  /* ========== Layout ========== */
+  .container {
+    position: relative;
+    z-index: 2;
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 24px 20px 60px;
+  }
+
+  /* ========== Header ========== */
+  header {
+    text-align: center;
+    padding: 24px 0 32px;
+    border-bottom: 1px solid #d4cbb8;
+    margin-bottom: 28px;
+  }
+  .brand {
+    font-family: 'Nanum Myeongjo', serif;
+    font-weight: 800;
+    font-size: 13px;
+    letter-spacing: 0.3em;
+    color: #6b5d4a;
+    margin-bottom: 14px;
+  }
+  .title {
+    font-family: 'Nanum Myeongjo', serif;
+    font-weight: 800;
+    font-size: 26px;
+    line-height: 1.35;
+    color: #1a1815;
+    margin-bottom: 8px;
+    letter-spacing: -0.01em;
+  }
+  .subtitle {
+    font-size: 13px;
+    color: #6b5d4a;
+    font-weight: 400;
+  }
+
+  /* ========== Progress ========== */
+  .progress-wrap {
+    margin-bottom: 28px;
+  }
+  .progress-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    color: #6b5d4a;
+    margin-bottom: 8px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+  }
+  .progress-meta .part-name {
+    color: #1a1815;
+    font-weight: 700;
+  }
+  .progress-bar {
+    height: 3px;
+    background: #e0d8c5;
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #2c3e2c, #4a5d3a);
+    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    width: 0%;
+  }
+
+  /* ========== Intro ========== */
+  .intro {
+    background: rgba(255, 253, 247, 0.6);
+    border: 1px solid #d4cbb8;
+    border-radius: 4px;
+    padding: 24px 22px;
+    margin-bottom: 28px;
+    font-size: 14px;
+    line-height: 1.8;
+    color: #3a3530;
+  }
+  .intro p + p { margin-top: 12px; }
+  .intro .em {
+    font-family: 'Nanum Myeongjo', serif;
+    font-weight: 700;
+    color: #1a1815;
+  }
+  .intro .meta-line {
+    margin-top: 16px;
+    padding-top: 14px;
+    border-top: 1px dashed #c8bfa8;
+    font-size: 12px;
+    color: #6b5d4a;
+  }
+
+  /* ========== Card / Page ========== */
+  .page {
+    background: rgba(255, 253, 247, 0.7);
+    border: 1px solid #d4cbb8;
+    border-radius: 4px;
+    padding: 30px 24px;
+    margin-bottom: 24px;
+    display: none;
+    animation: fadeIn 0.4s ease;
+  }
+  .page.active { display: block; }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .page-header {
+    margin-bottom: 28px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid #e0d8c5;
+  }
+  .page-no {
+    font-family: 'Nanum Myeongjo', serif;
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: #6b5d4a;
+    margin-bottom: 6px;
+  }
+  .page-title {
+    font-family: 'Nanum Myeongjo', serif;
+    font-weight: 800;
+    font-size: 22px;
+    color: #1a1815;
+    margin-bottom: 8px;
+  }
+  .page-desc {
+    font-size: 13px;
+    color: #6b5d4a;
+    line-height: 1.7;
+  }
+
+  /* ========== Question ========== */
+  .question {
+    margin-bottom: 28px;
+  }
+  .question:last-child { margin-bottom: 0; }
+  .q-label {
+    display: block;
+    font-size: 15px;
+    font-weight: 500;
+    color: #1a1815;
+    margin-bottom: 12px;
+    line-height: 1.55;
+  }
+  .q-label .q-num {
+    font-family: 'Nanum Myeongjo', serif;
+    font-weight: 800;
+    color: #2c3e2c;
+    margin-right: 6px;
+  }
+  .q-hint {
+    display: block;
+    font-size: 12px;
+    color: #8a7d68;
+    margin-top: -6px;
+    margin-bottom: 12px;
+    line-height: 1.6;
+  }
+  .q-optional {
+    display: inline-block;
+    background: #e0d8c5;
+    color: #6b5d4a;
+    font-size: 10px;
+    padding: 2px 6px;
+    border-radius: 2px;
+    margin-left: 6px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    vertical-align: middle;
+  }
+
+  /* ========== Inputs ========== */
+  input[type="text"],
+  textarea,
+  select {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #c8bfa8;
+    border-radius: 3px;
+    background: #fdfaf2;
+    font-family: inherit;
+    font-size: 14px;
+    color: #1a1815;
+    transition: border-color 0.2s, background 0.2s;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+  input[type="text"]:focus,
+  textarea:focus,
+  select:focus {
+    outline: none;
+    border-color: #2c3e2c;
+    background: #ffffff;
+  }
+  textarea {
+    min-height: 100px;
+    resize: vertical;
+    line-height: 1.6;
+  }
+  select {
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path fill='%236b5d4a' d='M6 8L0 0h12z'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    padding-right: 36px;
+  }
+
+  /* ========== Choice (radio/checkbox) ========== */
+  .choices {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .choices.grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+  .choices.months {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+  }
+  .choice {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 12px 14px;
+    background: #fdfaf2;
+    border: 1px solid #c8bfa8;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: all 0.15s;
+    font-size: 14px;
+    line-height: 1.5;
+    user-select: none;
+  }
+  .choice:hover { background: #fff9ec; }
+  .choice input { display: none; }
+  .choice .indicator {
+    flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+    border: 1.5px solid #c8bfa8;
+    background: #ffffff;
+    margin-top: 1px;
+    position: relative;
+    transition: all 0.15s;
+  }
+  .choice.radio .indicator { border-radius: 50%; }
+  .choice.checkbox .indicator { border-radius: 2px; }
+
+  .choice input:checked + .indicator {
+    background: #2c3e2c;
+    border-color: #2c3e2c;
+  }
+  .choice.radio input:checked + .indicator::after {
+    content: '';
+    position: absolute;
+    inset: 4px;
+    background: #ffffff;
+    border-radius: 50%;
+  }
+  .choice.checkbox input:checked + .indicator::after {
+    content: '';
+    position: absolute;
+    left: 5px;
+    top: 1px;
+    width: 5px;
+    height: 9px;
+    border: solid #ffffff;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+  }
+  .choice:has(input:checked) {
+    background: #f5f0e0;
+    border-color: #2c3e2c;
+  }
+  .choice .choice-label {
+    flex: 1;
+  }
+
+  /* ========== Nav ========== */
+  .nav {
+    display: flex;
+    gap: 12px;
+    margin-top: 12px;
+  }
+  .btn {
+    flex: 1;
+    padding: 16px 20px;
+    border: none;
+    border-radius: 3px;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s;
+    letter-spacing: 0.02em;
+  }
+  .btn-prev {
+    background: transparent;
+    color: #6b5d4a;
+    border: 1px solid #c8bfa8;
+  }
+  .btn-prev:hover { background: #ede5d2; }
+  .btn-next, .btn-submit {
+    background: #1a1815;
+    color: #f3efe7;
+  }
+  .btn-next:hover, .btn-submit:hover { background: #2c3e2c; }
+  .btn-submit { background: #2c3e2c; }
+  .btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+
+  /* ========== Toast / Modal ========== */
+  .toast {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%) translateY(120%);
+    background: #1a1815;
+    color: #f3efe7;
+    padding: 12px 20px;
+    border-radius: 3px;
+    font-size: 13px;
+    font-weight: 500;
+    z-index: 100;
+    transition: transform 0.3s;
+    max-width: 90%;
+    text-align: center;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+  }
+  .toast.show { transform: translateX(-50%) translateY(0); }
+  .toast.error { background: #6b2c2c; }
+
+  /* 완료 화면 */
+  .done {
+    text-align: center;
+    padding: 60px 20px;
+    background: rgba(255, 253, 247, 0.7);
+    border: 1px solid #d4cbb8;
+    border-radius: 4px;
+    display: none;
+  }
+  .done.active { display: block; }
+  .done-mark {
+    font-family: 'Nanum Myeongjo', serif;
+    font-size: 64px;
+    color: #2c3e2c;
+    margin-bottom: 20px;
+    line-height: 1;
+  }
+  .done h2 {
+    font-family: 'Nanum Myeongjo', serif;
+    font-weight: 800;
+    font-size: 24px;
+    color: #1a1815;
+    margin-bottom: 14px;
+  }
+  .done p {
+    font-size: 14px;
+    color: #6b5d4a;
+    line-height: 1.7;
+  }
+  .done .signature {
+    margin-top: 32px;
+    padding-top: 24px;
+    border-top: 1px dashed #c8bfa8;
+    font-family: 'Nanum Myeongjo', serif;
+    font-size: 13px;
+    color: #8a7d68;
+    letter-spacing: 0.05em;
+  }
+
+  /* ========== Subquestion (10번/27번 드롭다운+서술) ========== */
+  .subq {
+    margin-top: 12px;
+  }
+  .subq label {
+    display: block;
+    font-size: 13px;
+    color: #6b5d4a;
+    margin-bottom: 6px;
+  }
+
+  /* ========== Saved indicator ========== */
+  .saved-indicator {
+    text-align: center;
+    font-size: 11px;
+    color: #8a7d68;
+    margin-top: 10px;
+    letter-spacing: 0.05em;
+  }
+
+  /* ========== Mobile tweaks ========== */
+  @media (max-width: 480px) {
+    .container { padding: 16px 14px 60px; }
+    .title { font-size: 22px; }
+    .page { padding: 24px 18px; }
+    .page-title { font-size: 19px; }
+    .choices.grid { grid-template-columns: 1fr; }
+    .choices.months { grid-template-columns: repeat(3, 1fr); }
+    .q-label { font-size: 14px; }
+  }
+
+  /* 인쇄 미리보기 등에서 가독성 유지 */
+  @media print {
+    body::before { display: none; }
+    .nav, .progress-wrap { display: none; }
+    .page { display: block !important; page-break-after: always; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <header>
+    <div class="brand">다·같·이·미·술·학·원</div>
+    <div class="title">전국 운영세미나<br/>사전 설문</div>
+    <div class="subtitle">2026 · 다같이 캠퍼스 운영진 의견 조사</div>
+  </header>
+
+  <!-- Intro -->
+  <div class="intro" id="intro-card">
+    <p>평소 입시·그림 얘기는 많이 나눴지만, 정작 <span class="em">"학원을 운영하는 사람"</span>으로서의 고민은 나눌 자리가 없었습니다.</p>
+    <p>이번 세미나에서 진짜 도움이 되는 시간을 만들기 위해, 솔직한 이야기를 부탁드립니다.</p>
+    <div class="meta-line">
+      예상 응답 시간 · 약 15~20분<br/>
+      ※ 작성 중인 내용은 브라우저에 자동 저장됩니다
+    </div>
+  </div>
+
+  <!-- Progress -->
+  <div class="progress-wrap" id="progress-wrap" style="display:none;">
+    <div class="progress-meta">
+      <span><span id="part-current">1</span> / <span id="part-total">8</span></span>
+      <span class="part-name" id="part-name"></span>
+    </div>
+    <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+  </div>
+
+  <!-- Form -->
+  <form id="survey-form" autocomplete="off">
+
+    <!-- PART 0 (시작 페이지에 통합) -->
+    <div class="page active" data-part="시작" data-part-no="0">
+      <div class="page-header">
+        <div class="page-no">PART · 시작하기 전에</div>
+        <div class="page-title">기본 정보</div>
+        <div class="page-desc">먼저 응답자 정보부터 알려주세요.</div>
+      </div>
+
+      <div class="question">
+        <label class="q-label"><span class="q-num">1.</span>소속 캠퍼스</label>
+        <select name="campus" required>
+          <option value="">선택해주세요</option>
+          <option>강남</option><option>홍대</option><option>대구</option>
+          <option>다산</option><option>호평</option><option>구리</option>
+          <option>천안</option><option>미사</option><option>청주</option>
+        </select>
+      </div>
+
+      <div class="question">
+        <label class="q-label"><span class="q-num">2.</span>응답자 역할</label>
+        <div class="choices grid" data-input-name="role">
+          <label class="choice radio"><input type="radio" name="role" value="원장"><span class="indicator"></span><span class="choice-label">원장</span></label>
+          <label class="choice radio"><input type="radio" name="role" value="부원장"><span class="indicator"></span><span class="choice-label">부원장</span></label>
+          <label class="choice radio"><input type="radio" name="role" value="실장"><span class="indicator"></span><span class="choice-label">실장</span></label>
+        </div>
+      </div>
+
+      <div class="question">
+        <label class="q-label"><span class="q-num">3.</span>이름</label>
+        <input type="text" name="name" placeholder="이름을 입력해주세요" required />
+      </div>
+
+      <div class="nav">
+        <button type="button" class="btn btn-next" data-action="next">다음 →</button>
+      </div>
+    </div>
+
+    <!-- PART 1. 강사 운영 -->
+    <div class="page" data-part="강사 운영·관리" data-part-no="1">
+      <div class="page-header">
+        <div class="page-no">PART 01 · 강사 운영·관리</div>
+        <div class="page-title">강사 이야기</div>
+        <div class="page-desc">강사 채용부터 유지, 다른 캠퍼스의 노하우까지.</div>
+      </div>
+
+      <div class="question">
+        <label class="q-label"><span class="q-num">4.</span>강사 채용에서 가장 어려운 점은?<br/><span class="q-hint">복수 선택 가능</span></label>
+        <div class="choices">
+          <label class="choice checkbox"><input type="checkbox" name="q_hire_difficulty" value="지원자 자체가 부족"><span class="indicator"></span><span class="choice-label">지원자 자체가 부족</span></label>
+          <label class="choice checkbox"><input type="checkbox" name="q_hire_difficulty" value="실력 검증의 어려움"><span class="indicator"></span><span class="choice-label">실력 검증의 어려움</span></label>
+          <label class="choice checkbox"><input type="checkbox" name="q_hire_difficulty" value="인성·태도 파악 어려움"><span class="indicator"></span><span class="choice-label">인성·태도 파악 어려움</span></label>
+          <label class="choice checkbox"><input type="checkbox" name="q_hire_difficulty" value="급여 조건 맞추기"><span class="indicator"></span><span class="choice-label">급여 조건 맞추기</span></label>
+          <label class="choice checkbox"><input type="checkbox" name="q_hire_difficulty" value="지역적 한계"><span class="indicator"></span><span class="choice-label">지역적 한계</span></label>
+          <label class="choice checkbox"><input type="checkbox" name="q_hire_difficulty" value="이탈 우려"><span class="indicator"></span><span class="choice-label">이탈 우려</span></label>
+          <label class="choice checkbox"><input type="checkbox" name="q_hire_difficulty" value="기타"><span class="indicator"></span><span class="choice-label">기타</span></label>
+        </div>
+      </div>
+
+      <div class="question">
+        <label class="q-label"><span class="q-num">5.</span>강사 이탈 빈도는?</label>
+        <div class="choices">
+          <label class="choice radio"><input type="radio" name="q_teacher_turnover" value="거의 없음"><span class="indicator"></span><span class="choice-label">거의 없음</span></label>
+          <label class="choice radio"><input type="radio" name="q_teacher_turnover" value="1년에 1~2명"><span class="indicator"></span><span class="choice-label">1년에 1~2명</span></label>
+          <label class="choice radio"><input type="radio" name="q_teacher_turnover" value="1년에 3명 이상"><span class="indicator"></span><span class="choice-label">1년에 3명 이상</span></label>
+          <label class="choice radio"><input type="radio" name="q_teacher_turnover" value="자주 있음"><span class="indicator"></span><span class="choice-label">자주 있음</span></label>
+        </div>
+      </div>
+
+      <div class="question">
+        <label class="q-label"><span class="q-num">6.</span>강사가 오래 머무는 학원 / 강사 이탈을 막는 방법, 다른 캠퍼스에 묻고 싶은 것이 있다면?</label>
+        <textarea name="q_retention_question" placeholder="자유롭게 적어주세요"></textarea>
+      </div>
+
+      <div class="question">
+        <label class="q-label"><span class="q-num">7.</span>강사 운영에 대해 다른 캠퍼스에 묻고 싶거나 배우고 싶은 점이 있다면?</label>
+        <textarea name="q_teacher_ops_learn" placeholder="자유롭게 적어주세요"></textarea>
+      </div>
+
+      <div class="nav">
+        <button type="button" class="btn btn-prev" data-action="prev">← 이전</button>
+        <button type="button" class="btn btn-next" data-action="next">다음 →</button>
+      </div>
+    </div>
+
+    <!-- PART 2. 학생·학부모 -->
+    <div class="page" data-part="학생·학부모 관리" data-part-no="2">
+      <div class="page-header">
+        <div class="page-no">PART 02 · 학생·학부모 관리</div>
+        <div class="page-title">상담실의 무게</div>
+        <div class="page-desc">학생과 학부모, 가장 가까이서 부딪히는 영역.</div>
+      </div>
+
+      <div class="question">
+        <label class="q-label"><span class="q-num">8.</span>최근 1년간 신규 상담 → 등록 전환율 체감</label>
+        <div class="choices">
+          <label class="choice radio"><input type="radio" name="q_conversion_rate" value="80% 이상"><span class="indicator"></span><span class="choice-label">80% 이상</span></label>
+          <label class="choice radio"><input type="radio" name="q_conversion_rate" value="60~80%"><span class="indicator"></span><span class="choice-label">60~80%</span></label>
+          <label class="choice radio"><input type="radio" name="q_conversion_rate" value="40~60%"><span class="indicator"></span><span class="choice-label">40~60%</span></label>
+          <label class="choice radio"><input type="radio" name="q_conversion_rate" value="40% 미만"><span class="indicator"></span><span class="choice-label">40% 미만</span></label>
+          <label class="choice radio"><input type="radio" name="q_conversion_rate" value="측정 안 함"><span class="indicator"></span><span class="choice-label">측정 안 함</span></label>
+        </div>
+      </div>
+
+      <div class="question">
+        <label class="q-label"><span class="q-num">9.</span>가장 부담되거나 다루기 어려운 학생 유형은?<br/><span class="q-hint">복수 선택 가능</span></label>
+        <div class="choices">
+          <label class="choice checkbox"><input type="checkbox" name="q_difficult_student" value="학습 동기 부족"><span class="indicator"></span><span class="choice-label">학습 동기 부족</span></label>
+          <label class="choice checkbox"><input type="checkbox" name="q_difficult_student" value="잦은 결석·지각"><span class="indicator"></span><span class="choice-label">잦은 결석·지각</span></label>
+          <label class="choice checkbox"><input type="checkbox" name="q_difficult_student" value="실력 정체 (성장 둔화)"><span class="indicator"></span><span class="choice-label">실력 정체 (성장 둔화)</span></label>
+          <label class="choice checkbox"><input type="checkbox" name="q_difficult_student" value="감정 기복 큰 학생"><span class="indicator"></span><span class="choice-label">감정 기복 큰 학생</span></label>
+          <label class="choice checkbox"><input type="checkbox" name="q_difficult_student" value="부모 의존도 높은 학생"><span class="indicator"></span><span class="choice-label">부모 의존도 높은 학생</span></label>
+          <label class="choice checkbox"><input type="checkbox" name="q_difficult_student" value="다른 학생에게 부정적 영향"><span class="indicator"></span><span class="choice-label">다른 학생에게 부정적 영향</span></label>
+          <label class="choice checkbox"><input type="checkbox" name="q_difficult_student" value="진로 갈팡질팡"><span class="indicator"></span><span class="choice-label">진로 갈팡질팡</span></label>
+          <label class="choice checkbox"><input type="checkbox" name="q_difficult_student" value="강사 지시 불수용"><span class="indicator"></span><span class="choice-label">강사 지시 불수용</span></label>
+          <label class="choice checkbox"><input type="checkbox" name="q_difficult_student" value="기타"><span class="indicator"></span><span class="choice-label">기타</span></label>
+        </div>
+      </div>
+
+      <div class="question">
+        <label class="q-label"><span class="q-num">10.</span>가장 부담되는 학부모 컴플레인 유형은?<br/><span class="q-hint">복수 선택 가능</span></label>
+        <div class="choices">
+          <label class="choice checkbox"><input type="checkbox" name="q_parent_complaint" value="성적/실력 향상 속도"><span class="indicator"></span><span class="choice-label">성적/실력 향상 속도</span></label>
+          <label class="choice checkbox"><input type="checkbox" name="q_parent_complaint" value="강사 교체 요구"><span class="indicator"></span><span class="choice-label">강사 교체 요구</span></label>
+          <label class="choice checkbox"><input type="checkbox" name="q_parent_complaint" value="수업료·환불"><span class="indicator"></span><span class="choice-label">수업료·환불</span></label>
+          <label class="choice checkbox"><input type="checkbox" name="q_parent_complaint" value="다른 학생과의 갈등"><span class="indicator"></span><span class="choice-label">다른 학생과의 갈등</span></label>
+          <label class="choice checkbox"><input type="checkbox" name="q_parent_complaint" value="진학 결과"><span class="indicator"></span><span class="choice-label">진학 결과</span></label>
+          <label class="choice checkbox"><input type="checkbox" name="q_parent_complaint" value="출결 관리"><span class="indicator"></span><span class="choice-label">출결 관리</span></label>
+          <label class="choice checkbox"><input type="checkbox" name="q_parent_complaint" value="기타"><span class="indicator"></span><span class="choice-label">기타</span></label>
+        </div>
+      </div>
+
+      <div class="question">
+        <label class="q-label"><span class="q-num">11.</span>중도 이탈(드롭) 주요 사유는?<br/><span class="q-hint">복수 선택 가능</span></label>
+        <div class="choices">
+          <label class="choice checkbox"><input type="checkbox" name="q_dropout_reason" value="성적 부진"><span class="indicator"></span><span class="choice-label">성적 부진</span></label>
+          <label class="choice checkbox"><input type="checkbox" name="q_dropout_reason" value="진로 변경"><span class="indicator"></span><span class="choice-label">진로 변경</span></label>
+          <label class="choice checkbox"><input type="checkbox" name="q_dropout_reason" value="비용 부담"><span class="indicator"></span><span class="choice-label">비용 부담</span></label>
+          <label class="choice checkbox"><input type="checkbox" name="q_dropout_reason" value="다른 학원 이동"><span class="indicator"></span><span class="choice-label">다른 학원 이동</span></label>
+          <label class="choice checkbox"><input type="checkbox" name="q_dropout_reason" value="인간관계"><span class="indicator"></span><span class="choice-label">인간관계</span></label>
+          <label class="choice checkbox"><input type="checkbox" name="q_dropout_reason" value="거리·시간"><span class="indicator"></span><span class="choice-label">거리·시간</span></label>
+          <label class="choice checkbox"><input type="checkbox" name="q_dropout_reason" value="사유 파악 어려움"><span class="indicator"></span><span class="choice-label">사유 파악 어려움</span></label>
+        </div>
+      </div>
+
+      <div class="question">
+        <label class="q-label"><span class="q-num">12.</span>학생 이탈을 줄이기 위해 가장 효과적이었던 방법은?</label>
+        <textarea name="q_retention_method" placeholder="자유롭게 적어주세요"></textarea>
+      </div>
+
+      <div class="nav">
+        <button type="button" class="btn btn-prev" data-action="prev">← 이전</button>
+        <button type="button" class="btn btn-next" data-action="next">다음 →</button>
+      </div>
+    </div>
+
+    <!-- PART 3. 마케팅 -->
+    <div class="page" data-part="마케팅·신입생 유입" data-part-no="3">
+      <div class="page-header">
+        <div class="page-no">PART 03 · 마케팅·신입생 유입</div>
+        <div class="page-title">학생을 모으는 일</div>
+        <div class="page-desc">통한 것, 안 통한 것, 그리고 합격 실적.</div>
+      </div>
+
+      <div class="question">
+        <label class="q-label"><span class="q-num">13.</span>주요 신입생 유입 채널<br/><span class="q-hint">상위 3개까지 선택해주세요</span></label>
+        <div class="choices">
+          <label class="choice checkbox"><input type="checkbox" name="q_marketing_channel" value="입소문/소개" data-max="3"><span class="indicator"></span><span class="choice-label">입소문/소개</span></label>
+          <label class="choice checkbox"><input type="checkbox" name="q_marketing_channel" value="네이버 블로그" data-max="3"><span class="indicator"></span><span class="choice-label">네이버 블로그</span></label>
+          <label class="choice checkbox"><input type="checkbox" name="q_marketing_channel" value="인스타그램" data-max="3"><span class="indicator"></span><span class="choice-label">인스타그램</span></label>
+          <label class="choice checkbox"><input type="checkbox" name="q_marketing_channel" value="유튜브" data-max="3"><span class="indicator"></span><span class="choice-label">유튜브</span></label>
+          <label class="choice checkbox"><input type="checkbox" name="q_marketing_channel" value="네이버 검색광고" data-max="3"><span class="indicator"></span><span class="choice-label">네이버 검색광고</span></label>
+          <label class="choice checkbox"><input type="checkbox" name="q_marketing_channel" value="지역 카페·맘카페" data-max="3"><span class="indicator"></span><span class="choice-label">지역 카페·맘카페</span></label>
+          <label class="choice checkbox"><input type="checkbox" name="q_marketing_channel" value="학교 연계" data-max="3"><span class="indicator"></span><span class="choice-label">학교 연계</span></label>
+          <label class="choice checkbox"><input type="checkbox" name="q_marketing_channel" value="합격 실적" data-max="3"><span class="indicator"></span><span class="choice-label">합격 실적</span></label>
+          <label class="choice checkbox"><input type="checkbox" name="q_marketing_channel" value="간판·전단" data-max="3"><span class="indicator"></span><span class="choice-label">간판·전단</span></label>
+          <label class="choice checkbox"><input type="checkbox" name="q_marketing_channel" value="기타" data-max="3"><span class="indicator"></span><span class="choice-label">기타</span></label>
+        </div>
+      </div>
+
+      <div class="question">
+        <label class="q-label"><span class="q-num">14.</span>마케팅에 월 얼마 정도 투입하나요?<span class="q-optional">선택</span></label>
+        <div class="choices">
+          <label class="choice radio"><input type="radio" name="q_marketing_budget" value="0원"><span class="indicator"></span><span class="choice-label">0원</span></label>
+          <label class="choice radio"><input type="radio" name="q_marketing_budget" value="50만원 미만"><span class="indicator"></span><span class="choice-label">50만원 미만</span></label>
+          <label class="choice radio"><input type="radio" name="q_marketing_budget" value="50~200만원"><span class="indicator"></span><span class="choice-label">50~200만원</span></label>
+          <label class="choice radio"><input type="radio" name="q_marketing_budget" value="200~500만원"><span class="indicator"></span><span class="choice-label">200~500만원</span></label>
+          <label class="choice radio"><input type="radio" name="q_marketing_budget" value="500만원 이상"><span class="indicator"></span><span class="choice-label">500만원 이상</span></label>
+        </div>
+      </div>
+
+      <div class="question">
+        <label class="q-label"><span class="q-num">15.</span>신입생 유치에서 가장 잘 통한다고 느끼는 한 가지는?</label>
+        <textarea name="q_marketing_winning" placeholder="자유롭게 적어주세요"></textarea>
+      </div>
+
+      <div class="question">
+        <label class="q-label"><span class="q-num">16.</span>반대로, 시도해봤지만 효과가 없었거나 후회되는 마케팅은?</label>
+        <textarea name="q_marketing_failed" placeholder="자유롭게 적어주세요"></textarea>
+      </div>
+
+      <div class="question">
+        <label class="q-label"><span class="q-num">17.</span>합격 실적을 어떻게 정리·홍보하시나요?<br/><span class="q-hint">본인 캠퍼스 방식 + 타 브랜드·타 학원의 효과적인 홍보 방법도 함께 적어주세요</span></label>
+        <textarea name="q_admission_promotion" placeholder="자유롭게 적어주세요"></textarea>
+      </div>
+
+      <div class="nav">
+        <button type="button" class="btn btn-prev" data-action="prev">← 이전</button>
+        <button type="button" class="btn btn-next" data-action="next">다음 →</button>
+      </div>
+    </div>
+
+    <!-- PART 4. 운영 시스템 -->
+    <div class="page" data-part="운영 시스템·디지털화" data-part-no="4">
+      <div class="page-header">
+        <div class="page-no">PART 04 · 운영 시스템·디지털화</div>
+        <div class="page-title">시스템과 도구</div>
+        <div class="page-desc">어떻게 굴리고, 무엇을 바꾸고 싶은가.</div>
+      </div>
+
+      <div class="question">
+        <label class="q-label"><span class="q-num">18.</span>현재 사용 중인 운영 도구<br/><span class="q-hint">복수 선택 가능</span></label>
+        <div class="choices">
+          <label class="choice checkbox"><input type="checkbox" name="q_ops_tools" value="엑셀/구글시트"><span class="indicator"></span><span class="choice-label">엑셀/구글시트</span></label>
+          <label class="choice checkbox"><input type="checkbox" name="q_ops_tools" value="학원 전용 관리프로그램(클래스팅, 알리미 등)"><span class="indicator"></span><span class="choice-label">학원 전용 관리프로그램(클래스팅, 알리미 등)</span></label>
+          <label class="choice checkbox"><input type="checkbox" name="q_ops_tools" value="카카오톡·문자"><span class="indicator"></span><span class="choice-label">카카오톡·문자</span></label>
+          <label class="choice checkbox"><input type="checkbox" name="q_ops_tools" value="자체 개발 시스템"><span class="indicator"></span><span class="choice-label">자체 개발 시스템</span></label>
+          <label class="choice checkbox"><input type="checkbox" name="q_ops_tools" value="노션·에어테이블"><span class="indicator"></span><span class="choice-label">노션·에어테이블</span></label>
+          <label class="choice checkbox"><input type="checkbox" name="q_ops_tools" value="종이장부"><span class="indicator"></span><span class="choice-label">종이장부</span></label>
+          <label class="choice checkbox"><input type="checkbox" name="q_ops_tools" value="AI 도구(ChatGPT, Claude 등)"><span class="indicator"></span><span class="choice-label">AI 도구(ChatGPT, Claude 등)</span></label>
+        </div>
+      </div>
+
+      <div class="question">
+        <label class="q-label"><span class="q-num">19.</span>현재 운영에서 "이건 자동화하거나 시스템화하고 싶다" 하는 업무는?</label>
+        <textarea name="q_want_automate" placeholder="자유롭게 적어주세요"></textarea>
+      </div>
+
+      <div class="question">
+        <label class="q-label"><span class="q-num">20.</span>AI·자동화 도구 활용 경험은?</label>
+        <div class="choices">
+          <label class="choice radio"><input type="radio" name="q_ai_experience" value="적극 활용 중"><span class="indicator"></span><span class="choice-label">적극 활용 중</span></label>
+          <label class="choice radio"><input type="radio" name="q_ai_experience" value="일부 활용"><span class="indicator"></span><span class="choice-label">일부 활용</span></label>
+          <label class="choice radio"><input type="radio" name="q_ai_experience" value="시도해봤으나 정착 못함"><span class="indicator"></span><span class="choice-label">시도해봤으나 정착 못함</span></label>
+          <label class="choice radio"><input type="radio" name="q_ai_experience" value="관심은 있으나 미사용"><span class="indicator"></span><span class="choice-label">관심은 있으나 미사용</span></label>
+          <label class="choice radio"><input type="radio" name="q_ai_experience" value="관심 없음"><span class="indicator"></span><span class="choice-label">관심 없음</span></label>
+        </div>
+      </div>
+
+      <div class="question">
+        <label class="q-label"><span class="q-num">21.</span>입시미술학원이 아닌 다른 종류의 학원이나 다른 브랜드의 운영 시스템·디지털화 중, 좋게 봤고 도입하고 싶었던 게 있다면?</label>
+        <textarea name="q_other_brand_system" placeholder="자유롭게 적어주세요"></textarea>
+      </div>
+
+      <div class="nav">
+        <button type="button" class="btn btn-prev" data-action="prev">← 이전</button>
+        <button type="button" class="btn btn-next" data-action="next">다음 →</button>
+      </div>
+    </div>
+
+    <!-- PART 5. 강사 교육·연구 -->
+    <div class="page" data-part="강사 교육·연구" data-part-no="5">
+      <div class="page-header">
+        <div class="page-no">PART 05 · 강사 교육·연구</div>
+        <div class="page-title">수업의 안쪽</div>
+        <div class="page-desc">세미나, 연구작, 그리고 강사들의 참여.</div>
+      </div>
+
+      <div class="question">
+        <label class="q-label"><span class="q-num">22.</span>강사들과의 수업 세미나는 월 몇 회 정도 진행되나요?</label>
+        <div class="choices">
+          <label class="choice radio"><input type="radio" name="q_seminar_freq" value="0회 (별도 미진행)"><span class="indicator"></span><span class="choice-label">0회 (별도 미진행)</span></label>
+          <label class="choice radio"><input type="radio" name="q_seminar_freq" value="월 1회"><span class="indicator"></span><span class="choice-label">월 1회</span></label>
+          <label class="choice radio"><input type="radio" name="q_seminar_freq" value="월 2회"><span class="indicator"></span><span class="choice-label">월 2회</span></label>
+          <label class="choice radio"><input type="radio" name="q_seminar_freq" value="월 3~4회"><span class="indicator"></span><span class="choice-label">월 3~4회</span></label>
+          <label class="choice radio"><input type="radio" name="q_seminar_freq" value="주 2회 이상"><span class="indicator"></span><span class="choice-label">주 2회 이상</span></label>
+        </div>
+      </div>
+
+      <div class="question">
+        <label class="q-label"><span class="q-num">23.</span>수업 세미나 준비는 어느 정도 깊이로 진행되나요?<br/><span class="q-hint">예: 누가 준비하는지, 자료 형태, 소요 시간, 발표/토론 방식 등</span></label>
+        <textarea name="q_seminar_depth" placeholder="자유롭게 적어주세요"></textarea>
+      </div>
+
+      <div class="question">
+        <label class="q-label"><span class="q-num">24.</span>연구작은 얼마나 진행하시나요?</label>
+        <div class="choices grid">
+          <label class="choice radio"><input type="radio" name="q_research_freq" value="거의 없음"><span class="indicator"></span><span class="choice-label">거의 없음</span></label>
+          <label class="choice radio"><input type="radio" name="q_research_freq" value="연 1회"><span class="indicator"></span><span class="choice-label">연 1회</span></label>
+          <label class="choice radio"><input type="radio" name="q_research_freq" value="연 2회"><span class="indicator"></span><span class="choice-label">연 2회</span></label>
+          <label class="choice radio"><input type="radio" name="q_research_freq" value="분기별"><span class="indicator"></span><span class="choice-label">분기별</span></label>
+          <label class="choice radio"><input type="radio" name="q_research_freq" value="월 1회"><span class="indicator"></span><span class="choice-label">월 1회</span></label>
+          <label class="choice radio"><input type="radio" name="q_research_freq" value="월 2회 이상"><span class="indicator"></span><span class="choice-label">월 2회 이상</span></label>
+          <label class="choice radio"><input type="radio" name="q_research_freq" value="상시 진행"><span class="indicator"></span><span class="choice-label">상시 진행</span></label>
+        </div>
+      </div>
+
+      <div class="question">
+        <label class="q-label"><span class="q-num">25.</span>강사들이 세미나·연구작 등 교육 활동에 더 적극적으로 참여하도록 만들기 위한 본인만의 노하우가 있다면?</label>
+        <textarea name="q_teacher_engagement" placeholder="자유롭게 적어주세요"></textarea>
+      </div>
+
+      <div class="question">
+        <label class="q-label"><span class="q-num">26.</span>강사 교육·연구작 운영에서 현재 가장 큰 고민이나 어려움은?<span class="q-optional">선택</span></label>
+        <textarea name="q_teacher_edu_concern" placeholder="자유롭게 적어주세요"></textarea>
+      </div>
+
+      <div class="nav">
+        <button type="button" class="btn btn-prev" data-action="prev">← 이전</button>
+        <button type="button" class="btn btn-next" data-action="next">다음 →</button>
+      </div>
+    </div>
+
+    <!-- PART 6. 세미나 수요 -->
+    <div class="page" data-part="세미나 수요" data-part-no="6">
+      <div class="page-header">
+        <div class="page-no">PART 06 · 세미나 수요</div>
+        <div class="page-title">묻고 싶은 것, 나눠줄 수 있는 것</div>
+        <div class="page-desc">세미나에서 다루고 싶은 주제를 직접 정해주세요.</div>
+      </div>
+
+      <div class="question">
+        <label class="q-label"><span class="q-num">27.</span>이번 세미나에서 다른 캠퍼스 원장님께 꼭 묻고 싶은 질문이 있다면?</label>
+        <div class="subq">
+          <label>어느 캠퍼스에 묻고 싶으신가요?</label>
+          <select name="q_ask_target_campus">
+            <option value="">선택해주세요</option>
+            <option>전 캠퍼스</option>
+            <option>강남</option><option>홍대</option><option>대구</option>
+            <option>다산</option><option>호평</option><option>구리</option>
+            <option>천안</option><option>미사</option><option>청주</option>
+            <option>특정 캠퍼스 없음</option>
+          </select>
+        </div>
+        <div class="subq">
+          <label>묻고 싶은 질문 1개</label>
+          <textarea name="q_ask_question" placeholder="자유롭게 적어주세요"></textarea>
+        </div>
+      </div>
+
+      <div class="question">
+        <label class="q-label"><span class="q-num">28.</span>본인 캠퍼스가 잘하고 있다고 생각해 다른 곳과 공유할 수 있는 것이 있다면?<br/><span class="q-hint">거창하지 않아도 좋습니다. 작은 노하우, 시도 중인 실험 모두 환영합니다</span></label>
+        <textarea name="q_our_strength" placeholder="자유롭게 적어주세요"></textarea>
+      </div>
+
+      <div class="nav">
+        <button type="button" class="btn btn-prev" data-action="prev">← 이전</button>
+        <button type="button" class="btn btn-next" data-action="next">다음 →</button>
+      </div>
+    </div>
+
+    <!-- PART 7. 다같이 브랜드 -->
+    <div class="page" data-part="다같이 브랜드 & 연합 운영" data-part-no="7">
+      <div class="page-header">
+        <div class="page-no">PART 07 · 다같이 브랜드 & 연합 운영</div>
+        <div class="page-title">다같이, 함께</div>
+        <div class="page-desc">브랜드의 방향, 연합 활동의 미래.</div>
+      </div>
+
+      <div class="question">
+        <label class="q-label"><span class="q-num">29.</span>다같이 브랜드가 앞으로 나아가야 할 방향에 대한 의견이 있다면?</label>
+        <textarea name="q_brand_direction" placeholder="자유롭게 적어주세요"></textarea>
+      </div>
+
+      <div class="question">
+        <label class="q-label"><span class="q-num">30.</span>다같이의 세미나 및 연합 운영에 아쉬운 점이나 개선되었으면 하는 점은?<span class="q-optional">선택</span></label>
+        <textarea name="q_brand_concern" placeholder="자유롭게 적어주세요"></textarea>
+      </div>
+
+      <div class="question">
+        <label class="q-label"><span class="q-num">31.</span>연합평가에 대한 의견<br/><span class="q-hint">현재 방식의 좋은 점, 개선했으면 하는 점, 새로 시도해보고 싶은 방식 등</span></label>
+        <textarea name="q_evaluation_opinion" placeholder="자유롭게 적어주세요"></textarea>
+      </div>
+
+      <div class="question">
+        <label class="q-label"><span class="q-num">32.</span>연합으로 함께 진행하면 좋을 활동이 있다면?<br/><span class="q-hint">복수 선택 가능</span></label>
+        <div class="choices">
+          <label class="choice checkbox"><input type="checkbox" name="q_joint_activities" value="공동 합격작품집 제작"><span class="indicator"></span><span class="choice-label">공동 합격작품집 제작</span></label>
+          <label class="choice checkbox"><input type="checkbox" name="q_joint_activities" value="강사 교류·연수"><span class="indicator"></span><span class="choice-label">강사 교류·연수</span></label>
+          <label class="choice checkbox"><input type="checkbox" name="q_joint_activities" value="공동 구매(재료·교재)"><span class="indicator"></span><span class="choice-label">공동 구매(재료·교재)</span></label>
+          <label class="choice checkbox"><input type="checkbox" name="q_joint_activities" value="공동 마케팅"><span class="indicator"></span><span class="choice-label">공동 마케팅</span></label>
+          <label class="choice checkbox"><input type="checkbox" name="q_joint_activities" value="연합 전시"><span class="indicator"></span><span class="choice-label">연합 전시</span></label>
+          <label class="choice checkbox"><input type="checkbox" name="q_joint_activities" value="연합 엠티"><span class="indicator"></span><span class="choice-label">연합 엠티</span></label>
+          <label class="choice checkbox"><input type="checkbox" name="q_joint_activities" value="기타"><span class="indicator"></span><span class="choice-label">기타</span></label>
+        </div>
+        <div class="subq">
+          <label>기타 의견이 있다면 자유롭게</label>
+          <textarea name="q_joint_activities_etc" placeholder="자유롭게 적어주세요"></textarea>
+        </div>
+      </div>
+
+      <div class="question">
+        <label class="q-label"><span class="q-num">33.</span>매년 연합평가가 진행되면 좋을 것 같은 월은?<br/><span class="q-hint">복수 선택 가능</span></label>
+        <div class="choices months">
+          <label class="choice checkbox"><input type="checkbox" name="q_eval_months" value="1월"><span class="indicator"></span><span class="choice-label">1월</span></label>
+          <label class="choice checkbox"><input type="checkbox" name="q_eval_months" value="2월"><span class="indicator"></span><span class="choice-label">2월</span></label>
+          <label class="choice checkbox"><input type="checkbox" name="q_eval_months" value="3월"><span class="indicator"></span><span class="choice-label">3월</span></label>
+          <label class="choice checkbox"><input type="checkbox" name="q_eval_months" value="4월"><span class="indicator"></span><span class="choice-label">4월</span></label>
+          <label class="choice checkbox"><input type="checkbox" name="q_eval_months" value="5월"><span class="indicator"></span><span class="choice-label">5월</span></label>
+          <label class="choice checkbox"><input type="checkbox" name="q_eval_months" value="6월"><span class="indicator"></span><span class="choice-label">6월</span></label>
+          <label class="choice checkbox"><input type="checkbox" name="q_eval_months" value="7월"><span class="indicator"></span><span class="choice-label">7월</span></label>
+          <label class="choice checkbox"><input type="checkbox" name="q_eval_months" value="8월"><span class="indicator"></span><span class="choice-label">8월</span></label>
+          <label class="choice checkbox"><input type="checkbox" name="q_eval_months" value="9월"><span class="indicator"></span><span class="choice-label">9월</span></label>
+          <label class="choice checkbox"><input type="checkbox" name="q_eval_months" value="10월"><span class="indicator"></span><span class="choice-label">10월</span></label>
+          <label class="choice checkbox"><input type="checkbox" name="q_eval_months" value="11월"><span class="indicator"></span><span class="choice-label">11월</span></label>
+          <label class="choice checkbox"><input type="checkbox" name="q_eval_months" value="12월"><span class="indicator"></span><span class="choice-label">12월</span></label>
+        </div>
+      </div>
+
+      <div class="question">
+        <label class="q-label"><span class="q-num">34.</span>마지막으로, 이번 세미나에 바라는 점이나 자유롭게 하고 싶은 말씀<span class="q-optional">선택</span></label>
+        <textarea name="q_seminar_wish" placeholder="자유롭게 적어주세요"></textarea>
+      </div>
+
+      <div class="nav">
+        <button type="button" class="btn btn-prev" data-action="prev">← 이전</button>
+        <button type="button" class="btn btn-submit" data-action="submit">제출하기</button>
+      </div>
+      <div class="saved-indicator" id="saved-indicator"></div>
+    </div>
+
+  </form>
+
+  <!-- 완료 화면 -->
+  <div class="done" id="done">
+    <div class="done-mark">✓</div>
+    <h2>응답이 제출되었습니다</h2>
+    <p>소중한 의견 감사합니다.<br/>
+    세미나에서 더 깊은 이야기 나눠요.</p>
+    <div class="signature">— 다같이미술학원</div>
+  </div>
+
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ========== 설정 ==========
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/REPLACE_WITH_YOUR_DEPLOYMENT_ID/exec';
+const STORAGE_KEY = 'dagachi_seminar_survey_v1';
+
+// ========== 상태 ==========
+const pages = document.querySelectorAll('.page');
+const totalPages = pages.length;
+document.getElementById('part-total').textContent = totalPages;
+
+let currentIdx = 0;
+
+// ========== 페이지 이동 ==========
+function showPage(idx) {
+  pages.forEach((p, i) => p.classList.toggle('active', i === idx));
+  currentIdx = idx;
+  updateProgress();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function updateProgress() {
+  const wrap = document.getElementById('progress-wrap');
+  const intro = document.getElementById('intro-card');
+  if (currentIdx === 0) {
+    wrap.style.display = 'none';
+    intro.style.display = 'block';
+  } else {
+    wrap.style.display = 'block';
+    intro.style.display = 'none';
+  }
+  const fill = document.getElementById('progress-fill');
+  const partName = pages[currentIdx].dataset.part;
+  const partNo = pages[currentIdx].dataset.partNo;
+  fill.style.width = ((currentIdx + 1) / totalPages * 100) + '%';
+  document.getElementById('part-current').textContent = (Number(partNo) + 1);
+  document.getElementById('part-name').textContent = partName;
+}
+
+// 검증
+function validateCurrentPage() {
+  const page = pages[currentIdx];
+
+  // PART 0 — 캠퍼스/역할/이름 필수
+  if (currentIdx === 0) {
+    const campus = page.querySelector('select[name="campus"]').value;
+    const role = page.querySelector('input[name="role"]:checked');
+    const name = page.querySelector('input[name="name"]').value.trim();
+    if (!campus) { showToast('소속 캠퍼스를 선택해주세요', 'error'); return false; }
+    if (!role) { showToast('응답자 역할을 선택해주세요', 'error'); return false; }
+    if (!name) { showToast('이름을 입력해주세요', 'error'); return false; }
+  }
+  return true;
+}
+
+// 버튼 핸들러
+document.querySelectorAll('[data-action]').forEach(btn => {
+  btn.addEventListener('click', e => {
+    const action = e.currentTarget.dataset.action;
+    if (action === 'next') {
+      if (!validateCurrentPage()) return;
+      if (currentIdx < totalPages - 1) showPage(currentIdx + 1);
+      saveToStorage();
+    } else if (action === 'prev') {
+      if (currentIdx > 0) showPage(currentIdx - 1);
+    } else if (action === 'submit') {
+      submitForm();
+    }
+  });
+});
+
+// ========== 상위 N개 제한 (13번 마케팅 채널 = max 3개) ==========
+document.querySelectorAll('input[type="checkbox"][data-max]').forEach(cb => {
+  cb.addEventListener('change', e => {
+    const name = e.target.name;
+    const max = parseInt(e.target.dataset.max);
+    const checked = document.querySelectorAll(`input[name="${name}"]:checked`);
+    if (checked.length > max) {
+      e.target.checked = false;
+      showToast(`최대 ${max}개까지 선택 가능합니다`, 'error');
+    }
+  });
+});
+
+// ========== localStorage ==========
+function saveToStorage() {
+  const data = collectFormData();
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify({
+      data: data,
+      currentIdx: currentIdx,
+      savedAt: new Date().toISOString()
+    }));
+    showSavedIndicator();
+  } catch (e) {
+    console.warn('localStorage 저장 실패', e);
+  }
+}
+
+function loadFromStorage() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (!raw) return false;
+    const { data, currentIdx: savedIdx } = JSON.parse(raw);
+    if (!data) return false;
+
+    // 텍스트/select
+    Object.entries(data).forEach(([key, value]) => {
+      if (Array.isArray(value)) {
+        // 체크박스
+        value.forEach(v => {
+          const cb = document.querySelector(`input[type="checkbox"][name="${key}"][value="${CSS.escape(v)}"]`);
+          if (cb) cb.checked = true;
+        });
+      } else if (value) {
+        const el = document.querySelector(`[name="${key}"]`);
+        if (!el) return;
+        if (el.tagName === 'INPUT' && (el.type === 'radio')) {
+          const r = document.querySelector(`input[name="${key}"][value="${CSS.escape(value)}"]`);
+          if (r) r.checked = true;
+        } else if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA' || el.tagName === 'SELECT') {
+          el.value = value;
+        }
+      }
+    });
+
+    if (typeof savedIdx === 'number' && savedIdx >= 0 && savedIdx < totalPages) {
+      showPage(savedIdx);
+    }
+    return true;
+  } catch (e) {
+    console.warn('localStorage 복원 실패', e);
+    return false;
+  }
+}
+
+function clearStorage() {
+  try { localStorage.removeItem(STORAGE_KEY); } catch (e) {}
+}
+
+let savedTimer;
+function showSavedIndicator() {
+  const ind = document.getElementById('saved-indicator');
+  if (!ind) return;
+  ind.textContent = '✓ 자동 저장됨';
+  clearTimeout(savedTimer);
+  savedTimer = setTimeout(() => { ind.textContent = ''; }, 2000);
+}
+
+// 입력 변경 시 자동 저장 (디바운스)
+let saveTimer;
+document.addEventListener('input', () => {
+  clearTimeout(saveTimer);
+  saveTimer = setTimeout(saveToStorage, 600);
+});
+document.addEventListener('change', () => {
+  clearTimeout(saveTimer);
+  saveTimer = setTimeout(saveToStorage, 300);
+});
+
+// ========== Form Collection ==========
+function collectFormData() {
+  const form = document.getElementById('survey-form');
+  const data = {};
+
+  // text/textarea/select
+  form.querySelectorAll('input[type="text"], textarea, select').forEach(el => {
+    if (el.name) data[el.name] = el.value.trim();
+  });
+
+  // radio
+  form.querySelectorAll('input[type="radio"]:checked').forEach(el => {
+    data[el.name] = el.value;
+  });
+
+  // checkbox — 배열로
+  const cbNames = new Set();
+  form.querySelectorAll('input[type="checkbox"]').forEach(el => cbNames.add(el.name));
+  cbNames.forEach(name => {
+    const checked = Array.from(form.querySelectorAll(`input[type="checkbox"][name="${name}"]:checked`));
+    data[name] = checked.map(c => c.value);
+  });
+
+  return data;
+}
+
+// ========== Submit ==========
+async function submitForm() {
+  // 최종 검증 (Part 0만)
+  showPage(0);
+  if (!validateCurrentPage()) return;
+  showPage(totalPages - 1);
+
+  const data = collectFormData();
+
+  const submitBtn = document.querySelector('.btn-submit');
+  submitBtn.disabled = true;
+  submitBtn.textContent = '제출 중...';
+
+  try {
+    const res = await fetch(APPS_SCRIPT_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify({ action: 'submit', payload: data })
+    });
+    const result = await res.json();
+
+    if (result.ok) {
+      clearStorage();
+      document.getElementById('survey-form').style.display = 'none';
+      document.getElementById('progress-wrap').style.display = 'none';
+      document.getElementById('done').classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      throw new Error(result.error || '제출 실패');
+    }
+  } catch (err) {
+    showToast('제출 중 오류: ' + err.message, 'error');
+    submitBtn.disabled = false;
+    submitBtn.textContent = '제출하기';
+  }
+}
+
+// ========== Toast ==========
+function showToast(msg, type) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.remove('error');
+  if (type === 'error') t.classList.add('error');
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2800);
+}
+
+// ========== Init ==========
+window.addEventListener('DOMContentLoaded', () => {
+  // 저장된 데이터 있으면 묻기
+  const raw = localStorage.getItem(STORAGE_KEY);
+  if (raw) {
+    try {
+      const { savedAt } = JSON.parse(raw);
+      const when = savedAt ? new Date(savedAt) : null;
+      const whenStr = when
+        ? `${when.getMonth()+1}월 ${when.getDate()}일 ${String(when.getHours()).padStart(2,'0')}:${String(when.getMinutes()).padStart(2,'0')}`
+        : '이전';
+      if (confirm(`${whenStr}에 작성하던 응답이 있습니다.\n이어서 작성하시겠습니까?\n\n(취소를 누르면 새로 시작합니다)`)) {
+        loadFromStorage();
+      } else {
+        clearStorage();
+        showPage(0);
+      }
+    } catch (e) {
+      showPage(0);
+    }
+  } else {
+    showPage(0);
+  }
+});
+</script>
+
+</body>
+</html>
