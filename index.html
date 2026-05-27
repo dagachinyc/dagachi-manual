@@ -1267,6 +1267,7 @@ body {
       </div>
       <div class="cat-items">
         <div class="cat-section-label">시작하기</div>
+        <a class="nav-link" data-target="c-links" onclick="goTo('c-links')">🔗 빠른 링크<span class="badge">자주씀</span></a>
         <a class="nav-link" data-target="c-overview" onclick="goTo('c-overview')">전체 흐름</a>
 
         <div class="cat-section-label">단계별 사용법</div>
@@ -1305,10 +1306,18 @@ body {
   <div class="home-updates">
     <div class="home-section-label">📢 공지 &amp; 최근 업데이트</div>
     <div class="update-item">
+      <div class="update-date">2026.05.27</div>
+      <div class="update-body">
+        <div class="update-title">상담 자동화 시스템 — 캠퍼스별 폴더 분리 + 빠른 링크 챕터 신설</div>
+        <div class="update-desc">학생이 사전설문을 제출하면 마스터 시트뿐 아니라 <strong>캠퍼스별 폴더에도 학생 파일이 자동 생성</strong>됩니다. 강사는 본인 캠퍼스 폴더만 열면 학생 응답을 빠르게 찾을 수 있어요. 사전설문 폴더와 상담지 폴더는 분리되었고, 자주 쓰는 링크는 새 "🔗 빠른 링크" 챕터에서 한 번에 접근 가능합니다. 4개 캠퍼스 모두 정식 운영 중.</div>
+      </div>
+      <span class="update-tag new">NEW</span>
+    </div>
+    <div class="update-item">
       <div class="update-date">2026.05.20</div>
       <div class="update-body">
         <div class="update-title">상담 자동화 시스템 — 고교학점제 개편</div>
-        <div class="update-desc">고교학점제 시행에 맞춰 상담 자동화 시스템을 전면 개편했습니다. "상담지 생성기" 사용법, 학생 사전 설문, 녹취록 작성, FAQ를 5개 챕터로 재구성했어요. 구리캠퍼스 정식 운영, 다산·호평·애니는 순차 적용 예정입니다.</div>
+        <div class="update-desc">고교학점제 시행에 맞춰 상담 자동화 시스템을 전면 개편했습니다. "상담지 생성기" 사용법, 학생 사전 설문, 녹취록 작성, FAQ를 5개 챕터로 재구성했어요.</div>
       </div>
       <span class="update-tag new">NEW</span>
     </div>
@@ -1850,6 +1859,116 @@ body {
       <!-- 여기에 상담 섹션들 들어갈 자리 -->
       
 <!-- ===== 1. 전체 흐름 ===== -->
+<!-- ===== 빠른 링크 ===== -->
+<section class="consult-section" id="c-links">
+  <div class="sec-head">
+    <div class="sec-chip">QUICK LINKS</div>
+    <h1 class="sec-title">🔗 빠른 링크</h1>
+    <p class="sec-desc">자주 쓰는 시스템과 폴더 모음.<br>북마크 해두면 한 번 클릭으로 들어갈 수 있어요.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><div class="card-num">1</div>📱 강사가 매일 쓰는 도구</div>
+
+    <p style="margin-top:8px;"><strong>📝 상담지 생성기 (강사 앱)</strong></p>
+    <p>분기 상담 후 녹취록/상담록을 입력해 AI 상담지를 만드는 도구입니다.</p>
+    <div class="alert info" style="margin-top:8px;">
+      <span class="alert-ico">🔗</span>
+      <div>
+        <a href="https://script.google.com/macros/s/AKfycbyNDK6vpWtLUGo7R2JDlfBDEBhIQ4tbhsn346YgpF4Mrk-mgFYi2cO-CZQnrzbQQTuY/exec" target="_blank" style="color:#1D4ED8; font-weight:bold; word-break:break-all;">바로 열기</a>
+        <div style="margin-top:4px; font-size:0.85rem; color:#6B7280;">사용법 → <a href="javascript:goTo('c-step1')" style="color:#D4541A;">상담지 생성기 사용법</a></div>
+      </div>
+    </div>
+
+    <p style="margin-top:18px;"><strong>📋 학생 사전 설문 폼</strong></p>
+    <p>학생에게 카톡으로 보내서 분기 상담 전에 작성하게 하는 링크입니다.</p>
+    <div class="alert info" style="margin-top:8px;">
+      <span class="alert-ico">🔗</span>
+      <div>
+        <a href="https://dagachinyc.github.io/dagachi-survey/" target="_blank" style="color:#1D4ED8; font-weight:bold; word-break:break-all;">학생용 설문 폼 열기</a>
+        <div style="margin-top:4px; font-size:0.85rem; color:#6B7280;">학생에게 안내하는 법 → <a href="javascript:goTo('c-step2')" style="color:#D4541A;">학생 사전 설문 안내</a></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><div class="card-num">2</div>📁 응답·상담지 폴더</div>
+    <p>강사가 본인 캠퍼스 학생 응답이나 상담지를 직접 열어볼 때 사용합니다. 폴더로 들어가서 <strong>본인 캠퍼스 폴더</strong>를 클릭하면 학생별 파일이 보여요.</p>
+
+    <p style="margin-top:14px;"><strong>📂 사전설문 폴더</strong> <span style="font-size:0.85rem; color:#6B7280;">— 학생 응답 누적</span></p>
+    <div class="alert info" style="margin-top:8px;">
+      <span class="alert-ico">🔗</span>
+      <div>
+        <a href="https://drive.google.com/drive/folders/1wP2h-k3SqPK0CdJLP-7v1VD0Jo-k10Ac?usp=sharing" target="_blank" style="color:#1D4ED8; font-weight:bold;">사전설문 폴더 열기</a>
+      </div>
+    </div>
+
+    <p style="margin-top:14px;"><strong>📂 상담지 폴더</strong> <span style="font-size:0.85rem; color:#6B7280;">— 분기별 상담지 + 결산</span></p>
+    <div class="alert info" style="margin-top:8px;">
+      <span class="alert-ico">🔗</span>
+      <div>
+        <a href="https://drive.google.com/drive/folders/1eIyiNaXeqOx6q826NpefZIym_iMcqDXy?usp=sharing" target="_blank" style="color:#1D4ED8; font-weight:bold;">상담지 폴더 열기</a>
+      </div>
+    </div>
+
+    <div class="alert warn" style="margin-top:14px;">
+      <span class="alert-ico">💡</span>
+      <div><strong>두 폴더가 분리된 이유</strong>는 역할이 달라서예요. 사전설문은 학생이 작성한 원본, 상담지는 강사가 상담 후 생성한 결과물. 자세한 구조는 <a href="javascript:goTo('c-overview')" style="color:#D4541A; font-weight:bold;">전체 흐름</a> 챕터의 "저장 위치 한눈에 보기"를 참고하세요.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><div class="card-num">3</div>🏢 캠퍼스별 안내</div>
+    <p>현재 4개 캠퍼스 모두 같은 시스템을 사용합니다. 위 강사 앱 / 학생 폼 URL은 <strong>전 캠퍼스 공용</strong>이고, 폴더 안에서 본인 캠퍼스 서브폴더로 들어가면 본인 캠퍼스 학생만 보여요.</p>
+
+    <table style="width:100%; margin-top:14px; border-collapse: collapse; font-size:0.95rem;">
+      <thead>
+        <tr style="background:#2E4272; color:#fff; font-weight:bold; text-align:center; height:32px;">
+          <td style="border:1px solid #D1D9E6; padding:8px;">캠퍼스</td>
+          <td style="border:1px solid #D1D9E6; padding:8px;">사전설문 위치</td>
+          <td style="border:1px solid #D1D9E6; padding:8px;">상담지 위치</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="background:#fff; height:28px;">
+          <td style="border:1px solid #D1D9E6; padding:8px; text-align:center; font-weight:bold;">구리</td>
+          <td style="border:1px solid #D1D9E6; padding:8px;">사전설문 폴더 / <strong>구리캠퍼스</strong></td>
+          <td style="border:1px solid #D1D9E6; padding:8px;">상담지 폴더 / <strong>구리캠퍼스</strong></td>
+        </tr>
+        <tr style="background:#F8FAFC; height:28px;">
+          <td style="border:1px solid #D1D9E6; padding:8px; text-align:center; font-weight:bold;">다산</td>
+          <td style="border:1px solid #D1D9E6; padding:8px;">사전설문 폴더 / <strong>다산캠퍼스</strong></td>
+          <td style="border:1px solid #D1D9E6; padding:8px;">상담지 폴더 / <strong>다산캠퍼스</strong></td>
+        </tr>
+        <tr style="background:#fff; height:28px;">
+          <td style="border:1px solid #D1D9E6; padding:8px; text-align:center; font-weight:bold;">호평</td>
+          <td style="border:1px solid #D1D9E6; padding:8px;">사전설문 폴더 / <strong>호평캠퍼스</strong></td>
+          <td style="border:1px solid #D1D9E6; padding:8px;">상담지 폴더 / <strong>호평캠퍼스</strong></td>
+        </tr>
+        <tr style="background:#F8FAFC; height:28px;">
+          <td style="border:1px solid #D1D9E6; padding:8px; text-align:center; font-weight:bold;">애니</td>
+          <td style="border:1px solid #D1D9E6; padding:8px;">사전설문 폴더 / <strong>애니캠퍼스</strong></td>
+          <td style="border:1px solid #D1D9E6; padding:8px;">상담지 폴더 / <strong>애니캠퍼스</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><div class="card-num">4</div>📌 북마크 추천</div>
+    <p>매일 쓰는 강사라면 브라우저 즐겨찾기에 아래 2개만 등록해두세요. 가장 자주 쓰는 입구입니다.</p>
+    <div class="alert good" style="margin-top:14px;">
+      <span class="alert-ico">⭐</span>
+      <div>
+        <strong>① 상담지 생성기 (강사 앱)</strong> — 분기 상담 후 매번 사용<br>
+        <strong>② 본인 캠퍼스 상담지 폴더</strong> — 학생별 상담 이력 조회
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== 1. 전체 흐름 (Overview) ===== -->
 <section class="consult-section" id="c-overview">
   <div class="sec-head">
     <div class="sec-chip">OVERVIEW</div>
@@ -1968,9 +2087,31 @@ body {
         <div class="step-num">6</div>
         <div class="step-body">
           <strong>드라이브 자동 저장 + 결산시트 누적</strong><br>
-          상담지는 자동으로 드라이브에 저장되고, [상담지시트]에 누적 기록됩니다.
+          상담지는 자동으로 <strong>[상담지 폴더 / 본인 캠퍼스]</strong>에 저장되고, 결산 시트에 회차별로 누적됩니다. 사전 설문 응답은 별도의 <strong>[사전설문 폴더 / 본인 캠퍼스]</strong>에 학생별 파일로 따로 저장돼요. 자세한 폴더 구조는 <a href="javascript:goTo('c-step2')" style="color:#D4541A; font-weight:bold;">학생 사전 설문</a> 챕터에서 확인하세요.
         </div>
       </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><div class="card-num">4</div>📁 저장 위치 한눈에 보기 <span class="tag tag-accent" style="margin-left:8px;">NEW</span></div>
+    <p>이 시스템은 데이터를 두 폴더로 나눠 관리합니다. 강사는 <strong>본인 캠퍼스 폴더</strong>만 열면 사전설문과 상담지를 모두 볼 수 있어요.</p>
+
+    <div class="highlight" style="margin-top:14px;">
+      <div class="highlight-text" style="font-family: 'SF Mono', Monaco, monospace; font-size:0.9rem; line-height:1.8;">
+        📂 [사전설문 폴더]<br>
+        &nbsp;&nbsp;└── 구리캠퍼스 / 다산캠퍼스 / 호평캠퍼스 / 애니캠퍼스<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└── 학생 응답 (학생별 파일, 분기마다 누적)<br>
+        <br>
+        📂 [상담지 폴더]<br>
+        &nbsp;&nbsp;└── 구리캠퍼스 / 다산캠퍼스 / 호평캠퍼스 / 애니캠퍼스<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└── 학생 상담지 (분기별 시트 + 결산 시트)
+      </div>
+    </div>
+
+    <div class="alert info" style="margin-top:14px;">
+      <span class="alert-ico">💡</span>
+      <div>두 폴더가 분리된 이유는 <strong>역할이 다르기 때문</strong>입니다. 사전설문은 학생이 작성하는 원본 응답, 상담지는 강사가 상담 후 생성하는 결과물. 분리해두면 강사가 상담 전후로 어디를 봐야 할지 헷갈리지 않아요.</div>
     </div>
   </div>
 
@@ -1984,11 +2125,7 @@ body {
     <p style="margin-top:14px;"><strong>📌 캠퍼스별 적용 현황</strong></p>
     <div class="alert good">
       <span class="alert-ico">✅</span>
-      <div><strong>구리캠퍼스</strong> — 현재 정식 운영 중</div>
-    </div>
-    <div class="alert info">
-      <span class="alert-ico">🕒</span>
-      <div><strong>다산 · 호평 · 애니캠퍼스</strong> — 준비 중. 순차 적용 예정입니다.</div>
+      <div><strong>구리 · 다산 · 호평 · 애니캠퍼스</strong> — 전 캠퍼스 정식 운영 중</div>
     </div>
   </div>
 </section>
@@ -2217,6 +2354,77 @@ body {
     <p style="margin-top:14px;"><strong>📌 내성적인 학생일수록 설문이 큰 힘</strong></p>
     <p>말이 적은 학생일수록 사전 설문에서 진심이 드러나는 경우가 많습니다. 상담 전에 설문을 꼼꼼히 읽고 가는 것만으로도, 학생은 "선생님이 나를 알고 있다"는 안정감을 느낍니다.</p>
   </div>
+
+  <div class="card">
+    <div class="card-title"><div class="card-num">5</div>📂 응답 데이터 자동 저장 구조 <span class="tag tag-accent" style="margin-left:8px;">NEW</span></div>
+    <p>학생이 사전 설문을 제출하면, 응답이 <strong>두 곳에 자동으로 저장</strong>됩니다. 강사는 본인 캠퍼스 폴더만 열어보면 돼서 학생 응답을 빠르게 찾을 수 있어요.</p>
+
+    <div class="flow" style="margin-top:14px;">
+      <div class="flow-item">📝 학생이 설문 제출</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-item">📊 마스터 시트 저장<br><small style="color:#6B7280; font-weight:400;">(전체 백업)</small></div>
+      <div class="flow-arrow">+</div>
+      <div class="flow-item">📁 캠퍼스 폴더 파일 저장<br><small style="color:#6B7280; font-weight:400;">(강사 작업용)</small></div>
+    </div>
+
+    <p style="margin-top:18px;"><strong>📁 폴더 구조</strong></p>
+    <div class="highlight" style="margin-top:10px;">
+      <div class="highlight-text" style="font-family: 'SF Mono', Monaco, monospace; font-size:0.9rem; line-height:1.8;">
+        [사전설문 폴더]<br>
+        ├── 구리캠퍼스/<br>
+        │   ├── 구리캠퍼스_김리안_사전설문<br>
+        │   └── 구리캠퍼스_고지이_사전설문<br>
+        ├── 다산캠퍼스/<br>
+        ├── 호평캠퍼스/<br>
+        └── 애니캠퍼스/<br>
+        <br>
+        [상담지 폴더] ← 별도 폴더, 분리됨<br>
+        ├── 구리캠퍼스/<br>
+        │   └── 구리캠퍼스_김리안_상담지<br>
+        └── ...
+      </div>
+    </div>
+
+    <p style="margin-top:14px;"><strong>📌 강사는 어디서 학생 응답을 보나요?</strong></p>
+    <p>본인 캠퍼스에 해당하는 <strong>[사전설문 폴더 / 본인 캠퍼스]</strong>로 들어가서 학생 이름의 파일을 열면 됩니다. 그 학생의 모든 분기 응답이 시트에 누적되어 있어요. 마스터 시트(전체 학생 모인 곳)는 원장·운영 백업용으로만 사용하세요.</p>
+
+    <div class="alert info" style="margin-top:14px;">
+      <span class="alert-ico">💡</span>
+      <div><strong>왜 두 곳에 저장하나요?</strong> 마스터 시트는 데이터의 진실(원본)을 한곳에 모아두는 백업이고, 캠퍼스 파일은 강사가 본인 캠퍼스 학생만 빠르게 찾기 위한 작업용입니다. 둘은 자동으로 동기화돼요.</div>
+    </div>
+
+    <p style="margin-top:18px;"><strong>📌 기존 학생 데이터 일괄 이관</strong></p>
+    <p>시스템 개편 전(마스터 시트 한 곳에만 쌓여 있던) 데이터는 <strong>한 번에 캠퍼스 파일로 복사</strong>할 수 있습니다.</p>
+
+    <div class="steps" style="margin-top:14px;">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <strong>마스터 시트 열기</strong><br>
+          (사전 설문 응답이 모이는 응답 스프레드시트)
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <strong>상단 메뉴: 🎨 다같이 미술학원 (학점제)</strong><br>
+          처음 사용 시 메뉴가 안 보이면 시트를 새로고침 한 번 하세요.
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <strong>"📁 기존 데이터 → 캠퍼스 파일 일괄 이관" 클릭</strong><br>
+          학생 수 만큼 시간이 걸립니다(보통 1~3분). 마스터는 그대로 유지되고, 캠퍼스 파일이 새로 생성·갱신돼요.
+        </div>
+      </div>
+    </div>
+
+    <div class="alert warn" style="margin-top:14px;">
+      <span class="alert-ico">⚠️</span>
+      <div>이관 메뉴는 캠퍼스 파일이 이미 있으면 <strong>내용을 덮어씁니다</strong>. 새 응답이 더 빨리 누적된 상태라면 마스터 시트의 데이터로 다시 정렬돼요. 운영 초반에만 한 번 실행하면 됩니다.</div>
+    </div>
+  </div>
 </section>
 
 
@@ -2387,6 +2595,18 @@ body {
 
     <p style="margin-top:14px;"><strong>Q. 학년이 바뀌어 담당 강사도 바뀌면 데이터가 어떻게 되나요?</strong></p>
     <p style="color:var(--gray-4);">→ 학생 시트 한 곳에 계속 누적됩니다. 다음 강사가 학생을 이어받아도 같은 시트에 기록이 쌓여요. 이전 강사의 상담 내용을 참고하면서 자연스럽게 연결할 수 있습니다.</p>
+
+    <p style="margin-top:14px;"><strong>Q. 학생 사전설문 응답은 어디서 보나요?</strong></p>
+    <p style="color:var(--gray-4);">→ <strong>[사전설문 폴더 / 본인 캠퍼스 폴더]</strong>에 학생별 파일(예: <code>구리캠퍼스_김리안_사전설문</code>)이 자동 생성됩니다. 그 파일을 열면 학생의 모든 분기 응답이 한 시트에 누적되어 보여요. <a href="javascript:goTo('c-links')" style="color:#D4541A; font-weight:bold;">빠른 링크</a> 챕터에서 폴더 바로가기를 확인할 수 있습니다.</p>
+
+    <p style="margin-top:14px;"><strong>Q. 사전설문 폴더와 상담지 폴더는 왜 따로 있나요?</strong></p>
+    <p style="color:var(--gray-4);">→ <strong>역할이 다르기 때문입니다.</strong> 사전설문은 학생이 직접 작성한 원본 응답, 상담지는 강사가 상담 후 AI로 생성한 결과물. 두 데이터를 섞어 두면 강사가 상담 전후로 어디를 봐야 할지 헷갈리니까 폴더를 분리했어요.</p>
+
+    <p style="margin-top:14px;"><strong>Q. 캠퍼스 폴더 안에 학생 파일이 안 보여요</strong></p>
+    <p style="color:var(--gray-4);">→ 가능성 두 가지. ①시스템 개편 이전에 작성된 학생이라면 마스터 시트에만 있을 수 있습니다. 마스터 시트 열어서 메뉴 <code>🎨 다같이 미술학원 (학점제) → 📁 기존 데이터 → 캠퍼스 파일 일괄 이관</code> 한 번 실행하면 캠퍼스 폴더로 복사돼요. ②학생이 아직 설문을 안 작성했을 수도 있어요.</p>
+
+    <p style="margin-top:14px;"><strong>Q. 마스터 시트는 안 봐도 되나요?</strong></p>
+    <p style="color:var(--gray-4);">→ <strong>강사는 안 봐도 됩니다.</strong> 마스터 시트는 전체 백업·운영자용이고, 강사는 본인 캠퍼스 폴더에서 학생 파일만 보면 충분해요. 마스터 시트는 원장이 전체 학원 운영 통계 보거나 시스템 관리할 때만 씁니다.</p>
   </div>
 
   <div class="card">
